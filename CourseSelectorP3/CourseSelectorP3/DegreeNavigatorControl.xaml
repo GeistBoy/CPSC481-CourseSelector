@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="CourseSelectorP3.DegreeNavigatorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseSelectorP3"
+             mc:Ignorable="d" 
+             d:DesignHeight="316.667" d:DesignWidth="378.521">
+    <Grid>
+        <Rectangle x:Name="DegreeBackground" Fill="AliceBlue" HorizontalAlignment="Left" Height="316.667" Stroke="Black" VerticalAlignment="Top" Width="378.521" Margin="0,0,-378.521,-316.667"/>
+        <Rectangle x:Name="Req1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="25.521,47.334,-189.021,-85.334" Stroke="Black" VerticalAlignment="Top" Width="163.5"/>
+        <Rectangle x:Name="Ans1" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="194.021,47.334,-357.521,-85.334" Stroke="Black" VerticalAlignment="Top" Width="163.5"/>
+        <Rectangle x:Name="Req2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="25.521,90.334,-189.021,-128.334" Stroke="Black" VerticalAlignment="Top" Width="163.5"/>
+        <Rectangle x:Name="Ans2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="194.021,90.334,-357.521,-128.334" Stroke="Black" VerticalAlignment="Top" Width="163.5"/>
+        <Rectangle x:Name="Req3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="25.521,133.334,-189.021,-171.334" Stroke="Black" VerticalAlignment="Top" Width="163.5"/>
+        <Rectangle x:Name="Ans3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="38" Margin="194.021,133.334,-357.521,-171.334" Stroke="Black" VerticalAlignment="Top" Width="163.5"/>
+        <Label Content="Degree Navigator" HorizontalAlignment="Left" Height="42.334" Margin="0,0,-163.521,-42.334" VerticalAlignment="Top" Width="163.521" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="ContactAdvisorButton" Content="Contact Advisor" HorizontalAlignment="Left" Height="37" Margin="214,5,0,0" Style="{DynamicResource ContactAdvisorButtonStyle}" VerticalAlignment="Top" Width="144"/>
+        <Label Content="Requirement" HorizontalAlignment="Left" Height="24.957" Margin="52.174,53.856,0,0" VerticalAlignment="Top" Width="111.347"/>
+        <Label Content="Requirement" HorizontalAlignment="Left" Height="24.957" Margin="52.174,96.856,0,0" VerticalAlignment="Top" Width="111.347"/>
+        <Label Content="Requirement" HorizontalAlignment="Left" Height="24.957" Margin="52.174,139.856,0,0" VerticalAlignment="Top" Width="111.347"/>
+
+    </Grid>
+</UserControl>

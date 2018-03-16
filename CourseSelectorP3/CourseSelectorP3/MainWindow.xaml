@@ -1,0 +1,46 @@
+﻿<Window x:Class="CourseSelectorP3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CourseSelectorP3"
+        mc:Ignorable="d"
+        Title="Course Selector" Width="768" Height="576" >
+    <Window.Resources>
+        <Storyboard x:Key="SheduleAppear"/>
+        <Storyboard x:Key="ScheduleDisappear"/>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource SheduleAppear}"/>
+            <BeginStoryboard Storyboard="{StaticResource ScheduleDisappear}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid x:Name="Container" Width="758" Height="546">
+        <Grid x:Name="LeftView" HorizontalAlignment="Left" Margin="0,0,0,0" Width="379" Height="546">
+            <ScrollViewer HorizontalAlignment="Left" Height="481.732" Margin="0,63.268,0,0" VerticalAlignment="Top" Width="380"/>
+            <TextBox HorizontalAlignment="Left" Height="33.632" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="382.636" FontSize="18" Margin="0,0,-2.636,0"/>
+            <Rectangle  Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="29.636" Margin="0,33.632,0,0" Stroke="Black" VerticalAlignment="Top" Width="110.673"/>
+            <Label Content="Filter" HorizontalAlignment="Left" Height="29.636" Margin="0,33.632,0,0" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Top" Width="110.673" FontSize="16"/>
+
+        </Grid>
+        <Grid x:Name="RightView" Height="546" Width="379" Margin="379,0,0,0">
+            <Grid x:Name="InformationTab" Margin="0,0,0,458.667">
+                <Rectangle x:Name="InformationBackground" Fill="#FF6C6599" HorizontalAlignment="Left" Stroke="Black" Width="379"/>
+                <Label x:Name="Name" Content="First Last" HorizontalAlignment="Left" Height="37.5" VerticalAlignment="Top" Width="145.364" FontSize="18" FontWeight="Bold"/>
+                <Label x:Name="StudentNo" Content="12345678" HorizontalAlignment="Left" Height="24" Margin="4,63,0,0" VerticalAlignment="Top" Width="117" FontSize="9"/>
+                <Label x:Name="Major" Content="Computer Science" HorizontalAlignment="Left" Height="25.213" Margin="4,37.5,0,0" VerticalAlignment="Top" Width="117.364" FontSize="9"/>
+                <Label x:Name="CreditLabel" Content="Credit:" HorizontalAlignment="Left" Height="24" Margin="258.521,0,0,0" VerticalAlignment="Top" Width="44"/>
+                <Label x:Name="creditTaken" Content="Taken:15.0" HorizontalAlignment="Left" Height="24" Margin="302.521,0,0,0" VerticalAlignment="Top" Width="66.479"/>
+                <Label x:Name="creditPassed" Content="Passed:15.0" HorizontalAlignment="Left" Height="29" Margin="302.521,25,0,0" VerticalAlignment="Top" Width="71.812"/>
+                <Label x:Name="creditLeft" Content="Left:25.0" HorizontalAlignment="Left" Height="31" Margin="302.521,54,0,0" VerticalAlignment="Top" Width="68.479"/>
+
+            </Grid>
+
+            <Button x:Name="DeNaButton"  Content="Degree Navigator" TextBlock.Foreground="Black" TextBlock.FontSize="22" HorizontalAlignment="Left" Height="36" Margin="189.021,87.333,0,0"  VerticalAlignment="Top" Width="189.5" Background="Black" Style="{DynamicResource ScheduleButton}"/>
+            <Button x:Name="ScheduleButton" Content="Schedule" HorizontalAlignment="Left" TextBlock.FontSize="23" Height="36.333" Margin="0,87.333,0,0" Style="{DynamicResource ScheduleButton}" VerticalAlignment="Top" Width="189.5"/>
+            <UniformGrid x:Name="ScheDeDisplay" HorizontalAlignment="Left" Height="316.667" Margin="0,123.333,0,0" VerticalAlignment="Top" Width="378.521"/>
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="CourseSelectorP3.SheduleControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseSelectorP3"
+             mc:Ignorable="d" 
+             d:DesignHeight="317" d:DesignWidth="378.521">
+    <Grid>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="41" Margin="0,0,-378.521,-41" Stroke="Black" VerticalAlignment="Top" Width="378.521"/>
+        <Image x:Name="Shedule" HorizontalAlignment="Left" Height="244.082" Margin="0,41,0,0" VerticalAlignment="Top" Width="377.364"/>
+        <ComboBox x:Name="Term" HorizontalAlignment="Left" Height="21.333" Margin="10,12,-129.854,-33.333" VerticalAlignment="Top" Width="119.854"/>
+        <Rectangle x:Name="ScheduleBackground" Fill="#FF242457" HorizontalAlignment="Left" Height="276" Margin="0,41,0,0" Stroke="Black" VerticalAlignment="Top" Width="378.521"/>
+        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Left" Height="31.918" Margin="295.238,285.082,0,0" Style="{DynamicResource EnrollButtonStyle}" VerticalAlignment="Top" Width="83.283"/>
+        <Button x:Name="ContactAdvisorButton" Content="Contact Advisor" HorizontalAlignment="Left" Height="23.333" Margin="267.673,10,0,0" Style="{DynamicResource ContactAdvisorButtonBtyle}" VerticalAlignment="Top" Width="100.848"/>
+        <Rectangle x:Name="FakeSchedule" Fill="#FF242457" HorizontalAlignment="Left" Height="244.082" Margin="0,41,0,0" Stroke="Black" VerticalAlignment="Top" Width="377.364"/>
+        <Path Data="M1.4508009,66.736842 L375.25724,66.736842 -0.50020136,66.736842" Fill="#FF242457" HorizontalAlignment="Left" Height="1" Margin="-0.5,66.737,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="376.757"/>
+        <Path Data="M1.4508009,109.53547 L373.80644,109.03594" Fill="#FF242457" HorizontalAlignment="Left" Height="1.5" Margin="1.451,109.035,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="373.356"/>
+        <Path Data="M1.4508009,142.90389 L374.53184,147.48158" Fill="#FF242457" HorizontalAlignment="Left" Height="5.578" Margin="1.451,142.904,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="374.081"/>
+        <Path Data="M0,183.52632 L374.53204,183.52632" Fill="#FF242457" HorizontalAlignment="Left" Height="1" Margin="0,183.526,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="375.532"/>
+        <Path Data="M0,216.89474 L376.70824,222.19767" Fill="#FF242457" HorizontalAlignment="Left" Height="6.303" Margin="0,216.895,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="377.708"/>
+        <Path Data="M1.4508009,247.36156 L376.70804,251.93892" Fill="#FF242457" HorizontalAlignment="Left" Height="5.577" Margin="1.451,247.362,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="376.257"/>
+        <Path Data="M49.327231,41.347826 L52.454466,283.13141" Fill="#FF242457" HorizontalAlignment="Left" Height="242.784" Margin="49.327,41.348,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="4.127"/>
+        <Path Data="M95.75286,43.524027 L102.50673,283.85701" Fill="#FF242457" HorizontalAlignment="Left" Height="241.333" Margin="95.753,43.524,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="7.754"/>
+        <Path Data="M147.25629,40.622426 L156.18679,281.6812" Fill="#FF242457" HorizontalAlignment="Left" Height="242.059" Margin="147.256,40.622,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="9.93"/>
+        <Path Data="M201.66133,39.897025 L211.31726,284.58241" Fill="#FF242457" HorizontalAlignment="Left" Height="245.685" Margin="201.661,39.897,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="10.656"/>
+        <Path Data="M248.81236,40.622426 L264.27153,281.6812" Fill="#FF242457" HorizontalAlignment="Left" Height="242.059" Margin="248.812,40.622,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="16.459"/>
+        <Path Data="M285.08238,41.347826 L305.61936,280.22981" Fill="#FF242457" HorizontalAlignment="Left" Height="239.882" Margin="285.082,41.348,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="21.537"/>
+        <Path Data="M327.88101,38.446224 L344.79063,282.4064" Fill="#FF242457" HorizontalAlignment="Left" Height="244.96" Margin="327.881,38.446,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="17.91"/>
+        <Path Data="M484.56751,87.048055" Fill="#FF242457" HorizontalAlignment="Left" Height="1" Margin="484.568,87.048,-107.047,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+
+    </Grid>
+</UserControl>
