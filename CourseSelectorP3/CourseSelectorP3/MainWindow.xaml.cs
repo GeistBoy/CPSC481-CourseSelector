@@ -33,6 +33,7 @@ namespace CourseSelectorP3
             // Add button controls
             this.ScheduleButton.Click += ScheduleButton_Click;
             this.DeNaButton.Click += DeNaButton_Click;
+
         }
 
         private void DeNaButton_Click(object sender, RoutedEventArgs e)
@@ -45,6 +46,20 @@ namespace CourseSelectorP3
         {
             this.ScheDeDisplay.Children.Clear();
             this.ScheDeDisplay.Children.Add(sheduleControl);
+        }
+
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+  
+
+            for(int i = 0; i < 5; i++)
+            {
+                this.ClassList.Children.Add(new ClassItem());
+            }
+         
+
+
+
         }
     }
 }

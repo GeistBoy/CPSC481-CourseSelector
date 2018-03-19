@@ -57,6 +57,9 @@
     <Compile Include="DegreeNavigatorControl.xaml.cs">
       <DependentUpon>DegreeNavigatorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassItem.xaml.cs">
+      <DependentUpon>ClassItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SheduleControl.xaml.cs">
       <DependentUpon>SheduleControl.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ClassItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="SheduleControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

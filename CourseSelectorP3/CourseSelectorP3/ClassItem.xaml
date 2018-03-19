@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="CourseSelectorP3.ClassItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CourseSelectorP3"
+             mc:Ignorable="d" d:DesignWidth="378.521" Width="788" Height="156.643">
+    <Grid Margin="0" Background="#FFE6ABAB">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="143*"/>
+            <ColumnDefinition Width="645*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="Class" HorizontalAlignment="Left" Height="44" Margin="23,10,0,0" TextWrapping="Wrap" Text="Class: " VerticalAlignment="Top" Width="105"/>
+        <TextBlock x:Name="Time" HorizontalAlignment="Left" Height="32" Margin="23,54,0,0" TextWrapping="Wrap" Text="Time: " VerticalAlignment="Top" Width="108"/>
+        <TextBlock x:Name="Instructor" HorizontalAlignment="Left" Height="32" Margin="23,91,0,0" TextWrapping="Wrap" Text="Instructor: " VerticalAlignment="Top" Width="110"/>
+        <Button x:Name="AddButton" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="23.643" Margin="524,123,0,0" VerticalAlignment="Top" Width="88"/>
+        <TextBlock x:Name="Tag" Grid.Column="1" HorizontalAlignment="Left" Height="23.642" Margin="10,123,0,0" TextWrapping="Wrap" Text="Tag: " VerticalAlignment="Top" Width="216"/>
+        <TextBlock x:Name="Rating" Grid.Column="1" HorizontalAlignment="Left" Height="23.643" Margin="285,123,0,0" TextWrapping="Wrap" Text="Rating:" VerticalAlignment="Top" Width="200"/>
+    </Grid>
+</UserControl>
