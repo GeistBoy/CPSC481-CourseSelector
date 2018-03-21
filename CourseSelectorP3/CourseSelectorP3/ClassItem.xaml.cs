@@ -33,6 +33,12 @@ namespace CourseSelectorP3
             );
         static Random rnd = new Random();
 
+        String name;
+        public String getName()
+        {
+            return name;
+        }
+
         public ClassItem()
         {
             InitializeComponent();
@@ -46,7 +52,40 @@ namespace CourseSelectorP3
             i = rnd.Next(0, InstructorNameString.Count - 1);
             this.Instructor.Text += InstructorNameString[i];
 
+            name = this.Class.Text;
         }
 
+        public void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxResult result;
+            result = MessageBox.Show("Do you want to add" + getName()+ "?", "SURE", buttons);
+
+            if (result == System.Windows.MessageBoxResult.Yes)
+            {
+                // TODO 
+                // GET the right and put this child or some 
+                // new object in that has this information
+         
+            }
+
+        }
+
+
+        public void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxResult result;
+            result = MessageBox.Show("Do you want to Remove" + getName() + "?", "SURE", buttons);
+
+            if (result == System.Windows.MessageBoxResult.Yes)
+            {
+                // TODO 
+                // GET the right and put this child or some 
+                // new object in that has this information
+
+            }
+
+        }
     }
 }

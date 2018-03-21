@@ -22,17 +22,24 @@ namespace CourseSelectorP3
     {
         SheduleControl sheduleControl;
         DegreeNavigatorControl degreeNavigatorControl;
+
         public MainWindow()
         {
             // Initialize
             InitializeComponent();
+
             sheduleControl = new SheduleControl();
             degreeNavigatorControl = new DegreeNavigatorControl();
             this.ScheDeDisplay.Children.Add(sheduleControl);
-
             // Add button controls
             this.ScheduleButton.Click += ScheduleButton_Click;
             this.DeNaButton.Click += DeNaButton_Click;
+
+            ClassItem class1 = new ClassItem();
+            class1.AddClass.Content = "Remove ";
+            class1.AddClass.Click -= class1.AddButton_Click;
+            class1.AddClass.Click += class1.RemoveButton_Click;
+            this.ShoppingCartList.Children.Add(class1);
 
         }
 
@@ -48,17 +55,23 @@ namespace CourseSelectorP3
             this.ScheDeDisplay.Children.Add(sheduleControl);
         }
 
-        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        private void FilterLabel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-  
+            // TODO
 
-            for(int i = 0; i < 5; i++)
+        }
+
+        private void SignInButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.LoginCanvas.Visibility = Visibility.Hidden;
+        }
+
+        private void OkSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 2; i++)
             {
                 this.ClassList.Children.Add(new ClassItem());
             }
-         
-
-
 
         }
     }

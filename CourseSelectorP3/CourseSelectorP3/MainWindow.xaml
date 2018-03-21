@@ -19,15 +19,16 @@
     <Grid x:Name="Container">
         <Grid x:Name="LeftView" HorizontalAlignment="Left" Margin="0,0,0,0" Width="789">
             <ScrollViewer x:Name="Scroller" HorizontalAlignment="Left" Margin="0,63.268,0,0" VerticalAlignment="Top" Width="789" Height="901.732">
-                <UniformGrid x:Name="ClassList"/>
+                <StackPanel x:Name="ClassList" Height="891.732" Width="712.5"/>
             </ScrollViewer>
-            <TextBox HorizontalAlignment="Left" Height="33.632" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="382.636" FontSize="18" Margin="0,0,-2.636,0"/>
+            <TextBox x:Name="SearchBar" HorizontalAlignment="Left" Height="33.632" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="382.636" FontSize="18" Margin="0,0,-2.636,0"/>
             <Rectangle  Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="29.636" Margin="0,33.632,0,0" Stroke="Black" VerticalAlignment="Top" Width="110.673"/>
-            <Label Content="Filter" HorizontalAlignment="Left" Height="29.636" Margin="0,33.632,0,0" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Top" Width="110.673" FontSize="16" MouseDown="Label_MouseDown"/>
+            <Label Content="Filter" HorizontalAlignment="Left" Height="29.636" Margin="0,33.632,0,0" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Top" Width="110.673" FontSize="16" MouseDown="FilterLabel_MouseDown"/>
+            <Button x:Name="OkSearchButton" Content="OK" HorizontalAlignment="Left" Margin="387.636,3.672,0,0" VerticalAlignment="Top" Width="48" Height="29.96" Click="OkSearchButton_Click"/>
 
         </Grid>
         <Grid x:Name="RightView" Width="798" Margin="794,10,0,0">
-            <Grid x:Name="InformationTab">
+            <Grid x:Name="InformationTab" d:IsHidden="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="43*"/>
                     <ColumnDefinition Width="4*"/>
@@ -36,7 +37,7 @@
                 <Label x:Name="Name" Content="First Last" HorizontalAlignment="Left" Height="37.5" VerticalAlignment="Top" Width="145.364" FontSize="18" FontWeight="Bold"/>
                 <Label x:Name="StudentNo" Content="12345678" HorizontalAlignment="Left" Height="24" Margin="4,63,0,0" VerticalAlignment="Top" Width="117"/>
                 <Label x:Name="Major" Content="Computer Science" HorizontalAlignment="Left" Height="36" Margin="4,27,0,0" VerticalAlignment="Top" Width="168.364"/>
-                <Label x:Name="CreditLabel" Content="Credit: 40&#xD;&#xA;" HorizontalAlignment="Left" Height="24" Margin="610.188,6.473,0,0" VerticalAlignment="Top" Width="86"/>
+                <Label x:Name="CreditLabel" Content="Credit: 40&#xA;" HorizontalAlignment="Left" Height="24" Margin="610.188,6.473,0,0" VerticalAlignment="Top" Width="86"/>
                 <Label x:Name="creditTaken" Content="Taken:15.0" HorizontalAlignment="Left" Height="24" Margin="719.521,0,0,924.527" VerticalAlignment="Bottom" Width="66.479" RenderTransformOrigin="2.158,0.292" Grid.ColumnSpan="2"/>
                 <Label x:Name="creditPassed" Content="Passed:15.0" HorizontalAlignment="Left" Height="29" Margin="716.188,27,0,0" VerticalAlignment="Top" Width="71.812" RenderTransformOrigin="5.284,0.552" Grid.ColumnSpan="2"/>
                 <Label x:Name="creditLeft" Content="Left:25.0" HorizontalAlignment="Left" Height="31" Margin="719.521,56,0,0" VerticalAlignment="Top" Width="68.479" Grid.ColumnSpan="2"/>
@@ -46,7 +47,22 @@
             <Button x:Name="DeNaButton"  Content="Degree Navigator" TextBlock.Foreground="Black" TextBlock.FontSize="22" HorizontalAlignment="Left" Height="36" Margin="383.521,87.333,0,0"  VerticalAlignment="Top" Width="404.479" Background="Black" Style="{DynamicResource ScheduleButton}"/>
             <Button x:Name="ScheduleButton" Content="Schedule" HorizontalAlignment="Left" TextBlock.FontSize="23" Height="36.333" Margin="0,87.333,0,0" Style="{DynamicResource ScheduleButton}" VerticalAlignment="Top" Width="378.521"/>
             <UniformGrid x:Name="ScheDeDisplay" HorizontalAlignment="Left" Margin="0,128.666,0,288" Width="788"/>
+            <ScrollViewer HorizontalAlignment="Left" Height="288" Margin="0,667,0,0" VerticalAlignment="Top" Width="788">
+                <StackPanel x:Name="ShoppingCartList" HorizontalAlignment="Left" Height="288" VerticalAlignment="Top" Width="776" OpacityMask="#FFC36666" Background="#FFC9BEBE"/>
+            </ScrollViewer>
 
         </Grid>
+        <Canvas x:Name="LoginCanvas" Margin="0,0,0,10" d:IsHidden="True">
+            <Canvas.Background>
+                <ImageBrush ImageSource="UofCLoginScreenShot.png"/>
+            </Canvas.Background>
+            <Image x:Name="LoginScreen" Height="955" Width="1572"/>
+            <TextBlock x:Name="UsernameTextBox" Height="36" Canvas.Left="422" TextWrapping="Wrap" Canvas.Top="451.5" Width="453">
+                <TextBlock.Background>
+                    <ImageBrush/>
+                </TextBlock.Background></TextBlock>
+            <TextBlock x:Name="PasswordTextBox" Height="36" Canvas.Left="422" TextWrapping="Wrap" Canvas.Top="487.5" Width="453"/>
+            <Button x:Name="SignInButton" Content="Sign In" Height="40.5" Canvas.Left="941" Canvas.Top="520.5" Width="232.5" RenderTransformOrigin="0.8,0.704" Click="SignInButton_Click"/>
+        </Canvas>
     </Grid>
 </Window>
