@@ -117,5 +117,8 @@
   <ItemGroup>
     <Resource Include="UofCLoginScreenShot.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace CourseSelectorP3
 {
@@ -22,6 +23,8 @@ namespace CourseSelectorP3
     {
         SheduleControl sheduleControl;
         DegreeNavigatorControl degreeNavigatorControl;
+
+        int toggle = 0;
 
         public MainWindow()
         {
@@ -41,6 +44,9 @@ namespace CourseSelectorP3
             class1.AddClass.Click += class1.RemoveButton_Click;
             this.ShoppingCartList.Children.Add(class1);
 
+            this.FilterCanvas.Visibility = Visibility.Hidden;
+            
+
         }
 
         private void DeNaButton_Click(object sender, RoutedEventArgs e)
@@ -57,8 +63,19 @@ namespace CourseSelectorP3
 
         private void FilterLabel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            // TODO
-
+            toggle++;
+            if (toggle%2 == 0)
+            {
+                Storyboard sb = this.FindResource("MoveScrollerDown_Copy1") as Storyboard;
+                sb.Begin();
+                this.FilterCanvas.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Storyboard sb = this.FindResource("MoveScrollerDown") as Storyboard;
+                sb.Begin();
+                this.FilterCanvas.Visibility = Visibility.Visible;
+            }
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)

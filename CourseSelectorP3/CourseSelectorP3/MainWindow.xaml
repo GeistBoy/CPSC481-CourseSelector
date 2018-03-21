@@ -9,22 +9,65 @@
     <Window.Resources>
         <Storyboard x:Key="SheduleAppear"/>
         <Storyboard x:Key="ScheduleDisappear"/>
+        <Storyboard x:Key="MoveScrollerDown">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Scroller">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="3"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Scroller">
+                <EasingDoubleKeyFrame KeyTime="0" Value="7.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="144.75"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Scroller">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.676"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MoveScrollerDown_Copy1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Scroller">
+                <SplineDoubleKeyFrame KeyTime="0" Value="3"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="1.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Scroller">
+                <SplineDoubleKeyFrame KeyTime="0" Value="144.75"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="7.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Scroller">
+                <SplineDoubleKeyFrame KeyTime="0" Value="0.676"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource SheduleAppear}"/>
-            <BeginStoryboard Storyboard="{StaticResource ScheduleDisappear}"/>
-        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
     </Window.Triggers>
     <Grid x:Name="Container">
         <Grid x:Name="LeftView" HorizontalAlignment="Left" Margin="0,0,0,0" Width="789">
-            <ScrollViewer x:Name="Scroller" HorizontalAlignment="Left" Margin="0,63.268,0,0" VerticalAlignment="Top" Width="789" Height="901.732">
+            <ScrollViewer x:Name="Scroller" HorizontalAlignment="Left" Margin="0,63.268,0,0" VerticalAlignment="Top" Width="789" Height="901.732" RenderTransformOrigin="0.5,0.5" Background="#FFDAD3D3">
+                <ScrollViewer.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </ScrollViewer.RenderTransform>
                 <StackPanel x:Name="ClassList" Height="891.732" Width="712.5"/>
             </ScrollViewer>
             <TextBox x:Name="SearchBar" HorizontalAlignment="Left" Height="33.632" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="382.636" FontSize="18" Margin="0,0,-2.636,0"/>
             <Rectangle  Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="29.636" Margin="0,33.632,0,0" Stroke="Black" VerticalAlignment="Top" Width="110.673"/>
-            <Label Content="Filter" HorizontalAlignment="Left" Height="29.636" Margin="0,33.632,0,0" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Top" Width="110.673" FontSize="16" MouseDown="FilterLabel_MouseDown"/>
+            <Label x:Name="Filter" Content="Filter" HorizontalAlignment="Left" Height="29.636" Margin="0,33.632,0,0" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Top" Width="110.673" FontSize="16" MouseDown="FilterLabel_MouseDown" RenderTransformOrigin="0.547,3.927"/>
             <Button x:Name="OkSearchButton" Content="OK" HorizontalAlignment="Left" Margin="387.636,3.672,0,0" VerticalAlignment="Top" Width="48" Height="29.96" Click="OkSearchButton_Click"/>
+            <Canvas x:Name="FilterCanvas" HorizontalAlignment="Left" Height="283" Margin="0,68.268,0,0" VerticalAlignment="Top" Width="779" d:IsHidden="True">
+                <Label x:Name="Filter_Copy" Content="Filter" HorizontalAlignment="Left" Height="29.636" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Top" Width="110.673" FontSize="16" MouseDown="FilterLabel_MouseDown" RenderTransformOrigin="0.547,3.927" Canvas.Left="10" Canvas.Top="10.732"/>
+
+                <Button x:Name="OkSearchButton_Copy" Content="OK" HorizontalAlignment="Left" VerticalAlignment="Top" Width="48" Height="29.96" Click="OkSearchButton_Click" Canvas.Left="666.636" Canvas.Top="243.04" RenderTransformOrigin="0.56,-0.399"/>
+                <TextBox x:Name="SearchBar_Copy" HorizontalAlignment="Left" Height="33.632" TextWrapping="Wrap" Text="Instructor" VerticalAlignment="Top" Width="160.636" FontSize="18" Canvas.Left="10" Canvas.Top="45.368"/>
+                <TextBox x:Name="SearchBar_Copy1" HorizontalAlignment="Left" Height="33.632" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="160.636" FontSize="18" Canvas.Left="10" Canvas.Top="97.209"/>
+                <TextBox x:Name="SearchBar_Copy2" HorizontalAlignment="Left" Height="33.632" TextWrapping="Wrap" Text="Tag" VerticalAlignment="Top" Width="160.636" FontSize="18" Canvas.Left="10" Canvas.Top="151.5" RenderTransformOrigin="1.724,0.78"/>
+                <TextBox x:Name="SearchBar_Copy3" HorizontalAlignment="Left" Height="33.632" TextWrapping="Wrap" Text="Hello" VerticalAlignment="Top" Width="160.636" FontSize="18" Canvas.Left="256" Canvas.Top="151.5" RenderTransformOrigin="1.724,0.78"/>
+                <TextBox x:Name="SearchBar_Copy4" HorizontalAlignment="Left" Height="33.632" TextWrapping="Wrap" Text="Random" VerticalAlignment="Top" Width="160.636" FontSize="18" Canvas.Left="256" Canvas.Top="84" RenderTransformOrigin="1.724,0.78"/>
+            </Canvas>
 
         </Grid>
         <Grid x:Name="RightView" Width="798" Margin="794,10,0,0">
