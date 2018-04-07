@@ -23,6 +23,27 @@ namespace CPSC481_A5
         public MainWindow()
         {
             InitializeComponent();
+
+            Class1 derp = new Class1();
+            List<Course> list = new List<Course>();
+            list.Add(derp.hci);
+            AddClassToSearch(list);
+        }
+
+        private void AddClassToSearch(List<Course> courses)
+        {
+            foreach(Course c in courses){
+                CourseListItemControl CourseControl = new CourseListItemControl();
+                CourseControl.CourseNameLabel.Content = c.CourseAbbrev +"\t"+ c.CourseName;
+                CourseControl.CourseDayLabel.Text = c.SceduleDayToString();
+                CourseControl.CourseTime.Text = c.SceduleTimeToString();
+                CourseControl.CourseRoom.Text = c.Location;
+                CourseControl.ProfNameLabel.Text = c.ProfessorName + " User";
+                CourseControl.StatusLabel.Text = c.StatusToString();
+                this.SearchResultStackPanel.Children.Add(CourseControl);
+            }
+            
         }
     }
+
 }

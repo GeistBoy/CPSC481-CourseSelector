@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="CPSC481_A5.CourseListItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CPSC481_A5"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="616">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="321*"/>
+            <ColumnDefinition Width="295*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="CourseNameLabel" Content="Course Name" Grid.Row="0" VerticalAlignment="Top" Background="#FF598C97" Grid.ColumnSpan="2"/>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Label Content="Days" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Time" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Room" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Instructor" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Tutorial" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Status" Grid.Row="0" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <TextBlock x:Name="CourseDayLabel" Text="Days" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+            <TextBlock x:Name="CourseTime" Text="Hello" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" IsEnabled="False" />
+            <TextBlock x:Name="CourseRoom" Text="Room" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+            <TextBlock x:Name="ProfNameLabel" Text="Name" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+            <TextBlock x:Name="StatusLabel" Text="Available" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+            <Button Content="Add" Grid.Column="6" Margin="10,9.357,0,10" Style="{DynamicResource YellowButtonStyle}" HorizontalAlignment="Left" Width="68" RenderTransformOrigin="0.485,-0.417"/>
+            <ComboBox Grid.Column="4" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="68"/>
+            <TextBlock Grid.Column="6" HorizontalAlignment="Left" Margin="41.943,11.06,0,0" Grid.Row="1" TextWrapping="Wrap" Text="More..." VerticalAlignment="Top" Cursor="Hand" Foreground="#FF348899"/>
+
+
+        </Grid>
+
+    </Grid>
+</UserControl>

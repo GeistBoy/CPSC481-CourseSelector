@@ -5,11 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CPSC481_A5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280
+        Title="Schedule Builder" Height="720" Width="1280
         ">
+    <Window.Resources>
+        
+    </Window.Resources>
     <Grid>
         <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636
-              "/>
-        <Grid x:Name="RightGrid" HorizontalAlignment="Left" Height="689" Margin="636,0,0,0" VerticalAlignment="Top" Width="636"/>
+              ">
+
+            <StackPanel HorizontalAlignment="Left" Height="527.395" Margin="10,161.605,0,0" VerticalAlignment="Top" Width="616">
+                <local:CourseListItemControl Height="100"/>
+            </StackPanel>
+            <Canvas Height="141.605" Margin="10,10,10,0" Width="616" VerticalAlignment="Top" >
+                <TextBlock TextWrapping="Wrap" Background="#FFCAE6EC" Foreground="Black" FontSize="14" Text="Search for Classes" Padding="10,0,0,0" Height="23.721" Width="616"/>
+                <TextBlock TextWrapping="Wrap" Text="Subject" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="111.582" Canvas.Top="32.908" Width="103.255">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.76"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="Course Number" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="108.792" Canvas.Top="62.211" Width="103.255">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.76"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="Tag" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="108.792" Canvas.Top="95.699" Width="103.255">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.76"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="28.721"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="55.681"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="96.146"/>
+                <Button x:Name="SearchButton" Content="Search" Canvas.Left="531" Canvas.Top="111.645" Width="75" Style="{DynamicResource YellowButtonStyle}"/>
+            </Canvas>
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Margin="641,0,0,0" Width="631"/>
     </Grid>
 </Window>

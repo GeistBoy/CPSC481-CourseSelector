@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-\\cs-fs01\Profiles\ug\jrherman\Desktop\CPSC481-A5\CPSC481-A5\obj\Debug\
+U:\gitlab\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\
 CPSC481_A5
 none
 false
 DEBUG;TRACE
-\\cs-fs01\Profiles\ug\jrherman\Desktop\CPSC481-A5\CPSC481-A5\App.xaml
-11151548125
+U:\gitlab\CPSC481-CourseSelector\CPSC481-A5\App.xaml
+2486076135
 
-9-35161289
+12412277312
 131569487696
-MainWindow.xaml;
+CourseListItemControl.xaml;MainWindow.xaml;
 
-True
+False
 
