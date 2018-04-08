@@ -32,3 +32,5 @@ U:\gitlab\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\CourseListItemControl.g.cs
 U:\gitlab\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\GeneratedInternalTypeHelper.g.cs
 U:\gitlab\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\App.baml
 U:\gitlab\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\CourseListItemControl.baml
+U:\gitlab\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\RatingStars.baml
+U:\gitlab\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\RatingStars.g.cs

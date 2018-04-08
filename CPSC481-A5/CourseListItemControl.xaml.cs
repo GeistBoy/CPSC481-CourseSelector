@@ -22,10 +22,12 @@ namespace CPSC481_A5
     {
         const int ShortDescriptionHeight = 100;
         const int FullDescriptionHeight = 300;
-
+        public RatingCell Star;
         public CourseListItemControl()
         {
             InitializeComponent();
+            Star = new RatingCell();
+            this.RatingStarContainer.Children.Add(Star);
         }
 
 

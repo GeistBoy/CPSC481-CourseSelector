@@ -30,8 +30,7 @@ namespace CPSC481_A5
             list.Add(derp.hci);
             AddClassToSearch(list);
             AddClassToSearch(list);
-                        AddClassToSearch(list);
-
+            AddClassToSearch(list);
         }
 
         private void AddClassToSearch(List<Course> courses)
@@ -59,7 +58,10 @@ namespace CPSC481_A5
                 CourseControl.TagLabel.Text = c.CourseTagsToString();
                 CourseControl.Height = 100;
                 CourseControl.PreReqLabel.Text = c.PreReqToString();
+                CourseControl.Star.RatingValue = 3;
+
             }
+
         }
 
     }
