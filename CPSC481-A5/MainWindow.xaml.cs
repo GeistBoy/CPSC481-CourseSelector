@@ -29,6 +29,9 @@ namespace CPSC481_A5
             List<Course> list = new List<Course>();
             list.Add(derp.hci);
             AddClassToSearch(list);
+            AddClassToSearch(list);
+                        AddClassToSearch(list);
+
         }
 
         private void AddClassToSearch(List<Course> courses)
