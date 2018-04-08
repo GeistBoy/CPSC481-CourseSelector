@@ -82,8 +82,15 @@
 
         </Grid>
         <Button x:Name="AddButton2" Content="Add" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Top" Width="75" Style="{DynamicResource YellowButtonStyle}"  Margin="0,10,10,15"/>
+
         
-        <StackPanel x:Name="CommentsStackPanel" HorizontalAlignment="Left" Height="243" Margin="10,47,0,0" Grid.Row="4" VerticalAlignment="Top" Width="596"/>
+
+        <ScrollViewer Grid.Row="4"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="604" HorizontalAlignment="Left" Margin="12,42,0,0">
+            <StackPanel x:Name="CommentsStackPanel" Grid.Row="4" ScrollViewer.CanContentScroll="True" Width="584">
+                <local:ReviewPanel Height="129"/>
+            </StackPanel>
+        </ScrollViewer>
+        
         <TextBlock x:Name="ReviewTitleTextBox" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Reviews &amp; Comments" VerticalAlignment="Top" Height="32" Width="158.29" Foreground="#FF348899" FontSize="16" RenderTransformOrigin="0.449,0.469" MouseDown="ReviewTitleTextBox_MouseDown" Cursor="Hand"/>
 
 

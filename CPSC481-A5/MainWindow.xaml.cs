@@ -60,6 +60,12 @@ namespace CPSC481_A5
                 CourseControl.PreReqLabel.Text = c.PreReqToString();
                 CourseControl.Star.RatingValue = 3;
 
+                ReviewPanel review = new ReviewPanel();
+                CourseControl.CommentsStackPanel.Children.Add(review);
+                CourseControl.CommentsStackPanel.Children.Add(new ReviewPanel());
+                CourseControl.CommentsStackPanel.Children.Add(new ReviewPanel());
+
+
             }
 
         }
