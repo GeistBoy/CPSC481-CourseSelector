@@ -19,10 +19,10 @@
             </Grid.RowDefinitions>
 
             <ScrollViewer Grid.Row="1" VerticalAlignment="Top" CanContentScroll="True">
-                <StackPanel x:Name="SearchResultStackPanel" HorizontalAlignment="Left" Height="527.395" VerticalAlignment="Top" Width="616" ScrollViewer.CanContentScroll="True" CanVerticallyScroll="True">
+                <StackPanel x:Name="SearchResultStackPanel" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="616" ScrollViewer.CanContentScroll="True" CanVerticallyScroll="True" Margin="0">
                 </StackPanel>
             </ScrollViewer>
-            <Canvas Grid.Row ="0"  Height="141.605" Margin="10,10,10,0" Width="616" VerticalAlignment="Top" >
+            <Canvas Grid.Row ="0"  Height="120.605" Margin="10,10,10,0" Width="616" VerticalAlignment="Top" >
                 <TextBlock TextWrapping="Wrap" Background="#FFCAE6EC" Foreground="Black" FontSize="14" Text="Search for Classes" Padding="10,0,0,0" Height="23.721" Width="616"/>
                 <TextBlock TextWrapping="Wrap" Text="Subject" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="111.582" Canvas.Top="32.908" Width="103.255">
                     <TextBlock.RenderTransform>
@@ -44,7 +44,7 @@
                         </TransformGroup>
                     </TextBlock.RenderTransform>
                 </TextBlock>
-                <TextBlock TextWrapping="Wrap" Text="Tag" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="108.792" Canvas.Top="95.699" Width="103.255">
+                <TextBlock TextWrapping="Wrap" Text="Tag" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="108.792" Canvas.Top="85.932" Width="103.255">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -56,8 +56,8 @@
                 </TextBlock>
                 <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="28.721"/>
                 <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="55.681"/>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="96.146"/>
-                <Button x:Name="SearchButton" Content="Search" Canvas.Left="531" Canvas.Top="111.645" Width="75" Style="{DynamicResource YellowButtonStyle}"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="82.641"/>
+                <Button x:Name="SearchButton" Content="Search" Canvas.Left="531" Canvas.Top="88.641" Width="75" Style="{DynamicResource YellowButtonStyle}"/>
             </Canvas>
 
         </Grid>

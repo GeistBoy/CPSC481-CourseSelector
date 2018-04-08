@@ -21,8 +21,8 @@ namespace CPSC481_A5
     public partial class CourseListItemControl : UserControl
     {
         const int ShortDescriptionHeight = 100;
-        const int FullDescriptionHeight = 300;
-        const int FullReview = 600;
+        const int FullDescriptionHeight = 350;
+        const int FullReview = 537;
 
         public RatingCell Star;
         public CourseListItemControl()
