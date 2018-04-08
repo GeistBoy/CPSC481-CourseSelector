@@ -28,7 +28,7 @@ namespace CPSC481_A5
             hci.Prereqs.Add("SENG 300");
             hci.Reviews.Add("ALRIGHT"); // TODO
             hci.Location= "ICT 233"; // TODO
-            hci.CourseStatus = Status.Available; // TODO
+            hci.CourseStatus = Status.Open; // TODO
 
 
 

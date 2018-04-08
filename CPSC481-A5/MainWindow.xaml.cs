@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace CPSC481_A5
 {
@@ -39,10 +40,21 @@ namespace CPSC481_A5
                 CourseControl.CourseTime.Text = c.SceduleTimeToString();
                 CourseControl.CourseRoom.Text = c.Location;
                 CourseControl.ProfNameLabel.Text = c.ProfessorName + " User";
-                CourseControl.StatusLabel.Text = c.StatusToString();
                 this.SearchResultStackPanel.Children.Add(CourseControl);
+                if (c.StatusToString().Equals("Open"))
+                {
+                    Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../green_dot.png");
+                    CourseControl.StatusIcon.Source = new BitmapImage(uri);
+                }
+                else
+                {
+                    Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../red_dot.png");
+                    CourseControl.StatusIcon.Source = new BitmapImage(uri);
+                }
+                CourseControl.StatusLabel.Text = c.StatusToString();
+
             }
-            
+
         }
     }
 

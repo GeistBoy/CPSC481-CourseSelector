@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CPSC481_A5
 {
     enum Day { Sat = 1, Mon, Tues, Wed, Thur, Fri, Sun };
-    enum Status {Available, Full, Prereq, TimeConflict};
+    enum Status {Open, Full, Prereq, TimeConflict};
     class Course
     {
 

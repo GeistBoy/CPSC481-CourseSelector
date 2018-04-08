@@ -8,13 +8,13 @@
         Title="Schedule Builder" Height="720" Width="1280
         ">
     <Window.Resources>
-        
+
     </Window.Resources>
     <Grid>
         <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636
               ">
 
-            <StackPanel HorizontalAlignment="Left" Height="527.395" Margin="10,161.605,0,0" VerticalAlignment="Top" Width="616">
+            <StackPanel x:Name="SearchResultStackPanel" HorizontalAlignment="Left" Height="527.395" Margin="10,161.605,0,0" VerticalAlignment="Top" Width="616">
                 <local:CourseListItemControl Height="100"/>
             </StackPanel>
             <Canvas Height="141.605" Margin="10,10,10,0" Width="616" VerticalAlignment="Top" >
@@ -56,6 +56,6 @@
             </Canvas>
 
         </Grid>
-        <Grid HorizontalAlignment="Left" Margin="641,0,0,0" Width="631"/>
+        <Grid x:Name="RightGrid" HorizontalAlignment="Left" Margin="641,0,0,0" Width="631"/>
     </Grid>
 </Window>

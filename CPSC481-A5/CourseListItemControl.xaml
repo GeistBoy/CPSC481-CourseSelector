@@ -43,7 +43,12 @@
             <TextBlock x:Name="CourseTime" Text="Hello" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" IsEnabled="False" />
             <TextBlock x:Name="CourseRoom" Text="Room" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
             <TextBlock x:Name="ProfNameLabel" Text="Name" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
-            <TextBlock x:Name="StatusLabel" Text="Available" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+            <TextBlock x:Name="Status" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"><InlineUIContainer>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="StatusIcon" Height="10" Width="10" Source="red_dot.png"/>
+                        <TextBlock x:Name="StatusLabel" TextWrapping="Wrap" Margin="0,-1,0,0" Padding="5,0,10,0"><Run Text="Status"/></TextBlock>
+                    </StackPanel>
+                </InlineUIContainer></TextBlock>
             <Button Content="Add" Grid.Column="6" Margin="10,9.357,0,10" Style="{DynamicResource YellowButtonStyle}" HorizontalAlignment="Left" Width="68" RenderTransformOrigin="0.485,-0.417"/>
             <ComboBox Grid.Column="4" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="68"/>
             <TextBlock Grid.Column="6" HorizontalAlignment="Left" Margin="41.943,11.06,0,0" Grid.Row="1" TextWrapping="Wrap" Text="More..." VerticalAlignment="Top" Cursor="Hand" Foreground="#FF348899"/>
