@@ -74,6 +74,30 @@ namespace CPSC481_A5
             String status = CourseStatus.ToString();
             return status;
         }
+
+        public String CourseTagsToString()
+        {
+            String tags = "";
+            foreach (String t in Tags)
+            {
+                tags += t + ", ";
+            }
+            tags = tags.Remove(tags.Length - 2);
+
+            return tags;
+        }
+
+        public String PreReqToString()
+        {
+            String prereq = "";
+            foreach (String c in Prereqs)
+            {
+                prereq += c + ", ";
+            }
+            prereq = prereq.Remove(prereq.Length - 2);
+
+            return prereq;
+        }
     }
 
     class Tutorial

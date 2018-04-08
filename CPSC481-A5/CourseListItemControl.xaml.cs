@@ -20,11 +20,31 @@ namespace CPSC481_A5
     /// </summary>
     public partial class CourseListItemControl : UserControl
     {
+        const int ShortDescriptionHeight = 100;
+        const int FullDescriptionHeight = 300;
+
         public CourseListItemControl()
         {
             InitializeComponent();
         }
 
-        
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.Height == FullDescriptionHeight)
+            {
+                this.Height = ShortDescriptionHeight;
+                this.MoreTextBlock.Text = "More...";
+                this.AddButton1.Visibility = Visibility.Visible;
+
+            }
+            else if( this.Height == ShortDescriptionHeight)
+            {
+                this.Height = FullDescriptionHeight;
+                this.MoreTextBlock.Text = "Less...";
+                this.AddButton1.Visibility = Visibility.Hidden;
+            }
+            
+        }
     }
 }

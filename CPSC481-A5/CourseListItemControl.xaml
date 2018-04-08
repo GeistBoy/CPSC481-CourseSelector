@@ -5,19 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CPSC481_A5"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="616">
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="321*"/>
-            <ColumnDefinition Width="295*"/>
-        </Grid.ColumnDefinitions>
+             d:DesignHeight="300" d:DesignWidth="616">
+    <Grid Background="White" Width="616" Height="300">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+
         </Grid.RowDefinitions>
         <Label x:Name="CourseNameLabel" Content="Course Name" Grid.Row="0" VerticalAlignment="Top" Background="#FF598C97" Grid.ColumnSpan="2"/>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid x:Name="ShortDetail" Grid.Row="1" Grid.ColumnSpan="2" Width="616" Height="76" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -31,6 +30,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
+
             </Grid.RowDefinitions>
             <Label Content="Days" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Time" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -49,12 +49,36 @@
                         <TextBlock x:Name="StatusLabel" TextWrapping="Wrap" Margin="0,-1,0,0" Padding="5,0,10,0"><Run Text="Status"/></TextBlock>
                     </StackPanel>
                 </InlineUIContainer></TextBlock>
-            <Button Content="Add" Grid.Column="6" Margin="10,9.357,0,10" Style="{DynamicResource YellowButtonStyle}" HorizontalAlignment="Left" Width="68" RenderTransformOrigin="0.485,-0.417"/>
+            <Button x:Name="AddButton1" Content="Add" Grid.Column="6" Margin="10,9.357,0,10" Style="{DynamicResource YellowButtonStyle}" HorizontalAlignment="Left" Width="68" RenderTransformOrigin="0.485,-0.417"/>
             <ComboBox Grid.Column="4" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="68"/>
-            <TextBlock Grid.Column="6" HorizontalAlignment="Left" Margin="41.943,11.06,0,0" Grid.Row="1" TextWrapping="Wrap" Text="More..." VerticalAlignment="Top" Cursor="Hand" Foreground="#FF348899"/>
+            <TextBlock x:Name="MoreTextBlock" Grid.Column="6" HorizontalAlignment="Left" Margin="41.943,11.06,0,0" Grid.Row="1" TextWrapping="Wrap" Text="More..." VerticalAlignment="Top" Cursor="Hand" Foreground="#FF348899" MouseDown="TextBlock_MouseDown"/>
 
 
         </Grid>
+        <Grid Grid.Row="2" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right"  TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" Padding="0,0,15,0"/>
+            <TextBlock x:Name="CourseDescriptionLabel" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left"  TextWrapping="WrapWithOverflow" Text="BLURB" VerticalAlignment="Top"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right"  TextWrapping="WrapWithOverflow" Text="Prerequisite" VerticalAlignment="Top" Padding="0,0,15,0"/>
+            <TextBlock x:Name="PreReqLabel" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  TextWrapping="WrapWithOverflow" Text="Prerequisite" VerticalAlignment="Top" Padding="0,0,15,0"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right"  TextWrapping="WrapWithOverflow" Text="Tags" VerticalAlignment="Top" Padding="0,0,15,0"/>
+            <TextBlock x:Name="TagLabel" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left"  TextWrapping="WrapWithOverflow" Text="Tags" VerticalAlignment="Top" Padding="0,0,15,0"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"  TextWrapping="WrapWithOverflow" Text="Reviews" VerticalAlignment="Top" Padding="0,0,15,0"/>
+
+        </Grid>
+        <Button x:Name="AddButton2" Content="Add" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Top" Width="75" Style="{DynamicResource YellowButtonStyle}"  Margin="0,10,10,15"/>
+
 
     </Grid>
 </UserControl>
