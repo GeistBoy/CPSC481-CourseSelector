@@ -22,6 +22,8 @@ namespace CPSC481_A5
     {
         const int ShortDescriptionHeight = 100;
         const int FullDescriptionHeight = 300;
+        const int FullReview = 600;
+
         public RatingCell Star;
         public CourseListItemControl()
         {
@@ -33,7 +35,7 @@ namespace CPSC481_A5
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (this.Height == FullDescriptionHeight)
+            if (this.Height == FullDescriptionHeight || this.Height == FullReview )
             {
                 this.Height = ShortDescriptionHeight;
                 this.MoreTextBlock.Text = "More...";
@@ -47,6 +49,30 @@ namespace CPSC481_A5
                 this.AddButton1.Visibility = Visibility.Hidden;
             }
             
+        }
+
+        private void CommentAndReviewTextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.Height == FullDescriptionHeight)
+            {
+                this.Height = FullReview;
+            }
+            else if (this.Height == FullReview)
+            {
+                this.Height = FullDescriptionHeight;
+            }
+        }
+
+        private void ReviewTitleTextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.Height == FullDescriptionHeight)
+            {
+                this.Height = FullReview;
+            }
+            else if (this.Height == FullReview)
+            {
+                this.Height = FullDescriptionHeight;
+            }
         }
     }
 }
