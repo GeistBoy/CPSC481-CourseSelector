@@ -65,7 +65,8 @@
         <Grid x:Name="RightGrid" HorizontalAlignment="Left" Margin="641,0,0,0" Width="631">
 
             <Grid x:Name="DegreeNavigator" HorizontalAlignment="Left" Height="600.5" Margin="0,92,0,0" VerticalAlignment="Top" Width="631">
-                <DataGrid x:Name="ReqTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Height="555" Margin="10,45.5,57,0" VerticalAlignment="Stretch" Width="564" FrozenColumnCount="2" AutoGenerateColumns="False">
+                <DataGrid x:Name="ReqTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Height="555" Margin="10,45.5,57,0" VerticalAlignment="Stretch" Width="564" FrozenColumnCount="2" AutoGenerateColumns="False" AlternatingRowBackground="#F2EBC7" AlternationCount="2">
+
                     <DataGrid.CellStyle>
                         <Style TargetType="{x:Type DataGridCell}">
                             <Style.Triggers>
@@ -93,7 +94,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-            <Button x:Name="ReviewButton" Content="Create Review" HorizontalAlignment="Left" Margin="277.326,274.395,0,0" VerticalAlignment="Top" Width="75" Click="ReviewButton_Click"/>
+            <Button x:Name="ReviewButton" Content="Create Review" HorizontalAlignment="Left" Margin="517.011,110.201,0,0" VerticalAlignment="Top" Width="75" Click="ReviewButton_Click"/>
 
         </Grid>
     </Grid>

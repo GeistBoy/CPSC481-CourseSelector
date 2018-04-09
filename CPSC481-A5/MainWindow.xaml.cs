@@ -25,13 +25,17 @@ namespace CPSC481_A5
         public MainWindow()
         {
             InitializeComponent();
+
             PopulateDegreeNavRequirements();
+
             RandomClasses derp = new RandomClasses();
             List<Course> list = new List<Course>();
             list.Add(derp.hci);
             AddClassToSearch(list);
             AddClassToSearch(list);
             AddClassToSearch(list);
+
+            DegreeNav degreeProgress = new DegreeNav();
         }
 
         private void AddClassToSearch(List<Course> courses)
