@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
+using System.Data;
 
 namespace CPSC481_A5
 {
@@ -24,7 +25,7 @@ namespace CPSC481_A5
         public MainWindow()
         {
             InitializeComponent();
-
+            PopulateDegreeNavRequirements();
             RandomClasses derp = new RandomClasses();
             List<Course> list = new List<Course>();
             list.Add(derp.hci);
@@ -76,7 +77,51 @@ namespace CPSC481_A5
             }
 
         }
+        private void PopulateDegreeNavRequirements()
+        {
+            DataTable degreeReq = new DataTable();
+            DataColumn[] columns = { new DataColumn("Requirements"), new DataColumn("Applied") };
+            Object[] row1 = { "CPSC 231/233", "CPSC 231, CPSC 233" };
+            Object[] row2 = { "CPSC 355/359", "CPSC 355" };
+            Object[] row3 = { "CPSC 313/413", "CPSC 313" };
+            Object[] row4 = { "CPSC 449/457", "" };
+            Object[] row5 = { "CPSC 331", "CPSC 331" };
+            Object[] row6 = { "SENG 300", "" };
+            Object[] row7 = { "1 course at 300 level and above", "CPSC 325" };
+            Object[] row8 = { "4 courses at 400 level and above", "" };
+            Object[] row9 = { "3 courses at 500 level and above", "" };
+            Object[] row10 = { "STAT 213", "STAT 213" };
+            Object[] row11 = { "MATH 211/249/271", "MATH 211, MATH 249, MATH 271" };
+            Object[] row12 = { "PHIL 279", "PHIL 279" };
+            Object[] row13 = { "PHIL 314", "PHIL 314" };
+            Object[] row14 = { "2 courses from Faculty of Arts", "SOCI 200, PSYC 200" };
+            Object[] row15 = { "2 courses selected freely", "" };
 
+            degreeReq.Columns.AddRange(columns);
+            degreeReq.Rows.Add(row1);
+            degreeReq.Rows.Add(row2);
+            degreeReq.Rows.Add(row3);
+            degreeReq.Rows.Add(row4);
+            degreeReq.Rows.Add(row5);
+            degreeReq.Rows.Add(row6);
+            degreeReq.Rows.Add(row7);
+            degreeReq.Rows.Add(row8);
+            degreeReq.Rows.Add(row9);
+            degreeReq.Rows.Add(row10);
+            degreeReq.Rows.Add(row11);
+            degreeReq.Rows.Add(row12);
+            degreeReq.Rows.Add(row13);
+            degreeReq.Rows.Add(row14);
+            degreeReq.Rows.Add(row15);
+
+            ReqTable.MinRowHeight = 35;
+            ReqTable.DataContext = degreeReq.DefaultView;
+
+            foreach (DataGridColumn  col in ReqTable.Columns)
+            {
+                col.CanUserSort = false;
+            }
+        }
     }
-
+    
 }

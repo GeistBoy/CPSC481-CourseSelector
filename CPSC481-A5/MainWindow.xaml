@@ -11,7 +11,7 @@
 
     </Window.Resources>
     <Grid>
-        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636">
+        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636" d:IsHidden="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -22,7 +22,7 @@
                 <StackPanel x:Name="SearchResultStackPanel" Grid.Row="1" ScrollViewer.CanContentScroll="True" Width="616.093">
                 </StackPanel>
             </ScrollViewer>
-            
+
             <Canvas Grid.Row ="0"  Height="130.605" VerticalAlignment="Top" >
                 <TextBlock TextWrapping="Wrap" Background="#FFCAE6EC" Foreground="Black" FontSize="14" Text="Search for Classes" Padding="10,0,0,0" Height="23.721" Width="616"/>
                 <TextBlock TextWrapping="Wrap" Text="Subject" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="111.582" Canvas.Top="32.908" Width="103.255">
@@ -62,6 +62,36 @@
             </Canvas>
 
         </Grid>
-        <Grid x:Name="RightGrid" HorizontalAlignment="Left" Margin="641,0,0,0" Width="631"/>
+        <Grid x:Name="RightGrid" HorizontalAlignment="Left" Margin="641,0,0,0" Width="631">
+            <Grid x:Name="DegreeNavigator" HorizontalAlignment="Left" Height="600.5" Margin="0,92,0,0" VerticalAlignment="Top" Width="631">
+                <DataGrid x:Name="ReqTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Height="555" Margin="10,45.5,57,0" VerticalAlignment="Stretch" Width="564" FrozenColumnCount="2" AutoGenerateColumns="False">
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Style.Triggers>
+                                <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                    <Setter Property="BorderBrush">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="Transparent"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Foreground"
+                            Value="{DynamicResource
+                                   {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <SolidColorBrush Color="Transparent"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Requirements}" Header="Requirements" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Applied}" Header="Applied" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
