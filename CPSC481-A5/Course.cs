@@ -30,7 +30,7 @@ namespace CPSC481_A5
         public Status CourseStatus;
 
         // Course Review
-        public List<String> Reviews = new List<String>();
+        public List<UserReview> Reviews = new List<UserReview>();
 
 
         public String SceduleDayToString()
@@ -98,18 +98,89 @@ namespace CPSC481_A5
 
             return prereq;
         }
+
+        public int GetRating()
+        {
+            double rating = 0;
+            foreach(UserReview r in Reviews)
+            {
+                rating += r.Rating;
+            }
+            rating = rating / Reviews.Count();
+            return (int) Math.Round(rating,0);
+        }
     }
 
     class Tutorial
     {
-        public Course Course; // The parent Course;
-        public String TutorialAdvisor;
+        public String TutorialAdvisor = "Mr.Who";
+        public int TutorialTime = 8;
+        public List<Day> TutorialDays = new List<Day>();
 
-        public int TutorialSection; // should be unique for the same courses
-        public int TutorialTime;
-        public List<Day> TutorialDays; 
+        public override string ToString()
+        {
+            String str = "";
+            String time = "";
+            int start = TutorialTime;
+            if (start <= 12)
+            {
+                time += start + ":00AM - ";
+            }
+            else
+            {
+                time += start - 12 + ":00PM - ";
+            }
+            int end = TutorialTime + 1;
+            if (end <= 12)
+            {
+                time += end + ":00AM";
+            }
+            else
+            {
+                time += end - 12 + ":00PM";
+            }
+
+            if (TutorialDays.Contains(Day.Mon))
+            {
+                str = "MW";
+            }
+            else
+            {
+                str = "TR";
+            }
+            str += time;
+            return str;
+
+
+        }
     }
 
+    class UserReview
+    {
+        public int Rating
+        {
+            get { return Rating; }
+            set {
+                if (value < 0)
+                {
+                    Rating = 0;
+                }
+                else if (value > 5)
+                {
+                    Rating = 5;
+                }
+                else
+                {
+                    Rating = Rating;
+                }
+            }
+         }
+        
+        string Title;
+        string Summary;
+
+
+    }
 
 
 }

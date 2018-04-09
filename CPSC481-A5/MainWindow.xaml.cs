@@ -58,7 +58,12 @@ namespace CPSC481_A5
                 CourseControl.TagLabel.Text = c.CourseTagsToString();
                 CourseControl.Height = CourseListItemControl.ShortDescriptionHeight;
                 CourseControl.PreReqLabel.Text = c.PreReqToString();
-                CourseControl.Star.RatingValue = 3;
+                CourseControl.Star.RatingValue =c.GetRating();
+
+                foreach (Tutorial t  in c.Tutorials)
+                {
+                    CourseControl.TutorialTimeDropDown.Items.Add(t);
+                }
 
                 ReviewPanel review = new ReviewPanel();
                 

@@ -26,12 +26,26 @@ namespace CPSC481_A5
             hci.SceduleTime = 14;
             hci.Rating = 4;
             hci.Prereqs.Add("SENG 300");
-            hci.Reviews.Add("ALRIGHT"); // TODO
             hci.Location= "ICT 233"; // TODO
             hci.CourseStatus = Status.Open; // TODO
 
 
+            Tutorial t1 = new Tutorial();
+            t1.TutorialAdvisor = "James Papi";
+            t1.TutorialDays.Add(Day.Mon);
+            t1.TutorialDays.Add(Day.Wed);
+            t1.TutorialDays.Add(Day.Fri);
+            t1.TutorialTime = 8;
 
+            Tutorial t2 = new Tutorial();
+            t1.TutorialAdvisor = "James Papi";
+            t1.TutorialDays.Add(Day.Mon);
+            t1.TutorialDays.Add(Day.Wed);
+            t1.TutorialDays.Add(Day.Fri);
+            t1.TutorialTime = 9;
+
+            hci.Tutorials.Add(t1);
+            hci.Tutorials.Add(t2);
 
 
         }
