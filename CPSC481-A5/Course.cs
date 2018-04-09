@@ -155,7 +155,7 @@ namespace CPSC481_A5
         }
     }
 
-    class UserReview
+    public class UserReview
     {
         private int Rating = 3;
        
