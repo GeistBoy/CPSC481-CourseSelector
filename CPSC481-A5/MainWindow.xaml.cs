@@ -87,7 +87,7 @@ namespace CPSC481_A5
 
         void newWindow_RaiseCustomEvent(object sender, CustomEventArgs e)
         {
-            this.ReviewButton.Content = e.Message;
+            this.ReviewButton.Content = e.GetReview().Title;
         }
     }
 

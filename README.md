@@ -7,3 +7,6 @@
 5-star rating xaml
 Copied source code here:
 https://social.msdn.microsoft.com/Forums/vstudio/en-US/38e7296a-9892-4719-a69d-a89dea1549c0/creating-a-5stars-style-rating-control-in-xaml?forum=wpf
+
+Mark Hall - Learned how to pass data between windows
+https://stackoverflow.com/questions/14433935/passing-data-between-wpf-forms

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CPSC481_A5"
         mc:Ignorable="d"
-        Title="Comments and Review" Height="450" Width="600">
+        Title="Comments and Review" Height="450" Width="600" ResizeMode="NoResize" ShowInTaskbar="False">
     <Canvas>
         <Button x:Name="SubmitButton" Content="Submit" HorizontalAlignment="Left" Height="21.734" VerticalAlignment="Top" Width="79.779" Style="{DynamicResource YellowButtonStyle}" Canvas.Left="467.871" Canvas.Top="372.723" Click="SubmitButton_Click"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="21.734" VerticalAlignment="Top" Width="78.947" Style="{DynamicResource YellowButtonStyle}"  Canvas.Left="368.135" Canvas.Top="372.723" Click="CancelButton_Click"/>
