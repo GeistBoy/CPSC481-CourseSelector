@@ -20,3 +20,5 @@ C:\Users\ryanh\OneDrive\Documents\GitHub\CPSC481-CourseSelector\CPSC481-A5\obj\D
 C:\Users\ryanh\OneDrive\Documents\GitHub\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\CPSC481-A5.csproj.CoreCompileInputs.cache
 C:\Users\ryanh\OneDrive\Documents\GitHub\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\CPSC481-A5.exe
 C:\Users\ryanh\OneDrive\Documents\GitHub\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\CPSC481-A5.pdb
+C:\Users\ryanh\OneDrive\Documents\GitHub\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\ReviewWindow.g.cs
+C:\Users\ryanh\OneDrive\Documents\GitHub\CPSC481-CourseSelector\CPSC481-A5\obj\Debug\ReviewWindow.baml

@@ -97,7 +97,7 @@ namespace CPSC481_A5
             Object[] row14 = { "2 courses from Faculty of Arts", "SOCI 200, PSYC 200" };
             Object[] row15 = { "2 courses selected freely", "" };
 
-<<<<<<< HEAD
+
             degreeReq.Columns.AddRange(columns);
             degreeReq.Rows.Add(row1);
             degreeReq.Rows.Add(row2);
@@ -117,7 +117,13 @@ namespace CPSC481_A5
 
             ReqTable.MinRowHeight = 35;
             ReqTable.DataContext = degreeReq.DefaultView;
-=======
+
+
+            foreach (DataGridColumn col in ReqTable.Columns)
+            {
+                col.CanUserSort = false;
+            }
+        }
         private void ReviewButton_Click(object sender, RoutedEventArgs e)
         {
             ReviewWindow reviewWindow = new ReviewWindow();
@@ -131,13 +137,6 @@ namespace CPSC481_A5
             this.ReviewButton.Content = e.GetReview().Title;
         }
     }
->>>>>>> 91076b6f3c62861ed5b2448882ca2b50936fbeb9
-
-            foreach (DataGridColumn  col in ReqTable.Columns)
-            {
-                col.CanUserSort = false;
-            }
-        }
-    }
-    
 }
+    
+
