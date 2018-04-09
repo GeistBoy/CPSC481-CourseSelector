@@ -87,9 +87,6 @@
 
         <ScrollViewer Grid.Row="4"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="604" HorizontalAlignment="Left" Margin="12,42,0,10">
             <StackPanel x:Name="CommentsStackPanel" Grid.Row="4" ScrollViewer.CanContentScroll="True" Width="584">
-                <local:ReviewPanel Height="129"/>
-                <local:ReviewPanel Height="129"/>
-                <local:ReviewPanel Height="129"/>
             </StackPanel>
         </ScrollViewer>
 

@@ -47,6 +47,17 @@ namespace CPSC481_A5
             hci.Tutorials.Add(t1);
             hci.Tutorials.Add(t2);
 
+            UserReview ur1 = new UserReview();
+            ur1.Title = "AWESOOME, EASY A++";
+            ur1.SetRating(5);
+            UserReview ur2 = new UserReview();
+
+            hci.Reviews.Add(ur1);
+            hci.Reviews.Add(ur2);
+
+
+
+
 
         }
     }

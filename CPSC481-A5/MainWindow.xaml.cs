@@ -64,10 +64,15 @@ namespace CPSC481_A5
                 {
                     CourseControl.TutorialTimeDropDown.Items.Add(t);
                 }
-
-                ReviewPanel review = new ReviewPanel();
-                
-
+                foreach (UserReview rev in c.Reviews )
+                {
+                    ReviewPanel reviewPanel = new ReviewPanel();
+                    reviewPanel.RatingNumber.Text = rev.GetRating() + "";
+                    reviewPanel.ReviewSummary.Text = rev.Summary;
+                    reviewPanel.Title.Text = rev.Title;
+                    CourseControl.CommentsStackPanel.Children.Add(reviewPanel);
+                }
+               
             }
 
         }

@@ -104,7 +104,7 @@ namespace CPSC481_A5
             double rating = 0;
             foreach(UserReview r in Reviews)
             {
-                rating += r.Rating;
+                rating += r.GetRating();
             }
             rating = rating / Reviews.Count();
             return (int) Math.Round(rating,0);
@@ -157,28 +157,29 @@ namespace CPSC481_A5
 
     class UserReview
     {
-        public int Rating
+        private int Rating = 3;
+       
+        public int GetRating()
         {
-            get { return Rating; }
-            set {
-                if (value < 0)
-                {
-                    Rating = 0;
-                }
-                else if (value > 5)
-                {
-                    Rating = 5;
-                }
-                else
-                {
-                    Rating = Rating;
-                }
+            return Rating;
+        }
+        public void SetRating(int r)
+        {
+            if (r < 0)
+            {
+                Rating = 0;
             }
-         }
-        
-        string Title;
-        string Summary;
-
+            else if (r > 5)
+            {
+                Rating = 5;
+            }
+            else
+            {
+                Rating = r;
+            }
+        }
+        public string Title = "Lectus vehicula nibh aliquet";
+        public string Summary = "Lorem ipsum ac fames eros fermentum mattis hac lacus ullamcorper, et per ac proin posuere nisi quam rhoncus ullamcorper interdum litora curabitur vulputate lorem. Sollicitudin diam leo sapien interdum nostra suscipit eleifend tincidunt diam libero, urna bibendum aenean facilisis vivamus rhoncus bibendum eros potenti, aliquam vitae mattis sit blandit adipiscing non ut scelerisque";
 
     }
 
