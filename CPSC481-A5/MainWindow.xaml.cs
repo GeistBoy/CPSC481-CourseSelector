@@ -77,6 +77,12 @@ namespace CPSC481_A5
 
         }
 
+        private void ReviewButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReviewWindow reviewWindow = new ReviewWindow();
+            reviewWindow.Show();
+
+        }
     }
 
 }
