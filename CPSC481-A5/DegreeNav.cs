@@ -10,10 +10,40 @@ namespace CPSC481_A5
     {
         //This class checks if a row in the degree navigator is completed
         //Some rows are complete by default, as if you were halfway through degree
-        List<String> row1, row2, row3, row4, row5, row6, row7, row8, row9, row10, row11, row12, row13, row14, row15; 
+        List<string> row1;
+        List<string> row2;
+        List<string> row3;
+        List<string> row4;
+        List<string> row5;
+        List<string> row6;
+        List<string> row7;
+        List<string> row8;
+        List<string> row9;
+        List<string> row10;
+        List<string> row11;
+        List<string> row12;
+        List<string> row13;
+        List<string> row14;
+        List<string> row15;
 
         public DegreeNav()
         {
+            row1 = new List<string>();
+            row2 = new List<string>();
+            row3 = new List<string>();
+            row4 = new List<string>();
+            row5 = new List<string>();
+            row6 = new List<string>();
+            row7 = new List<string>();
+            row8 = new List<string>();
+            row9 = new List<string>();
+            row10 = new List<string>();
+            row11 = new List<string>();
+            row12 = new List<string>();
+            row13 = new List<string>();
+            row14 = new List<string>();
+            row15 = new List<string>();      
+
             initDegreeCompleted();
         }
 
@@ -27,7 +57,7 @@ namespace CPSC481_A5
 
             this.row3.Add("CPSC 313");
 
-   
+
             this.row5.Add("CPSC 331");
 
             this.row7.Add("CPSC 325");
@@ -39,7 +69,7 @@ namespace CPSC481_A5
 
             this.row12.Add("PHIL 279");
 
-            this.row13.Add("PHIL 314"); 
+            this.row13.Add("PHIL 314");
 
             this.row14.Add("SOCI 200");
             this.row14.Add("PSYC 200");
