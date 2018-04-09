@@ -6,8 +6,20 @@
              xmlns:local="clr-namespace:CPSC481_A5"
              mc:Ignorable="d" 
              d:DesignHeight="129" d:DesignWidth="584">
-    <Grid Background="White" Width="584" Height="129">
-        <TextBlock TextWrapping="Wrap" Text="TextBlock" Background="#FFB28C8C"/>
+
+    <Grid Background="White" Height="129">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="Title" Text="Lectus vehicula nibh aliquet " Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,14.602,10,98.437" RenderTransformOrigin="0.508,-0.038" Width="460" Grid.Column="1"/>
+        <TextBlock x:Name="RatingNumber" Text="5" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36"/>
+        <TextBlock x:Name="ReviewSummary" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,40.558,10,10" Height="78.442" Width="460" TextWrapping="WrapWithOverflow" 
+                    Text="Lorem ipsum ac fames eros fermentum mattis hac lacus ullamcorper, et per ac proin posuere nisi quam rhoncus ullamcorper interdum litora curabitur vulputate lorem.
+
+Sollicitudin diam leo sapien interdum nostra suscipit eleifend tincidunt diam libero, urna bibendum aenean facilisis vivamus rhoncus bibendum eros potenti, aliquam vitae mattis sit blandit adipiscing non ut scelerisque."
+                   />
 
     </Grid>
 </UserControl>
