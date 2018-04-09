@@ -56,7 +56,7 @@ namespace CPSC481_A5
                 CourseControl.StatusLabel.Text = c.StatusToString();
                 CourseControl.CourseDescriptionLabel.Text = c.Description;
                 CourseControl.TagLabel.Text = c.CourseTagsToString();
-                CourseControl.Height = 100;
+                CourseControl.Height = CourseListItemControl.ShortDescriptionHeight;
                 CourseControl.PreReqLabel.Text = c.PreReqToString();
                 CourseControl.Star.RatingValue = 3;
 

@@ -11,18 +11,19 @@
 
     </Window.Resources>
     <Grid>
-        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636
-              ">
+        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <ScrollViewer Grid.Row="1" VerticalAlignment="Top" CanContentScroll="True">
-                <StackPanel x:Name="SearchResultStackPanel" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="616" ScrollViewer.CanContentScroll="True" CanVerticallyScroll="True" Margin="0">
+
+            <ScrollViewer Grid.Row="1"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="636" HorizontalAlignment="Left">
+                <StackPanel x:Name="SearchResultStackPanel" Grid.Row="1" ScrollViewer.CanContentScroll="True" Width="616.093">
                 </StackPanel>
             </ScrollViewer>
-            <Canvas Grid.Row ="0"  Height="120.605" Margin="10,10,10,0" Width="616" VerticalAlignment="Top" >
+            
+            <Canvas Grid.Row ="0"  Height="130.605" VerticalAlignment="Top" >
                 <TextBlock TextWrapping="Wrap" Background="#FFCAE6EC" Foreground="Black" FontSize="14" Text="Search for Classes" Padding="10,0,0,0" Height="23.721" Width="616"/>
                 <TextBlock TextWrapping="Wrap" Text="Subject" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="111.582" Canvas.Top="32.908" Width="103.255">
                     <TextBlock.RenderTransform>
