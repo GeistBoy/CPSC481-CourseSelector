@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CPSC481_A5
 {
-    class Class1
+    class RandomClasses
     {
         public Course hci;
         public Course c2; 
-        public Class1()
+        public RandomClasses()
         {
             // init;
             hci = new Course();

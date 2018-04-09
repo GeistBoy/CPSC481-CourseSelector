@@ -56,10 +56,13 @@ namespace CPSC481_A5
             if (this.Height == FullDescriptionHeight)
             {
                 this.Height = FullReview;
+                this.CommentAndReviewTextBox.ToolTip = "Collapse";
+
             }
             else if (this.Height == FullReview)
             {
                 this.Height = FullDescriptionHeight;
+                this.CommentAndReviewTextBox.ToolTip = "Expand";
             }
         }
 

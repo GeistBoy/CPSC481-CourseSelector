@@ -25,7 +25,7 @@ namespace CPSC481_A5
         {
             InitializeComponent();
 
-            Class1 derp = new Class1();
+            RandomClasses derp = new RandomClasses();
             List<Course> list = new List<Course>();
             list.Add(derp.hci);
             AddClassToSearch(list);

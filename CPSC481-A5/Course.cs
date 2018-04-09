@@ -124,7 +124,7 @@ namespace CPSC481_A5
             int start = TutorialTime;
             if (start <= 12)
             {
-                time += start + ":00AM - ";
+                time += start + ":00 - ";
             }
             else
             {
@@ -142,11 +142,11 @@ namespace CPSC481_A5
 
             if (TutorialDays.Contains(Day.Mon))
             {
-                str = "MW";
+                str = "MW ";
             }
             else
             {
-                str = "TR";
+                str = "TR ";
             }
             str += time;
             return str;

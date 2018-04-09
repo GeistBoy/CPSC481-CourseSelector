@@ -72,7 +72,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="RandomClasses.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="CourseListItemControl.xaml.cs">
       <DependentUpon>CourseListItemControl.xaml</DependentUpon>
