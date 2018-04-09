@@ -80,8 +80,14 @@ namespace CPSC481_A5
         private void ReviewButton_Click(object sender, RoutedEventArgs e)
         {
             ReviewWindow reviewWindow = new ReviewWindow();
+            reviewWindow.RaiseCustomEvent += new EventHandler<CustomEventArgs>(newWindow_RaiseCustomEvent);
             reviewWindow.Show();
 
+        }
+
+        void newWindow_RaiseCustomEvent(object sender, CustomEventArgs e)
+        {
+            this.ReviewButton.Content = e.Message;
         }
     }
 

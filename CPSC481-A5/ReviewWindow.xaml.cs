@@ -14,11 +14,14 @@ using System.Windows.Shapes;
 
 namespace CPSC481_A5
 {
+
     /// <summary>
     /// Interaction logic for ReviewWindow.xaml
     /// </summary>
     public partial class ReviewWindow : Window
     {
+        public event EventHandler<CustomEventArgs> RaiseCustomEvent;
+
         public ReviewWindow()
         {
             InitializeComponent();
@@ -46,7 +49,7 @@ namespace CPSC481_A5
             else
             {
                 this.Required1.Visibility = Visibility.Hidden;
-                title = this.TitleTextBlock.Text;
+                title = this.TitleTextBox.Text;
             }
 
             // Comment check
@@ -96,7 +99,22 @@ namespace CPSC481_A5
             if (rating != -1 && !String.IsNullOrEmpty(title) && !String.IsNullOrEmpty(comment))
             {
                 this.Close();
+                RaiseCustomEvent(this, new CustomEventArgs(title));
+
             }
+        }
+    }
+
+    public class CustomEventArgs : EventArgs
+    {
+        public CustomEventArgs(string s)
+        {
+            msg = s;
+        }
+        private string msg;
+        public string Message
+        {
+            get { return msg; }
         }
     }
 }

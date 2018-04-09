@@ -23,11 +23,11 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <RadioButton x:Name="RadioButton1"  Content="Terrible" HorizontalAlignment="Center" Grid.Column="0"/>
+            <RadioButton x:Name="RadioButton1"  Content="Terrible ☹" HorizontalAlignment="Center" Grid.Column="0"/>
             <RadioButton x:Name="RadioButton2" Content="Poor" HorizontalAlignment="Center" Grid.Column="1"/>
             <RadioButton x:Name="RadioButton3" Content="Average" HorizontalAlignment="Center" Grid.Column="2"/>
             <RadioButton x:Name="RadioButton4" Content="Good" HorizontalAlignment="Center" Grid.Column="3"/>
-            <RadioButton x:Name="RadioButton5" Content="Excellent" HorizontalAlignment="Center" Grid.Column="4"/>
+            <RadioButton x:Name="RadioButton5" Content="Excellent ☺" HorizontalAlignment="Center" Grid.Column="4"/>
 
         </Grid>
         <TextBlock x:Name="Required1" Height="23.268" Canvas.Left="64.145" TextWrapping="Wrap" Text="*Required" Canvas.Top="24.524" Width="100.554" Foreground="#FFFB0000"/>
