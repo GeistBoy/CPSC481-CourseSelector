@@ -111,10 +111,17 @@ namespace CPSC481_A5
         {
             msg = s;
         }
-        private string msg;
-        public string Message
+        private String msg;
+        public String Message
         {
             get { return msg; }
+        }
+
+        public UserReview userReview;
+        public UserReview GetReview()
+        {
+            userReview = new UserReview();
+            return userReview;
         }
     }
 }
