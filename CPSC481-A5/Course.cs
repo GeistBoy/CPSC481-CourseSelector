@@ -94,7 +94,9 @@ namespace CPSC481_A5
             {
                 prereq += c + ", ";
             }
-            prereq = prereq.Remove(prereq.Length - 2);
+
+            if( "" != prereq )
+                prereq = prereq.Remove(prereq.Length - 2);
 
             return prereq;
         }
@@ -144,7 +146,7 @@ namespace CPSC481_A5
         /// <returns>true if they're exactly equal, false otherwise.</returns>
         public bool Equals(Course other)
         {
-            if (null == other)
+            if (other == null)
                 return false;
             
             // Checks to see that this object is the same as the comparative object.
@@ -161,7 +163,15 @@ namespace CPSC481_A5
         /// <returns>true if both instances of LHS and RHS are equal to each other.</returns>
         public static bool operator ==(Course LHS, Course RHS)
         {
-            return LHS.Equals(RHS);
+            if (((object)LHS) == null)
+            {
+                if (((object)RHS) == null)
+                    return true;
+                else
+                    return RHS.Equals((object)LHS);
+            }
+
+            return LHS.Equals((object)RHS);
         }
 
         /// <summary>
@@ -172,7 +182,15 @@ namespace CPSC481_A5
         /// <returns>true if both instances of LHS and RHS are NOT equal to each other.</returns>
         public static bool operator !=(Course LHS, Course RHS)
         {
-            return ! LHS.Equals(RHS);
+            if (((object)LHS) == null)
+            {
+                if (((object)RHS) == null)
+                    return false;
+                else
+                    return !RHS.Equals((object)LHS);
+            }
+
+            return ! LHS.Equals((object)RHS);
         }
 
         /// <summary>

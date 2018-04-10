@@ -22,7 +22,7 @@ namespace CPSC481_A5
                 return m_pInstance;
             }
         }
-        private List<KeyValuePair<Course, CourseListItemControl>> m_pCourseList;
+        private List<KeyValuePair<Course, CourseListItemControl>> m_pCourseList = new List<KeyValuePair<Course, CourseListItemControl>>();
         private Course m_pSelected = null;
         private const int NUM_RANDOM_COURSES = 5;
         private Random m_pRand;
@@ -69,7 +69,6 @@ namespace CPSC481_A5
         private CourseDB( )
         {
             m_pRand = new Random();
-            loadDefault();
         }
 
         private CourseListItemControl generateCLIC(Course cCourse )
@@ -137,7 +136,7 @@ namespace CPSC481_A5
         /// <summary>
         /// Loads a bunch of default, random courses.
         /// </summary>
-        private void loadDefault()
+        public void loadDefault()
         {
             for(int i = 0; i < NUM_RANDOM_COURSES; ++i )
             {
@@ -145,7 +144,7 @@ namespace CPSC481_A5
                 Course rand = new Course();
                 int iCourseIndex = m_pRand.Next(1, (int)eCourseNames.MAX_COURSES) - 1;
                 int iCourseNumber = m_pRand.Next(100, 699);
-                rand.CourseAbbrev = COURSE_VALUES[iCourseIndex] + iCourseNumber.ToString();
+                rand.CourseAbbrev = COURSE_VALUES[iCourseIndex] + "-" + iCourseNumber.ToString();
                 rand.CourseName = "Random Course " + i.ToString();
                 rand.Description = "This Course was generated at Random for the purposes of testing and populating a database.";
                 rand.ProfessorName = "Rando Calrissian";
@@ -277,7 +276,16 @@ namespace CPSC481_A5
 
             return pReturnList;
         }
-        
+
+        public List<CourseListItemControl> getAllControls()
+        {
+            List<CourseListItemControl> pReturn = new List<CourseListItemControl>();
+
+            foreach (KeyValuePair<Course, CourseListItemControl> cKVP in m_pCourseList)
+                pReturn.Add(cKVP.Value);
+
+            return pReturn;
+        }
 
         /// <summary>
         /// If the provided Course is in the database, this funciton sets that course as it's selected for logic purposes.

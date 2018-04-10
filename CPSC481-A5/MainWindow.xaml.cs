@@ -43,10 +43,17 @@ namespace CPSC481_A5
             List<Course> list = new List<Course>();
             list.Add(derp.hci);
             m_pCourseDB.addCourses(list);
-//            AddClassToSearch(list);
-//            AddClassToSearch(list);
-//            AddClassToSearch(list);
-//
+            m_pCourseDB.loadDefault();
+            List<CourseListItemControl> pCLICList =  m_pCourseDB.getAllControls();
+
+            foreach( CourseListItemControl pObj in pCLICList )
+                this.SearchResultStackPanel.Children.Add(pObj);
+
+            this.Term_Label.Content = "Winter 2018";
+            //            AddClassToSearch(list);
+            //            AddClassToSearch(list);
+            //            AddClassToSearch(list);
+            //
         }
 
         private void AddClassToSearch(List<Course> courses)
