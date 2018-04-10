@@ -25,7 +25,7 @@ namespace CPSC481_A5
         public MainWindow()
         {
             InitializeComponent();
-            this.FilterCanvas.Height = 130;
+            this.FilterCanvas.Height = 120;
 
             PopulateDegreeNavRequirements();
 
@@ -142,7 +142,7 @@ namespace CPSC481_A5
             this.ReviewButton.Content = e.GetReview().Title;
         }
 
-        public const int ShortFilter = 130;
+        public const int ShortFilter = 120;
         public const int FullFilter = 350;
 
         private void MoreFilterTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
