@@ -33,12 +33,14 @@ namespace CPSC481_A5
             Star = new RatingCell();
             pAssociatedCourse = pCourseToAssociate;
             this.RatingStarContainer.Children.Add(Star);
+            this.RemoveButton.Visibility = Visibility.Hidden;
+            this.TutorialSelectedLabel.Visibility = Visibility.Hidden;
+
         }
 
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            applyTextBlock_MouseDown();
             m_pCourseDB.selectCourse(pAssociatedCourse);
         }
 
@@ -60,6 +62,7 @@ namespace CPSC481_A5
                 this.MoreTextBlock.Text = "Less...";
                 this.AddButton1.Visibility = Visibility.Hidden;
             }
+
         }
 
         private void CommentAndReviewTextBox_MouseDown(object sender, MouseButtonEventArgs e)

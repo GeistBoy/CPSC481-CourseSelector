@@ -64,8 +64,19 @@
 
             <Button x:Name="ReviewButton" Grid.Row="0" Content="Review a class" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Click="ReviewButton_Click" Style="{DynamicResource YellowButtonStyle}" Margin="71.123,104.04,0,0" d:IsHidden="True"/>
             <TabControl Grid.Row="1" HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                <TabItem Header="Calendar" Width="310" d:IsHidden="True">
-                    <Grid Background="#FFE5E5E5" d:IsHidden="True"/>
+
+                
+
+                <TabItem Header="Calendar" Width="310">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="110" />
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="Calendar" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="299.96" Width="555.29" MouseDown="Calendar_MouseDown"/>
+                        <StackPanel x:Name="SelectedClassStackPanel" Grid.Row="1" Margin="0,0,5,0"/>
+                    </Grid>
+
                 </TabItem>
                 <TabItem Header="Degree Navigator" Width="310">
                     <Grid x:Name="DegreeNavigator" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="624.333" Height="526">
