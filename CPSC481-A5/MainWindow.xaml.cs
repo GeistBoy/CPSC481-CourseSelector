@@ -22,13 +22,15 @@ namespace CPSC481_A5
     /// </summary>
     public partial class MainWindow : Window
     {
+        DegreeNav degreeProgress;
+
         public MainWindow()
         {
             InitializeComponent();
             this.FilterCanvas.Height = 130;
 
             //degreeProgress is used to check if a requirement is completed in degree navigator
-            DegreeNav degreeProgress = new DegreeNav();
+            degreeProgress = new DegreeNav();
 
             //Initializes the degree navigator with default completed classes
             PopulateDegreeNavRequirements(degreeProgress);
@@ -89,7 +91,8 @@ namespace CPSC481_A5
             }
 
         }
-        //Adds default initial classes to degree navigator
+        
+        //Adds taken classes to degree navigator
         private void PopulateDegreeNavRequirements(DegreeNav progress)
         {
             DataTable degreeReq = new DataTable();
@@ -137,6 +140,7 @@ namespace CPSC481_A5
                 col.CanUserSort = false;
             }
         }
+       
         //Converts row lists into strings for user to view in degree navigator
         //Input is a list containing the current classes taken for that row
         private string ClassListToString(List<string> row)
@@ -177,8 +181,6 @@ namespace CPSC481_A5
                 images[i].Source = new BitmapImage(uri);
             }
         }
-
-
 
 
         private void ReviewButton_Click(object sender, RoutedEventArgs e)

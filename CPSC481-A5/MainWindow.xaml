@@ -103,7 +103,7 @@
                     <Image x:Name="Row15Img" Height="32" Canvas.Top="517" Width="35"/>
                 </Canvas>
             </Grid>
-            <Button x:Name="ReviewButton" Content="Create Review" HorizontalAlignment="Left" Margin="517.011,110.201,0,0" VerticalAlignment="Top" Width="75" Click="ReviewButton_Click"/>
+            <Button x:Name="ReviewButton" Content="Review a class" HorizontalAlignment="Left" Margin="488.511,118.451,0,0" VerticalAlignment="Top" Width="90" Click="ReviewButton_Click"/>
 
         </Grid>
     </Grid>
