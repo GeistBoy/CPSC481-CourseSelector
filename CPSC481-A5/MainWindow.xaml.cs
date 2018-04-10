@@ -118,9 +118,8 @@ namespace CPSC481_A5
             Object[] row10 = { "STAT 213", ClassListToString(progress.degreeNavRows[9]) };
             Object[] row11 = { "MATH 211/249/271", ClassListToString(progress.degreeNavRows[10]) };
             Object[] row12 = { "PHIL 279", ClassListToString(progress.degreeNavRows[11]) };
-            Object[] row13 = { "PHIL 314", ClassListToString(progress.degreeNavRows[12]) };
-            Object[] row14 = { "2 courses from Faculty of Arts", ClassListToString(progress.degreeNavRows[13]) };
-            Object[] row15 = { "2 courses selected freely", ClassListToString(progress.degreeNavRows[14]) };
+            Object[] row13 = { "2 courses from Faculty of Arts", ClassListToString(progress.degreeNavRows[12]) };
+            Object[] row14 = { "2 courses selected freely", ClassListToString(progress.degreeNavRows[13]) };
 
 
             degreeReq.Columns.AddRange(columns);
@@ -138,7 +137,6 @@ namespace CPSC481_A5
             degreeReq.Rows.Add(row12);
             degreeReq.Rows.Add(row13);
             degreeReq.Rows.Add(row14);
-            degreeReq.Rows.Add(row15);
 
             ReqTable.MinRowHeight = 35;
             ReqTable.DataContext = degreeReq.DefaultView;
@@ -180,8 +178,8 @@ namespace CPSC481_A5
         //Input current degree nav progress to update icons (checkmark or X)
         private void SetDegreeNavIcons(DegreeNav progress)
         {
-            Image[] images = new Image[15] {Row1Img, Row2Img, Row3Img, Row4Img, Row5Img,
-                Row6Img,Row7Img,Row8Img,Row9Img,Row10Img,Row11Img,Row12Img,Row13Img,Row14Img,Row15Img};
+            Image[] images = new Image[14] {Row1Img, Row2Img, Row3Img, Row4Img, Row5Img,
+                Row6Img,Row7Img,Row8Img,Row9Img,Row10Img,Row11Img,Row12Img,Row13Img,Row14Img};
             for (int i = 0; i < progress.degreeNavRows.Length; i++)
             {
                 var imageName = progress.CheckRow(progress.degreeNavRows[i].Count, i) ? "checkmark.png" : "x-mark.png";
