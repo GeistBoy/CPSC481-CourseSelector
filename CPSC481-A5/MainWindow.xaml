@@ -116,7 +116,7 @@
                 </TabItem>
 
             </TabControl>
-            <Button Content="Contact Advisor" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" Width="127.5" Style="{DynamicResource YellowButtonStyle}" Margin="493.5,104.04,0,0"/>
+            <Button x:Name="ContactAdvisorButton" Content="Contact Advisor" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" Width="127.5" Style="{DynamicResource YellowButtonStyle}" Margin="493.5,104.04,0,0" Click="ContactAdvisorButton_Click"/>
 
         </Grid>
     </Grid>
