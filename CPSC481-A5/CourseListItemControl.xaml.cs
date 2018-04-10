@@ -33,6 +33,9 @@ namespace CPSC481_A5
             Star = new RatingCell();
             pAssociatedCourse = pCourseToAssociate;
             this.RatingStarContainer.Children.Add(Star);
+            this.RemoveButton.Visibility = Visibility.Hidden;
+            this.TutorialSelectedLabel.Visibility = Visibility.Hidden;
+
         }
 
 

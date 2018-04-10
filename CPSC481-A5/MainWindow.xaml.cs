@@ -26,6 +26,9 @@ namespace CPSC481_A5
         DegreeNav degreeProgress;
         CourseDB m_pCourseDB = CourseDB.Instance;
 
+
+        List<Course> StudentCourses = new List<Course>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,10 +54,18 @@ namespace CPSC481_A5
                 this.SearchResultStackPanel.Children.Add(pObj);
 
             this.Term_Label.Content = "Winter 2018";
-            //            AddClassToSearch(list);
-            //            AddClassToSearch(list);
-            //            AddClassToSearch(list);
-            //
+
+
+
+            // Populate Calendar
+            StudentCourses.Add(derp.hci);
+            String calendarContent = "";
+            foreach(Course c in StudentCourses)
+            {
+                calendarContent = c.CourseAbbrev + " ";
+            }
+            this.Calendar.Text = calendarContent;
+
         }
 
         private void AddClassToSearch(List<Course> courses)
@@ -238,6 +249,61 @@ namespace CPSC481_A5
         private void ContactAdvisorButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://success.ucalgary.ca/home.htm");
+        }
+
+
+        bool toggleSelectedClass = false;
+        private void Calendar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+            if (StudentCourses.Count()> 0 && toggleSelectedClass ==false)
+            {
+                this.SelectedClassStackPanel.Children.Clear();
+                CourseListItemControl CourseControl = new CourseListItemControl(null);
+                Course c = StudentCourses[0];
+                CourseControl.CourseNameLabel.Content = c.CourseAbbrev + "\t" + c.CourseName;
+                CourseControl.CourseDayLabel.Text = c.SceduleDayToString();
+                CourseControl.CourseTime.Text = c.SceduleTimeToString();
+                CourseControl.CourseRoom.Text = c.Location;
+                CourseControl.ProfNameLabel.Text = c.ProfessorName + " User";
+                if (c.StatusToString().Equals("Open"))
+                {
+                    Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../green_dot.png");
+                    CourseControl.StatusIcon.Source = new BitmapImage(uri);
+                }
+                else
+                {
+                    Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../red_dot.png");
+                    CourseControl.StatusIcon.Source = new BitmapImage(uri);
+                } 
+                CourseControl.StatusLabel.Text = c.StatusToString();
+
+                CourseControl.RemoveButton.Visibility = Visibility.Visible;
+                CourseControl.TutorialSelectedLabel.Visibility = Visibility.Visible;
+
+                if (c.Tutorials.Count > 0)
+                {
+                    CourseControl.TutorialSelectedLabel.Text = c.Tutorials[0].ToString();
+                }
+
+                CourseControl.MoreTextBlock.Visibility= Visibility.Hidden;
+                CourseControl.AddButton1.Visibility = Visibility.Hidden;
+                CourseControl.Status.Visibility = Visibility.Hidden;
+                CourseControl.StatusLabel1.Visibility = Visibility.Hidden;
+                CourseControl.TutorialTimeDropDown.Visibility = Visibility.Hidden;
+                
+                this.SelectedClassStackPanel.Children.Add(CourseControl);
+
+            
+                toggleSelectedClass = true;
+
+            }
+            else
+            {
+                toggleSelectedClass = false;
+                this.SelectedClassStackPanel.Children.Clear();
+            }
+
         }
     }
 }
