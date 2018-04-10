@@ -63,7 +63,6 @@ namespace CPSC481_A5
                 this.AddButton1.Visibility = Visibility.Hidden;
             }
 
-            Console.WriteLine(this.Height);
         }
 
         private void CommentAndReviewTextBox_MouseDown(object sender, MouseButtonEventArgs e)

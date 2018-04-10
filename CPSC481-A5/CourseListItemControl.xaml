@@ -16,7 +16,7 @@
 
 
         </Grid.RowDefinitions>
-        <Label x:Name="CourseNameLabel" Content="Course Name" Grid.Row="0" VerticalAlignment="Top" Background="#FF598C97" Grid.ColumnSpan="2"/>
+        <Label x:Name="CourseNameLabel" Content="Course Name" Grid.Row="0" VerticalAlignment="Top" Background="#FF7AB9C7" Grid.ColumnSpan="2"/>
 
         <Grid x:Name="ShortDetail" Grid.Row="1" Grid.ColumnSpan="2" Width="616" Height="76" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
