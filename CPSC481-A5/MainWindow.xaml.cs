@@ -25,7 +25,7 @@ namespace CPSC481_A5
         public MainWindow()
         {
             InitializeComponent();
-            this.FilterCanvas.Height = 120;
+            this.FilterCanvas.Height = 130;
 
             PopulateDegreeNavRequirements();
 
@@ -142,8 +142,8 @@ namespace CPSC481_A5
             this.ReviewButton.Content = e.GetReview().Title;
         }
 
-        public const int ShortFilter = 120;
-        public const int FullFilter = 350;
+        public const int ShortFilter = 130;
+        public const int FullFilter = 330;
 
         private void MoreFilterTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -158,7 +158,7 @@ namespace CPSC481_A5
                 this.MoreFilterTextBlock.Text = "Less..";
                 this.MoreFilterTextBlock.SetValue(Canvas.TopProperty, FullFilter - moreHeightOffset);
 
-
+                this.LeftGrid.RowDefinitions[0].Height = new GridLength(FullFilter);
             }
             else if (this.FilterCanvas.Height == FullFilter)
             {
@@ -166,6 +166,8 @@ namespace CPSC481_A5
                 this.SearchButton.SetValue(Canvas.TopProperty, ShortFilter - searchHeightOffset);
                 this.MoreFilterTextBlock.Text = "More..";
                 this.MoreFilterTextBlock.SetValue(Canvas.TopProperty, ShortFilter - moreHeightOffset);
+                this.LeftGrid.RowDefinitions[0].Height = new GridLength(ShortFilter);
+
             }
 
         }
