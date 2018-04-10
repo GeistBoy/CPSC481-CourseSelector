@@ -43,6 +43,9 @@ namespace CPSC481_A5
             //Sets the icons in degree navigator (checkmarks and X's)
             SetDegreeNavIcons(degreeProgress);
 
+            //Updates the credits in the top right of the main window based on degree nav 
+            UpdateCreditsPassed();
+
             RandomClasses derp = new RandomClasses();
             List<Course> list = new List<Course>();
             list.Add(derp.hci);
@@ -302,6 +305,19 @@ namespace CPSC481_A5
                 this.SelectedClassStackPanel.Children.Clear();
             }
 
+        }
+
+        //Updates the credits in the top right based on the degree nav
+        private void UpdateCreditsPassed()
+        {
+            double creditsTaken = 0;
+            foreach (List<string> rowOfDegreeNav in degreeProgress.degreeNavRows)
+            {
+                double classesInRow = rowOfDegreeNav.Count;
+                creditsTaken += classesInRow * 3;
+            }
+            this.CreditsTaken.Text = "Credits Taken: " + creditsTaken;
+            this.CreditsLeft.Text = "Credits Left: " + (75 - creditsTaken);
         }
     }
 }
