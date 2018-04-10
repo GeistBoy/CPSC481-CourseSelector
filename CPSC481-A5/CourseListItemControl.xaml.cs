@@ -23,43 +23,32 @@ namespace CPSC481_A5
         public const int ShortDescriptionHeight = 110;
         public const int FullDescriptionHeight = 350;
         public const int FullReview = 537;
-        private Course pAssociatedCourse;
-        private CourseDB m_pCourseDB = CourseDB.Instance;
 
         public RatingCell Star;
-        public CourseListItemControl(Course pCourseToAssociate)
+        public CourseListItemControl()
         {
             InitializeComponent();
             Star = new RatingCell();
-            pAssociatedCourse = pCourseToAssociate;
             this.RatingStarContainer.Children.Add(Star);
         }
 
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            applyTextBlock_MouseDown();
-            m_pCourseDB.selectCourse(pAssociatedCourse);
-        }
-
-        /// <summary>
-        /// TextBlock Mouse Down Functionality, made public to be manipulated by the Database.
-        /// </summary>
-        public void applyTextBlock_MouseDown()
-        {
-            if (this.Height == FullDescriptionHeight || this.Height == FullReview)
+            if (this.Height == FullDescriptionHeight || this.Height == FullReview )
             {
                 this.Height = ShortDescriptionHeight;
                 this.MoreTextBlock.Text = "More...";
                 this.AddButton1.Visibility = Visibility.Visible;
 
             }
-            else if (this.Height == ShortDescriptionHeight)
+            else if( this.Height == ShortDescriptionHeight)
             {
                 this.Height = FullDescriptionHeight;
                 this.MoreTextBlock.Text = "Less...";
                 this.AddButton1.Visibility = Visibility.Hidden;
             }
+            
         }
 
         private void CommentAndReviewTextBox_MouseDown(object sender, MouseButtonEventArgs e)

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CPSC481_A5"
              mc:Ignorable="d" 
              d:DesignHeight="538" d:DesignWidth="616">
-    <Grid x:Name="CourseGrid" Background="White" Width="616" Height="538">
+    <Grid Background="White" Width="616" Height="538">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>

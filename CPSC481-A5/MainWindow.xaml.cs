@@ -23,7 +23,6 @@ namespace CPSC481_A5
     public partial class MainWindow : Window
     {
         DegreeNav degreeProgress;
-        CourseDB m_pCourseDB = CourseDB.Instance;
 
         public MainWindow()
         {
@@ -42,17 +41,17 @@ namespace CPSC481_A5
             RandomClasses derp = new RandomClasses();
             List<Course> list = new List<Course>();
             list.Add(derp.hci);
-            m_pCourseDB.addCourses(list);
-//            AddClassToSearch(list);
-//            AddClassToSearch(list);
-//            AddClassToSearch(list);
-//
+            AddClassToSearch(list);
+            AddClassToSearch(list);
+            AddClassToSearch(list);
+
+            
         }
 
         private void AddClassToSearch(List<Course> courses)
         {
             foreach(Course c in courses){
-                CourseListItemControl CourseControl = new CourseListItemControl(c);
+                CourseListItemControl CourseControl = new CourseListItemControl();
                 CourseControl.CourseNameLabel.Content = c.CourseAbbrev +"\t"+ c.CourseName;
                 CourseControl.CourseDayLabel.Text = c.SceduleDayToString();
                 CourseControl.CourseTime.Text = c.SceduleTimeToString();

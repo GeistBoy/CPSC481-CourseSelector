@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CPSC481_A5
 {
-    public enum Day { Sat = 1, Mon, Tues, Wed, Thur, Fri, Sun };
-    public enum Status {Open, Full, Prereq, TimeConflict};
-    public class Course : IEquatable<Course>
+    enum Day { Sat = 1, Mon, Tues, Wed, Thur, Fri, Sun };
+    enum Status {Open, Full, Prereq, TimeConflict};
+    class Course
     {
 
         public String ProfessorName = "Prof name: none";
@@ -109,93 +109,9 @@ namespace CPSC481_A5
             rating = rating / Reviews.Count();
             return (int) Math.Round(rating,0);
         }
-
-        /// <summary>
-        /// Generates a String of characters based on Course data to be parsed by the search engine.
-        /// </summary>
-        /// <returns>Concatonated String of Relevant Search Data.</returns>
-        public String toSearchString()
-        {
-            String sReturnVal = this.CourseName + this.CourseAbbrev + this.Description + this.ProfessorName;
-
-            foreach (string tag in this.Tags)
-                sReturnVal += tag;
-
-            return sReturnVal;
-        }
-
-        /// <summary>
-        /// Override general quality function for this class. Calls IEquatable implementation if obj is a Course Object.
-        /// </summary>
-        /// <param name="obj">General object to compare with.</param>
-        /// <returns>true if obj is a Course object and is equal to this course; false otherwise.</returns>
-        public override bool Equals(object obj)
-        {
-            var other = obj as Course;
-            if (null == other) return false;
-
-            return Equals(other);
-        }
-
-        /// <summary>
-        /// Implemented IEquatable interface. Compares a Course object with this one to verify equality.
-        /// </summary>
-        /// <param name="other">The Course to Compare against</param>
-        /// <returns>true if they're exactly equal, false otherwise.</returns>
-        public bool Equals(Course other)
-        {
-            if (null == other)
-                return false;
-            
-            // Checks to see that this object is the same as the comparative object.
-            bool bReturnValue = Object.ReferenceEquals(this, other);
-
-            return bReturnValue;
-        }
-
-        /// <summary>
-        /// Override the == equality operator
-        /// </summary>
-        /// <param name="LHS">Course 1 to compare</param>
-        /// <param name="RHS">Course 2 to compare</param>
-        /// <returns>true if both instances of LHS and RHS are equal to each other.</returns>
-        public static bool operator ==(Course LHS, Course RHS)
-        {
-            return LHS.Equals(RHS);
-        }
-
-        /// <summary>
-        /// Override the != equality operator
-        /// </summary>
-        /// <param name="LHS">Course 1 to compare</param>
-        /// <param name="RHS">Course 2 to compare</param>
-        /// <returns>true if both instances of LHS and RHS are NOT equal to each other.</returns>
-        public static bool operator !=(Course LHS, Course RHS)
-        {
-            return ! LHS.Equals(RHS);
-        }
-
-        /// <summary>
-        /// Overridden Hash Function for equality completion
-        /// </summary>
-        /// <returns>A generated Hash number based on a starting prime number and Hash codes of multiple variables in this object.</returns>
-        public override int GetHashCode()
-        {
-            int iHash = 17;
-            iHash = (iHash * 7) + this.ProfessorName.GetHashCode();
-            iHash = (iHash * 7) + this.Rating.GetHashCode();
-            iHash = (iHash * 7) + this.CourseName.GetHashCode();
-            iHash = (iHash * 7) + this.CourseAbbrev.GetHashCode();
-            iHash = (iHash * 7) + this.Description.GetHashCode();
-            iHash = (iHash * 7) + this.SceduleTime.GetHashCode();
-            iHash = (iHash * 7) + this.Location.GetHashCode();
-            iHash = (iHash * 7) + this.CourseStatus.GetHashCode();
-
-            return iHash;
-        }
     }
 
-    public class Tutorial
+    class Tutorial
     {
         public String TutorialAdvisor = "Mr.Who";
         public int TutorialTime = 8;
