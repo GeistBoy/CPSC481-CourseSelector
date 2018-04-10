@@ -17,6 +17,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
+
             <Canvas x:Name="FilterCanvas" Grid.Row ="0"  Height="330" VerticalAlignment="Top" Grid.RowSpan="2" >
                 <TextBlock TextWrapping="Wrap" Background="#FFCAE6EC" Foreground="Black" FontSize="14" Text="Search for Classes" Padding="10,0,0,0" Height="23.721" Width="616"/>
                 <TextBlock TextWrapping="Wrap" Text="Term" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="60.248" Canvas.Top="34.721" Width="103.255"/>
