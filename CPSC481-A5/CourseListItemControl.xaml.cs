@@ -38,7 +38,6 @@ namespace CPSC481_A5
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            applyTextBlock_MouseDown();
             m_pCourseDB.selectCourse(pAssociatedCourse);
         }
 
@@ -60,6 +59,8 @@ namespace CPSC481_A5
                 this.MoreTextBlock.Text = "Less...";
                 this.AddButton1.Visibility = Visibility.Hidden;
             }
+
+            Console.WriteLine(this.Height);
         }
 
         private void CommentAndReviewTextBox_MouseDown(object sender, MouseButtonEventArgs e)
