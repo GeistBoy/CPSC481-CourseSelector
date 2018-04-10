@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.Data;
+using System.Diagnostics;
 
 namespace CPSC481_A5
 {
@@ -232,6 +233,11 @@ namespace CPSC481_A5
 
             }
 
+        }
+
+        private void ContactAdvisorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://success.ucalgary.ca/home.htm");
         }
     }
 }
