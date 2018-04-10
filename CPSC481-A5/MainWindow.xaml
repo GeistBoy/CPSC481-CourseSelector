@@ -35,7 +35,7 @@
                 <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="178.372" Canvas.Top="230.853"/>
                 <TextBox Height="23" Canvas.Left="303.372" TextWrapping="Wrap" Canvas.Top="89.681" Width="50"/>
                 <Button x:Name="SearchButton" Content="Search" Canvas.Left="468" Canvas.Top="88" Width="75" Style="{DynamicResource YellowButtonStyle}"/>
-                <TextBlock x:Name="MoreFilterTextBlock" Canvas.Left="558" TextWrapping="Wrap" Text="More..." Canvas.Top="91" Width="58.001" Height="18.97" Foreground="#FF348899" Cursor="Hand" MouseDown="MoreFilterTextBlock_MouseDown"/>
+                <TextBlock x:Name="MoreFilterTextBlock" Canvas.Left="557.999" TextWrapping="Wrap" Text="More..." Canvas.Top="91.01" Width="58.001" Height="18.97" Foreground="#FF348899" Cursor="Hand" MouseDown="MoreFilterTextBlock_MouseDown"/>
                 <TextBlock TextWrapping="Wrap" Text="Additional Search Criteria ▼  " FlowDirection="RightToLeft" Height="20.303" Canvas.Left="10" Canvas.Top="141.944" Width="153.503"/>
                 <TextBlock TextWrapping="Wrap" Text="Start Time" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="60.248" Canvas.Top="172.247" Width="103.255"/>
                 <TextBlock TextWrapping="Wrap" Text="Days" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="60.248" Canvas.Top="201.55" Width="103.255"/>
