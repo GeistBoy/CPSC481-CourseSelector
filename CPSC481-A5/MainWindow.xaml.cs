@@ -27,7 +27,14 @@ namespace CPSC481_A5
             InitializeComponent();
             this.FilterCanvas.Height = 130;
 
-            PopulateDegreeNavRequirements();
+            //degreeProgress is used to check if a requirement is completed in degree navigator
+            DegreeNav degreeProgress = new DegreeNav();
+
+            //Initializes the degree navigator with default completed classes
+            PopulateDegreeNavRequirements(degreeProgress);
+
+            //Sets the icons in degree navigator (checkmarks and X's)
+            SetDegreeNavIcons(degreeProgress);
 
             RandomClasses derp = new RandomClasses();
             List<Course> list = new List<Course>();
@@ -36,7 +43,7 @@ namespace CPSC481_A5
             AddClassToSearch(list);
             AddClassToSearch(list);
 
-            DegreeNav degreeProgress = new DegreeNav();
+            
         }
 
         private void AddClassToSearch(List<Course> courses)
@@ -82,25 +89,26 @@ namespace CPSC481_A5
             }
 
         }
-        private void PopulateDegreeNavRequirements()
+        //Adds default initial classes to degree navigator
+        private void PopulateDegreeNavRequirements(DegreeNav progress)
         {
             DataTable degreeReq = new DataTable();
             DataColumn[] columns = { new DataColumn("Requirements"), new DataColumn("Applied") };
-            Object[] row1 = { "CPSC 231/233", "CPSC 231, CPSC 233" };
-            Object[] row2 = { "CPSC 355/359", "CPSC 355" };
-            Object[] row3 = { "CPSC 313/413", "CPSC 313" };
-            Object[] row4 = { "CPSC 449/457", "" };
-            Object[] row5 = { "CPSC 331", "CPSC 331" };
-            Object[] row6 = { "SENG 300", "" };
-            Object[] row7 = { "1 course at 300 level and above", "CPSC 325" };
-            Object[] row8 = { "4 courses at 400 level and above", "" };
-            Object[] row9 = { "3 courses at 500 level and above", "" };
-            Object[] row10 = { "STAT 213", "STAT 213" };
-            Object[] row11 = { "MATH 211/249/271", "MATH 211, MATH 249, MATH 271" };
-            Object[] row12 = { "PHIL 279", "PHIL 279" };
-            Object[] row13 = { "PHIL 314", "PHIL 314" };
-            Object[] row14 = { "2 courses from Faculty of Arts", "SOCI 200, PSYC 200" };
-            Object[] row15 = { "2 courses selected freely", "" };
+            Object[] row1 = { "CPSC 231/233", ClassListToString(progress.degreeNavRows[0]) };
+            Object[] row2 = { "CPSC 355/359", ClassListToString(progress.degreeNavRows[1]) };
+            Object[] row3 = { "CPSC 313/413", ClassListToString(progress.degreeNavRows[2]) };
+            Object[] row4 = { "CPSC 449/457", ClassListToString(progress.degreeNavRows[3]) };
+            Object[] row5 = { "CPSC 331", ClassListToString(progress.degreeNavRows[4]) };
+            Object[] row6 = { "SENG 300", ClassListToString(progress.degreeNavRows[5]) };
+            Object[] row7 = { "1 course at 300 level and above", ClassListToString(progress.degreeNavRows[6]) };
+            Object[] row8 = { "4 courses at 400 level and above", ClassListToString(progress.degreeNavRows[7]) };
+            Object[] row9 = { "3 courses at 500 level and above", ClassListToString(progress.degreeNavRows[8]) };
+            Object[] row10 = { "STAT 213", ClassListToString(progress.degreeNavRows[9]) };
+            Object[] row11 = { "MATH 211/249/271", ClassListToString(progress.degreeNavRows[10]) };
+            Object[] row12 = { "PHIL 279", ClassListToString(progress.degreeNavRows[11]) };
+            Object[] row13 = { "PHIL 314", ClassListToString(progress.degreeNavRows[12]) };
+            Object[] row14 = { "2 courses from Faculty of Arts", ClassListToString(progress.degreeNavRows[13]) };
+            Object[] row15 = { "2 courses selected freely", ClassListToString(progress.degreeNavRows[14]) };
 
 
             degreeReq.Columns.AddRange(columns);
@@ -129,6 +137,50 @@ namespace CPSC481_A5
                 col.CanUserSort = false;
             }
         }
+        //Converts row lists into strings for user to view in degree navigator
+        //Input is a list containing the current classes taken for that row
+        private string ClassListToString(List<string> row)
+        {
+            if (row.Count == 0)
+            {
+                return "";
+            }
+            else
+            {
+                string classesComplete = "";
+                for (int i = 0; i < row.Count; i++)
+                {
+                    if (i != row.Count - 1)
+                    {
+                        classesComplete += row[i];
+                        classesComplete += ", ";
+                    }
+                    else
+                    {
+                        classesComplete += row[i];
+                    }
+                }
+                return classesComplete;
+            }
+        }
+
+        //Input current degree nav progress to update icons (checkmark or X)
+        private void SetDegreeNavIcons(DegreeNav progress)
+        {
+            Image[] images = new Image[15] {Row1Img, Row2Img, Row3Img, Row4Img, Row5Img,
+                Row6Img,Row7Img,Row8Img,Row9Img,Row10Img,Row11Img,Row12Img,Row13Img,Row14Img,Row15Img};
+            for (int i = 0; i < progress.degreeNavRows.Length; i++)
+            {
+                var imageName = progress.CheckRow(progress.degreeNavRows[i].Count, i) ? "checkmark.png" : "x-mark.png";
+
+                Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../" + imageName);
+                images[i].Source = new BitmapImage(uri);
+            }
+        }
+
+
+
+
         private void ReviewButton_Click(object sender, RoutedEventArgs e)
         {
             ReviewWindow reviewWindow = new ReviewWindow();

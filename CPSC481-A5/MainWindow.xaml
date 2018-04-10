@@ -57,7 +57,7 @@
         <Grid x:Name="RightGrid" HorizontalAlignment="Left" Margin="641,0,0,0" Width="631">
 
             <Grid x:Name="DegreeNavigator" HorizontalAlignment="Left" Height="600.5" Margin="0,92,0,0" VerticalAlignment="Top" Width="631">
-                <DataGrid x:Name="ReqTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Height="555" Margin="10,45.5,57,0" VerticalAlignment="Stretch" Width="564" FrozenColumnCount="2" AutoGenerateColumns="False" AlternatingRowBackground="#F2EBC7" AlternationCount="2">
+                <DataGrid x:Name="ReqTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Margin="10,45.5,10,0" VerticalAlignment="Stretch" FrozenColumnCount="2" AutoGenerateColumns="False" AlternatingRowBackground="#F2EBC7" AlternationCount="2">
 
                     <DataGrid.CellStyle>
                         <Style TargetType="{x:Type DataGridCell}">
@@ -85,6 +85,23 @@
                         <DataGridTextColumn Binding="{Binding Applied}" Header="Applied" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
+                <Canvas x:Name="DegreeNavIcons" HorizontalAlignment="Left" Height="555" Margin="586,45.5,0,0" VerticalAlignment="Top" Width="35">
+                    <Image x:Name="Row1Img" Height="32" Canvas.Top="27" Width="35"/>
+                    <Image x:Name="Row2Img" Height="32" Canvas.Top="62" Width="35"/>
+                    <Image x:Name="Row3Img" Height="32" Canvas.Top="97" Width="35"/>
+                    <Image x:Name="Row4Img" Height="32" Canvas.Top="132" Width="35"/>
+                    <Image x:Name="Row5Img" Height="32" Canvas.Top="167" Width="35"/>
+                    <Image x:Name="Row6Img" Height="32" Canvas.Top="202" Width="35"/>
+                    <Image x:Name="Row7Img" Height="32" Canvas.Top="237" Width="35"/>
+                    <Image x:Name="Row8Img" Height="32" Canvas.Top="272" Width="35"/>
+                    <Image x:Name="Row9Img" Height="32" Canvas.Top="307" Width="35"/>
+                    <Image x:Name="Row10Img" Height="32" Canvas.Top="342" Width="35"/>
+                    <Image x:Name="Row11Img" Height="32" Canvas.Top="377" Width="35"/>
+                    <Image x:Name="Row12Img" Height="32" Canvas.Top="412" Width="35"/>
+                    <Image x:Name="Row13Img" Height="32" Canvas.Top="447" Width="35"/>
+                    <Image x:Name="Row14Img" Height="32" Canvas.Top="482" Width="35"/>
+                    <Image x:Name="Row15Img" Height="32" Canvas.Top="517" Width="35"/>
+                </Canvas>
             </Grid>
             <Button x:Name="ReviewButton" Content="Create Review" HorizontalAlignment="Left" Margin="517.011,110.201,0,0" VerticalAlignment="Top" Width="75" Click="ReviewButton_Click"/>
 
