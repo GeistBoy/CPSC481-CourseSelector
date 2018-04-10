@@ -60,7 +60,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Button x:Name="ReviewButton" Grid.Row="0" Content="Review a class" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Click="ReviewButton_Click" Style="{DynamicResource YellowButtonStyle}"/>
+            <Button x:Name="ReviewButton" Grid.Row="0" Content="Review a class" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Click="ReviewButton_Click" Style="{DynamicResource YellowButtonStyle}" Margin="71.123,104.04,0,0"/>
             <TabControl Grid.Row="1" HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
                 <TabItem Header="Calendar" Width="310">
                     <Grid Background="#FFE5E5E5"/>
@@ -117,6 +117,11 @@
 
             </TabControl>
             <Button x:Name="ContactAdvisorButton" Content="Contact Advisor" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" Width="127.5" Style="{DynamicResource YellowButtonStyle}" Margin="493.5,104.04,0,0" Click="ContactAdvisorButton_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Miley Denver" VerticalAlignment="Top" Height="27.96" Width="197.79" FontSize="16" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,37.96,0,0" TextWrapping="Wrap" Text="Computer Science" VerticalAlignment="Top" Height="27.96" Width="197.79"/>
+            <TextBlock HorizontalAlignment="Left" Margin="467.333,16.667,0,0" TextWrapping="Wrap" Text="Credits Requried: 40.0" VerticalAlignment="Top" Height="21.293" Width="137.123"/>
+            <TextBlock HorizontalAlignment="Left" Margin="467.333,37.96,0,0" TextWrapping="Wrap" Text="Taken: 15.0" VerticalAlignment="Top" Height="21.293" Width="111.123"/>
+            <TextBlock HorizontalAlignment="Left" Margin="467.333,59.253,0,0" TextWrapping="Wrap" Text="Left: 25:0" VerticalAlignment="Top" Height="21.293" Width="111.123"/>
 
         </Grid>
     </Grid>
