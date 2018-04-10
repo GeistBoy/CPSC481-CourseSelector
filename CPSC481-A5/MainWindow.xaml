@@ -59,54 +59,63 @@
                 <RowDefinition Height="130" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid x:Name="DegreeNavigator" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="631">
-                <DataGrid x:Name="ReqTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FrozenColumnCount="2" AutoGenerateColumns="False" AlternatingRowBackground="#F2EBC7" AlternationCount="2" Margin="5,10,10,0">
+            
+            <Button x:Name="ReviewButton" Grid.Row="0" Content="Review a class" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Click="ReviewButton_Click"/>
+            <TabControl Grid.Row="1" HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                <TabItem Header="Calendar">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="Degree Navigator">
+                    <Grid x:Name="DegreeNavigator" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="631">
+                        <DataGrid x:Name="ReqTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FrozenColumnCount="2" AutoGenerateColumns="False" AlternatingRowBackground="#F2EBC7" AlternationCount="2" Margin="5,10,10,0">
 
-                    <DataGrid.CellStyle>
-                        <Style TargetType="{x:Type DataGridCell}">
-                            <Style.Triggers>
-                                <Trigger Property="DataGridCell.IsSelected" Value="True">
-                                    <Setter Property="BorderBrush">
-                                        <Setter.Value>
-                                            <SolidColorBrush Color="Transparent"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Setter Property="Foreground"
+                            <DataGrid.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                            <Setter Property="BorderBrush">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="Transparent"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground"
                             Value="{DynamicResource
                                    {x:Static SystemColors.ControlTextBrushKey}}"/>
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <SolidColorBrush Color="Transparent"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.CellStyle>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Requirements}" Header="Requirements" Width="*"/>
-                        <DataGridTextColumn Binding="{Binding Applied}" Header="Applied" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <Canvas x:Name="DegreeNavIcons" HorizontalAlignment="Left" Height="555" Margin="586,45.5,0,0" VerticalAlignment="Top" Width="35">
-                    <Image x:Name="Row1Img" Height="32" Canvas.Top="27" Width="35"/>
-                    <Image x:Name="Row2Img" Height="32" Canvas.Top="62" Width="35"/>
-                    <Image x:Name="Row3Img" Height="32" Canvas.Top="97" Width="35"/>
-                    <Image x:Name="Row4Img" Height="32" Canvas.Top="132" Width="35"/>
-                    <Image x:Name="Row5Img" Height="32" Canvas.Top="167" Width="35"/>
-                    <Image x:Name="Row6Img" Height="32" Canvas.Top="202" Width="35"/>
-                    <Image x:Name="Row7Img" Height="32" Canvas.Top="237" Width="35"/>
-                    <Image x:Name="Row8Img" Height="32" Canvas.Top="272" Width="35"/>
-                    <Image x:Name="Row9Img" Height="32" Canvas.Top="307" Width="35"/>
-                    <Image x:Name="Row10Img" Height="32" Canvas.Top="342" Width="35"/>
-                    <Image x:Name="Row11Img" Height="32" Canvas.Top="377" Width="35"/>
-                    <Image x:Name="Row12Img" Height="32" Canvas.Top="412" Width="35"/>
-                    <Image x:Name="Row13Img" Height="32" Canvas.Top="447" Width="35"/>
-                    <Image x:Name="Row14Img" Height="32" Canvas.Top="482" Width="35"/>
-                    <Image x:Name="Row15Img" Height="32" Canvas.Top="517" Width="35"/>
-                </Canvas>
-            </Grid>
-            <Button x:Name="ReviewButton" Content="Review a class" HorizontalAlignment="Left" Margin="488.511,118.451,0,0" VerticalAlignment="Top" Width="90" Click="ReviewButton_Click"/>
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="Transparent"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.CellStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Requirements}" Header="Requirements" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Applied}" Header="Applied" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Canvas x:Name="DegreeNavIcons" HorizontalAlignment="Left" Height="555" Margin="586,45.5,0,0" VerticalAlignment="Top" Width="35">
+                            <Image x:Name="Row1Img" Height="32" Canvas.Top="27" Width="35"/>
+                            <Image x:Name="Row2Img" Height="32" Canvas.Top="62" Width="35"/>
+                            <Image x:Name="Row3Img" Height="32" Canvas.Top="97" Width="35"/>
+                            <Image x:Name="Row4Img" Height="32" Canvas.Top="132" Width="35"/>
+                            <Image x:Name="Row5Img" Height="32" Canvas.Top="167" Width="35"/>
+                            <Image x:Name="Row6Img" Height="32" Canvas.Top="202" Width="35"/>
+                            <Image x:Name="Row7Img" Height="32" Canvas.Top="237" Width="35"/>
+                            <Image x:Name="Row8Img" Height="32" Canvas.Top="272" Width="35"/>
+                            <Image x:Name="Row9Img" Height="32" Canvas.Top="307" Width="35"/>
+                            <Image x:Name="Row10Img" Height="32" Canvas.Top="342" Width="35"/>
+                            <Image x:Name="Row11Img" Height="32" Canvas.Top="377" Width="35"/>
+                            <Image x:Name="Row12Img" Height="32" Canvas.Top="412" Width="35"/>
+                            <Image x:Name="Row13Img" Height="32" Canvas.Top="447" Width="35"/>
+                            <Image x:Name="Row14Img" Height="32" Canvas.Top="482" Width="35"/>
+                            <Image x:Name="Row15Img" Height="32" Canvas.Top="517" Width="35"/>
+                        </Canvas>
+                    </Grid>
+                </TabItem>
+                
+            </TabControl>
 
         </Grid>
     </Grid>
