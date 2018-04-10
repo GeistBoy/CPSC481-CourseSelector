@@ -13,45 +13,65 @@
     <Grid>
         <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636">
             <Grid.RowDefinitions>
-                <RowDefinition Height="130" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="0" />
+                <RowDefinition/>
             </Grid.RowDefinitions>
 
 
             <Canvas x:Name="FilterCanvas" Grid.Row ="0"  Height="330" VerticalAlignment="Top" Grid.RowSpan="2" >
-                <TextBlock TextWrapping="Wrap" Background="#FFCAE6EC" Foreground="Black" FontSize="14" Text="Search for Classes" Padding="10,0,0,0" Height="23.721" Width="616"/>
-                <TextBlock TextWrapping="Wrap" Text="Term" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="322.876" Canvas.Top="202.721" Width="103.255"/>
-                <TextBlock TextWrapping="Wrap" Text="Subject" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="322.876" Canvas.Top="229.681" Width="103.255"/>
-                <TextBlock TextWrapping="Wrap" Text="Course Number" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="322.876" Canvas.Top="256.641" Width="103.255"/>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="441" Canvas.Top="202.721">
-                    <ComboBoxItem Content="Winter 2018"/>
-                    <ComboBoxItem Content="Fall 2018"/>
-                </ComboBox>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="441" Canvas.Top="257.681">
+                <TextBlock TextWrapping="Wrap" Background="#FFCAE6EC" Foreground="Black" FontSize="14" Text="Search for Classes" Padding="10,0,0,0" Height="23.721" Width="636"/>
+                <TextBlock TextWrapping="Wrap" Text="Course Number:" Height="29.303" Canvas.Left="10" Canvas.Top="121.207" Width="94.255" TextAlignment="Right"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="112.248" Canvas.Top="120.207">
                     <ComboBoxItem Content="is exactly"/>
                     <ComboBoxItem Content="is greater than"/>
                     <ComboBoxItem Content="is less than"/>
                 </ComboBox>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="178.372" Canvas.Top="230.853"/>
-                <TextBox Height="23" Canvas.Left="566" TextWrapping="Wrap" Canvas.Top="257.681" Width="50"/>
-                <Button x:Name="SearchButton" Content="Search" Canvas.Left="468" Canvas.Top="88" Width="75" Style="{DynamicResource YellowButtonStyle}"/>
-                <TextBlock x:Name="MoreFilterTextBlock" Canvas.Left="557.999" TextWrapping="Wrap" Text="More..." Canvas.Top="91.01" Width="58.001" Height="18.97" Foreground="#FF348899" Cursor="Hand" MouseDown="MoreFilterTextBlock_MouseDown"/>
-                <TextBlock TextWrapping="Wrap" Text="Additional Search Criteria ▼  " FlowDirection="RightToLeft" Height="20.303" Canvas.Left="10" Canvas.Top="141.944" Width="153.503"/>
-                <TextBlock TextWrapping="Wrap" Text="Start Time" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="60.248" Canvas.Top="172.247" Width="103.255"/>
-                <TextBlock TextWrapping="Wrap" Text="Days" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="60.248" Canvas.Top="201.55" Width="103.255"/>
-                <TextBlock TextWrapping="Wrap" Text="Tag" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="60.248" Canvas.Top="230.853" Width="103.255"/>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="441" Canvas.Top="230.721"/>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="178.372" Canvas.Top="201.55">
-                    <ComboBoxItem Content="Mon/Wed/Fri"/>
-                    <ComboBoxItem Content="Tues/Thur"/>
-                </ComboBox>
-                <Slider Canvas.Left="178.372" Canvas.Top="172.247" Width="200"/>
-                <Label x:Name="Term_Title" Content="Current Term: " Height="20" Canvas.Left="10" Canvas.Top="28.721" Width="60" FontSize="8" Foreground="#7F000000"/>
-                <Label x:Name="Term_Label" Content="" Height="20" Canvas.Left="75" Canvas.Top="28.721" Width="223.372" FontSize="8" Background="#00000000" Foreground="#7F000000"/>
+                <TextBox Height="23" Canvas.Left="237.248" TextWrapping="Wrap" Canvas.Top="119.167" Width="50"/>
+                <Button x:Name="SearchButton" Content="Search" Canvas.Left="495" Canvas.Top="36.741" Width="75" Style="{DynamicResource YellowButtonStyle}" Height="21.98"/>
+                <TextBlock x:Name="MoreFilterTextBlock" Canvas.Left="575" TextWrapping="Wrap" Text="More..." Canvas.Top="47.751" Width="58.001" Height="18.97" Foreground="#FF348899" Cursor="Hand" MouseDown="MoreFilterTextBlock_MouseDown"/>
+                <TextBlock TextWrapping="Wrap" Text="Additional Search Criteria ▼  " FlowDirection="RightToLeft" Height="20.303" Canvas.Left="1" Canvas.Top="72.944" Width="153.503"/>
+                <TextBlock TextWrapping="Wrap" Text="Start Time(s):" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="10" Canvas.Top="179.813" Width="94.255" TextAlignment="Right"/>
+                <TextBlock TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="1" Canvas.Top="150.51" Width="103.255" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Days:" TextAlignment="Right"/>
+                <ComboBox x:Name="SubjectCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="112.248" Canvas.Top="93.247"/>
+                <Label x:Name="Term_Title" Content="Current Term: " Height="20" Canvas.Left="10" Canvas.Top="19.721" Width="60" FontSize="8" Foreground="#7F000000"/>
+                <Label x:Name="Term_Label" Content="" Height="20" Canvas.Left="75" Canvas.Top="19.721" Width="223.372" FontSize="8" Background="#00000000" Foreground="#7F000000"/>
+                <Label Content="Search:" Height="25.279" Canvas.Left="10" Canvas.Top="35.721" Width="60"/>
+                <TextBox x:Name="Keyword_Text" Height="25.259" Canvas.Left="60.248" TextWrapping="Wrap" Canvas.Top="37.741" Width="429.752"/>
+                <TextBlock TextWrapping="Wrap" Text="Subject:" Height="29.303" Canvas.Left="10" Canvas.Top="95.207" Width="94.255" TextAlignment="Right"/>
+                <Grid x:Name="DaysGrid" Height="27.812" Canvas.Left="112.248" Canvas.Top="145.084" Width="429">
+                    <CheckBox x:Name="MCheck" Content="Monday"    HorizontalAlignment="Left" Width="74" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                    <CheckBox x:Name="TCheck" Content="Tuesday"   HorizontalAlignment="Left" Width="74" Margin="77,0,0,0" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                    <CheckBox x:Name="WCheck" Content="Wednesday" HorizontalAlignment="Left" Width="91" Margin="154,0,0,0" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                    <CheckBox x:Name="RCheck" Content="Thursday"  HorizontalAlignment="Left" Width="74" Margin="252,0,0,0" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                    <CheckBox x:Name="FCheck" Content="Friday"    HorizontalAlignment="Left" Width="74" Margin="325,0,0,0" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
+                </Grid>
+                <Grid x:Name="StartTimeGrid" Height="97.104" Canvas.Left="112.248" Canvas.Top="177.896" Width="402.752">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="Monday" VerticalAlignment="Top" TextAlignment="Center" Margin="14,0,0,0" Height="15.96"/>
+                    <ComboBox x:Name="MondayStartCBO" Margin="15,0,327.752,53.144" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="MondayEndCBO" HorizontalAlignment="Left" Height="23" Margin="15,48.96,0,0" VerticalAlignment="Top" Width="60"/>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="to" VerticalAlignment="Top" TextAlignment="Right" Margin="-50,48.96,0,0" Height="15.96"/>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="Tuesday" VerticalAlignment="Top" TextAlignment="Center" Margin="93.445,0,0,0" Height="15.96"/>
+                    <ComboBox x:Name="TuesdayStartCBO" Margin="94.445,0,248.307,53.144" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="TuesdayEndCBO" HorizontalAlignment="Left" Height="23" Margin="94.445,48.96,0,0" VerticalAlignment="Top" Width="60"/>
+                    <TextBlock HorizontalAlignment="Left" Width="72" TextWrapping="Wrap" Text="Wednesday" VerticalAlignment="Top" TextAlignment="Center" Margin="167.634,0,0,0" Height="15.96"/>
+                    <ComboBox x:Name="WednesdayStartCBO" Margin="173.992,0,168.76,53.144" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="WednesdayEndCBO" HorizontalAlignment="Left" Height="23" Margin="173.992,48.96,0,0" VerticalAlignment="Top" Width="60"/>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="Thursday" VerticalAlignment="Top" TextAlignment="Center" Height="15.96" Margin="251.988,0,0,0"/>
+                    <ComboBox x:Name="ThursdayStartCBO" Margin="252.988,0,89.764,53.144" Height="23" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5"/>
+                    <ComboBox x:Name="ThursdayEndCBO" HorizontalAlignment="Left" Height="23" Margin="252.988,48.96,0,0" VerticalAlignment="Top" Width="60"/>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Height="31.92" Margin="328.797,0,0,0"><Run Text="Friday"/><LineBreak/><Run/></TextBlock>
+                    <ComboBox x:Name="FridayStartCBO" Margin="329.797,0,12.955,53.144" Height="23" VerticalAlignment="Bottom"/>
+                    <ComboBox x:Name="FridayEndCBO" Margin="329.797,48.96,12.955,25.144"/>
+                </Grid>
+                <TextBlock TextWrapping="Wrap" Text="From" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="28" Canvas.Top="201.116" Width="94.255" TextAlignment="Right"/>
+
             </Canvas>
 
 
-            <ScrollViewer Grid.Row="1"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="646" HorizontalAlignment="Left" Margin="0,0,-10,0" d:IsHidden="True">
+            <ScrollViewer Grid.Row="1"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="646" HorizontalAlignment="Left" Margin="0,74,-10,0" d:IsHidden="True">
                 <StackPanel x:Name="SearchResultStackPanel" Grid.Row="1" ScrollViewer.CanContentScroll="True" Width="616.093"/>
             </ScrollViewer>
 
@@ -128,4 +148,4 @@
         </Grid>
 
     </Grid>
-    </Window>
+</Window>

@@ -25,17 +25,22 @@ namespace CPSC481_A5
     {
         DegreeNav degreeProgress;
         CourseDB m_pCourseDB = CourseDB.Instance;
+        double m_pGridLength;
 
         public MainWindow()
         {
             InitializeComponent();
-            this.FilterCanvas.Height = 130;
+            this.FilterCanvas.Height = 74;
+            this.SubjectCombo.ItemsSource = CourseDB.Instance.COURSE_VALUES;
+            this.MondayStartCBO.ItemsSource = CourseDB.Instance.availableTimes;
 
             //degreeProgress is used to check if a requirement is completed in degree navigator
             degreeProgress = new DegreeNav();
 
             //Initializes the degree navigator with default completed classes
             PopulateDegreeNavRequirements(degreeProgress);
+
+            m_pGridLength = this.LeftGrid.RowDefinitions[0].Height.Value;
 
             //Sets the icons in degree navigator (checkmarks and X's)
             SetDegreeNavIcons(degreeProgress);
@@ -51,54 +56,6 @@ namespace CPSC481_A5
                 this.SearchResultStackPanel.Children.Add(pObj);
 
             this.Term_Label.Content = "Winter 2018";
-            //            AddClassToSearch(list);
-            //            AddClassToSearch(list);
-            //            AddClassToSearch(list);
-            //
-        }
-
-        private void AddClassToSearch(List<Course> courses)
-        {
-            foreach(Course c in courses){
-                CourseListItemControl CourseControl = new CourseListItemControl(c);
-                CourseControl.CourseNameLabel.Content = c.CourseAbbrev +"\t"+ c.CourseName;
-                CourseControl.CourseDayLabel.Text = c.SceduleDayToString();
-                CourseControl.CourseTime.Text = c.SceduleTimeToString();
-                CourseControl.CourseRoom.Text = c.Location;
-                CourseControl.ProfNameLabel.Text = c.ProfessorName + " User";
-                this.SearchResultStackPanel.Children.Add(CourseControl);
-                if (c.StatusToString().Equals("Open"))
-                {
-                    Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../green_dot.png");
-                    CourseControl.StatusIcon.Source = new BitmapImage(uri);
-                }
-                else
-                {
-                    Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../red_dot.png");
-                    CourseControl.StatusIcon.Source = new BitmapImage(uri);
-                }
-                CourseControl.StatusLabel.Text = c.StatusToString();
-                CourseControl.CourseDescriptionLabel.Text = c.Description;
-                CourseControl.TagLabel.Text = c.CourseTagsToString();
-                CourseControl.Height = CourseListItemControl.ShortDescriptionHeight;
-                CourseControl.PreReqLabel.Text = c.PreReqToString();
-                CourseControl.Star.RatingValue =c.GetRating();
-
-                foreach (Tutorial t  in c.Tutorials)
-                {
-                    CourseControl.TutorialTimeDropDown.Items.Add(t);
-                }
-                foreach (UserReview rev in c.Reviews )
-                {
-                    ReviewPanel reviewPanel = new ReviewPanel();
-                    reviewPanel.RatingNumber.Text = rev.GetRating() + "";
-                    reviewPanel.ReviewSummary.Text = rev.Summary;
-                    reviewPanel.Title.Text = rev.Title;
-                    CourseControl.CommentsStackPanel.Children.Add(reviewPanel);
-                }
-               
-            }
-
         }
         
         //Adds taken classes to degree navigator
@@ -205,31 +162,30 @@ namespace CPSC481_A5
             this.ReviewButton.Content = e.GetReview().Title;
         }
 
-        public const int ShortFilter = 130;
+        public const int ShortFilter = 74;
         public const int FullFilter = 330;
 
         private void MoreFilterTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            const double searchHeightOffset = 42;
-            const double moreHeightOffset = 39;
+            const double searchHeightOffset = 25;
+            const double moreHeightOffset = 25;
 
 
             if (this.FilterCanvas.Height == ShortFilter)
             {
                 this.FilterCanvas.Height = FullFilter;
-                this.SearchButton.SetValue(Canvas.TopProperty, FullFilter-searchHeightOffset);
+               // this.SearchButton.SetValue(Canvas.TopProperty, FullFilter-searchHeightOffset);
                 this.MoreFilterTextBlock.Text = "Less..";
-                this.MoreFilterTextBlock.SetValue(Canvas.TopProperty, FullFilter - moreHeightOffset);
-
+               // this.MoreFilterTextBlock.SetValue(Canvas.TopProperty, FullFilter - moreHeightOffset);
                 this.LeftGrid.RowDefinitions[0].Height = new GridLength(FullFilter);
             }
             else if (this.FilterCanvas.Height == FullFilter)
             {
                 this.FilterCanvas.Height = ShortFilter;
-                this.SearchButton.SetValue(Canvas.TopProperty, ShortFilter - searchHeightOffset);
+              //  this.SearchButton.SetValue(Canvas.TopProperty, ShortFilter - searchHeightOffset);
                 this.MoreFilterTextBlock.Text = "More..";
-                this.MoreFilterTextBlock.SetValue(Canvas.TopProperty, ShortFilter - moreHeightOffset);
-                this.LeftGrid.RowDefinitions[0].Height = new GridLength(ShortFilter);
+               // this.MoreFilterTextBlock.SetValue(Canvas.TopProperty, ShortFilter-moreHeightOffset);
+                this.LeftGrid.RowDefinitions[0].Height = new GridLength(m_pGridLength);
 
             }
 

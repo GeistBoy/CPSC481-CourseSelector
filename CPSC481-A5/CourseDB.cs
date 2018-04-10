@@ -10,6 +10,7 @@ namespace CPSC481_A5
     /// </summary>
     public class CourseDB
     {
+
         private static CourseDB m_pInstance = null;
         public static CourseDB Instance
         {
@@ -43,7 +44,7 @@ namespace CPSC481_A5
             CHD,
             MAX_LOCS
         };
-        private string[] LOCATION_VALUES = new string[(int)eLocations.MAX_LOCS] 
+        public readonly string[] LOCATION_VALUES = new string[(int)eLocations.MAX_LOCS] 
         { "ICT", "ST", "MS", "SA", "SB", "EEEL", "CHA", "CHB", "CHC", "CHD" };
 
         enum eCourseNames
@@ -60,8 +61,10 @@ namespace CPSC481_A5
             GEOG,
             MAX_COURSES
         };
-        private string[] COURSE_VALUES = new string[(int)eCourseNames.MAX_COURSES]
+        public readonly string[] COURSE_VALUES = new string[(int)eCourseNames.MAX_COURSES]
         { "CPSC", "MATH", "ENGL", "MUSI", "KNES", "FREN", "DRAM", "ARTS", "CHEM", "GEOG" };
+
+        public readonly string[] availableTimes = new string[9] { "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "16:00", "17:00" };
 
         /// <summary>
         /// Default Constructor - Loads a Default list of courses
