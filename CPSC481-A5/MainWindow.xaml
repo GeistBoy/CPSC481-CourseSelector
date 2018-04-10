@@ -11,7 +11,7 @@
 
     </Window.Resources>
     <Grid>
-        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636" d:IsHidden="True">
+        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -23,42 +23,27 @@
                 </StackPanel>
             </ScrollViewer>
 
-            <Canvas Grid.Row ="0"  Height="130.605" VerticalAlignment="Top" >
+            <Canvas x:Name="FilterCanvas" Grid.Row ="0"  Height="350" VerticalAlignment="Top" >
                 <TextBlock TextWrapping="Wrap" Background="#FFCAE6EC" Foreground="Black" FontSize="14" Text="Search for Classes" Padding="10,0,0,0" Height="23.721" Width="616"/>
-                <TextBlock TextWrapping="Wrap" Text="Subject" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="111.582" Canvas.Top="32.908" Width="103.255">
-                    <TextBlock.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="-0.76"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </TextBlock.RenderTransform>
+                <TextBlock TextWrapping="Wrap" Text="Subject" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="60.248" Canvas.Top="34.721" Width="103.255">
+
                 </TextBlock>
-                <TextBlock TextWrapping="Wrap" Text="Course Number" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="108.792" Canvas.Top="62.211" Width="103.255">
-                    <TextBlock.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="-0.76"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </TextBlock.RenderTransform>
+                <TextBlock TextWrapping="Wrap" Text="Course Number" RenderTransformOrigin="0.5,0.5" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="60.248" Canvas.Top="61.681" Width="103.255">
+
                 </TextBlock>
-                <TextBlock TextWrapping="Wrap" Text="Tag" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="108.792" Canvas.Top="85.932" Width="103.255">
-                    <TextBlock.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="-0.76"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </TextBlock.RenderTransform>
+                <TextBlock TextWrapping="Wrap" Text="Tag" FlowDirection="RightToLeft" Height="29.303" Canvas.Left="60.248" Canvas.Top="88.641" Width="103.255">
+
                 </TextBlock>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="28.721"/>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="55.681"/>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,2.027" Canvas.Left="234.372" Canvas.Top="82.641"/>
-                <Button x:Name="SearchButton" Content="Search" Canvas.Left="531" Canvas.Top="88.641" Width="75" Style="{DynamicResource YellowButtonStyle}"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="178.372" Canvas.Top="34.721"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="178.372" Canvas.Top="61.681">
+                    <ComboBoxItem Content="is exactly"/>
+                    <ComboBoxItem Content="is greater than"/>
+                    <ComboBoxItem Content="is less than"/>
+                </ComboBox>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="178.372" Canvas.Top="88.641"/>
+                <TextBox Height="23" Canvas.Left="303.372" TextWrapping="Wrap" Canvas.Top="61.681" Width="50"/>
+                <Button x:Name="SearchButton" Content="Search" Canvas.Left="468" Canvas.Top="88" Width="75" Style="{DynamicResource YellowButtonStyle}"/>
+                <TextBlock x:Name="MoreFilterTextBlock" Canvas.Left="558" TextWrapping="Wrap" Text="More..." Canvas.Top="91" Width="58.001" Height="18.97" Foreground="#FF348899" Cursor="Hand" MouseDown="MoreFilterTextBlock_MouseDown"/>
             </Canvas>
 
         </Grid>
