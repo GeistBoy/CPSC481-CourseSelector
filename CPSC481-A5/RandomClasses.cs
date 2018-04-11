@@ -76,7 +76,7 @@ namespace CPSC481_A5
             seng.CourseStatus = Status.Open; // TODO
 
 
-            Tutorial t3 = new Tutorial(hci.CourseAbbrev);
+            Tutorial t3 = new Tutorial(seng.CourseAbbrev);
             t3.TutorialAdvisor = "Mare Jane";
             t3.TutorialDays.Add(Day.Mon);
             t3.TutorialDays.Add(Day.Wed);

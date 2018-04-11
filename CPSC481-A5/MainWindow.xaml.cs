@@ -547,6 +547,10 @@ namespace CPSC481_A5
             }
             schedule.update(StudentCourses, StudentTutorials);
             updateCalendar();
+
+            degreeProgress.removeClassInDegreeNav(course.CourseAbbrev);
+            PopulateDegreeNavRequirements(degreeProgress);
+            SetDegreeNavIcons(degreeProgress);
         }
 
     }

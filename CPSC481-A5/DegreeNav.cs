@@ -100,13 +100,49 @@ namespace CPSC481_A5
             {
                 degreeNavRows[7].Add(className);
             }
-            else
-            {
-                Console.WriteLine(className);
+            
+        }
 
+        public void removeClassInDegreeNav(string className)
+        {
+            int i = -1;
+            if (className.Equals("CPSC-359"))
+            {
+                i = 1;
+            }
+            else if (className.Equals("CPSC-413"))
+            {
+                i = 2;
+            }
+            else if (className.Equals("CPSC-449") || className.Equals("CPSC-457"))
+            {
+                i = 3;
+            }
+            else if (className.Equals("SENG-300"))
+            {
+                i = 5;
+            }
+            else if (className.Equals("MATH-249"))
+            {
+                i =10;
+            }
+            else if (processClassName(className) == 13)
+            {
+                i = 13;
+            }
+            else if (processClassName(className) == 8)
+            {
+                i = 8;
+            }
+            else if (processClassName(className) == 7)
+            {
+                i = 7;
             }
 
-            Console.WriteLine(className);
+            if (i != -1)
+            {
+                degreeNavRows[i].Remove(className);
+            }
         }
 
         //Processes the class name and returns the index of the row that the class belongs too
