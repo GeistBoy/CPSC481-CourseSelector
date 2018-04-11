@@ -350,9 +350,15 @@ namespace CPSC481_A5
         {m_pCourseDB.m_bDayBooleans[(int)Day.Thur] = (bool)this.RCheck.IsChecked;}
 
         bool toggleSelectedClass = false;
+
         private void Calendar_Click(object sender, RoutedEventArgs e)
         {
-            
+            Button button = (Button)sender;
+            if (button.Content.Equals("No class"))
+            {
+                return;
+            }
+
             if (StudentCourses.Count()> 0 && toggleSelectedClass ==false)
             {
                 this.SelectedClassStackPanel.Children.Clear();
@@ -374,6 +380,7 @@ namespace CPSC481_A5
                         break;
                     }
                 }
+
                 CourseControl.CourseNameLabel.Content = c.CourseAbbrev + "\t" + c.CourseName;
                 CourseControl.CourseDayLabel.Text = c.SceduleDayToString();
                 CourseControl.CourseTime.Text = c.SceduleTimeToString();
@@ -507,7 +514,12 @@ namespace CPSC481_A5
                 MessageBox.Show(course.CourseAbbrev + " has time conflict with current schedule");
             }else if(StudentCourses.Count == 5){
                 MessageBox.Show("You have reach the maximum amount of courses");
-            }else {
+                }
+            else if(course.CourseStatus != Status.Open)
+            { 
+                MessageBox.Show(course.StatusToString());
+            }
+            else {
                 StudentCourses.Add(course);
                 if (tutorial != null)
                 {
