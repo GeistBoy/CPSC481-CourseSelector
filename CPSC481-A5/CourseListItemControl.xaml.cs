@@ -36,6 +36,8 @@ namespace CPSC481_A5
             this.RatingStarContainer.Children.Add(Star);
 
             ToolTipService.SetBetweenShowDelay(StatusPanel, 0);
+            this.RemoveButton.Visibility = Visibility.Hidden;
+            this.TutorialSelectedLabel.Visibility = Visibility.Hidden;
         }
 
 
