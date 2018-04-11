@@ -454,17 +454,23 @@ namespace CPSC481_A5
                 bConsiderDay = false;
                 foreach( Day eDay in c.ScheduleDay)
                 {
+                     int iEndSelected = m_pTimeCombos[(int)eDay, 1].SelectedIndex + 1;
+                    bool bWithinRange = m_pTimeCombos[(int)eDay, 1].SelectedIndex >= 0 || m_pTimeCombos[(int)eDay,0].SelectedIndex >= 0;
                     if (m_pTimeCombos[(int)eDay, 0].SelectedIndex >= 0)
-                        bConsiderDay |= (c.SceduleTime - 8) >= m_pTimeCombos[(int)eDay, 0].SelectedIndex;
+                    {
+                        bWithinRange &= (c.SceduleTime - 8) >= m_pTimeCombos[(int)eDay, 0].SelectedIndex;
+                        iEndSelected += m_pTimeCombos[(int)eDay, 0].SelectedIndex;
+                    }
 
                     if (m_pTimeCombos[(int)eDay, 1].SelectedIndex >= 0)
-                        bConsiderDay |= (c.SceduleTime - 8) <= m_pTimeCombos[(int)eDay, 1].SelectedIndex;
-                }
+                        bWithinRange &= (c.SceduleTime - 7) <= iEndSelected;
 
-                // Apply Timeframe check.
+                    bConsiderDay |= bWithinRange;
+                }
                 bReturnValue &= bConsiderDay;
             }
-            
+
+
             // Check Course Number
             if (m_pComparisonCombo.SelectedIndex != -1)
             {
