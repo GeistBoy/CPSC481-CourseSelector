@@ -84,7 +84,7 @@
             </Canvas>
 
         </Grid>
-        <Grid x:Name="RightGrid" HorizontalAlignment="Left" Margin="641,0,0,0" Width="631">
+        <Grid x:Name="RightGrid" Background="#FFCAE6EC" HorizontalAlignment="Left" Margin="641,0,0,0" Width="631">
             <Grid.RowDefinitions>
                 <RowDefinition Height="130" />
                 <RowDefinition Height="*" />
@@ -120,7 +120,7 @@
                 </TabItem>
                 <TabItem Header="Degree Navigator" Width="310">
                     <Grid x:Name="DegreeNavigator" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="624.333" Height="526">
-                        <DataGrid x:Name="ReqTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FrozenColumnCount="2" AutoGenerateColumns="False" AlternatingRowBackground="#F2EBC7" AlternationCount="2" Margin="5,10,10,0" d:IsHidden="True">
+                        <DataGrid x:Name="ReqTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FrozenColumnCount="2" AutoGenerateColumns="False" AlternatingRowBackground="#FF7AB9C7" AlternationCount="2" Margin="5,10,10,0" d:IsHidden="True">
 
                             <DataGrid.CellStyle>
                                 <Style TargetType="{x:Type DataGridCell}">

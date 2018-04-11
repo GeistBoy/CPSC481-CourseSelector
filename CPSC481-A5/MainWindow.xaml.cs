@@ -547,6 +547,7 @@ namespace CPSC481_A5
 
                 PopulateDegreeNavRequirements(degreeProgress);
                 SetDegreeNavIcons(degreeProgress );
+                UpdateCreditsPassed();
             }
         }
 
@@ -569,6 +570,7 @@ namespace CPSC481_A5
             degreeProgress.removeClassInDegreeNav(course.CourseAbbrev);
             PopulateDegreeNavRequirements(degreeProgress);
             SetDegreeNavIcons(degreeProgress);
+            UpdateCreditsPassed();
         }
 
     }
