@@ -85,6 +85,8 @@ namespace CPSC481_A5
 
             seng.Tutorials.Add(t3);
             InterestingCourses.Add(seng);
+            InterestingCourses.Add(hci);
+
 
 
 

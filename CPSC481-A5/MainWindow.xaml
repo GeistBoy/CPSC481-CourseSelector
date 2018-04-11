@@ -90,7 +90,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Button x:Name="ReviewButton" Grid.Row="0" Content="Review a class" HorizontalAlignment="Left" VerticalAlignment="Top" Width="112" Click="ReviewButton_Click" Style="{DynamicResource YellowButtonStyle}" Margin="46.123,104.04,0,0"/>
+            <Button x:Name="ReviewButton" Grid.Row="0" Content="Review a class" HorizontalAlignment="Left" VerticalAlignment="Top" Width="112" Click="ReviewButton_Click" Style="{DynamicResource YellowButtonStyle}" Margin="10,104.04,0,0"/>
             <TabControl Grid.Row="1" HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
                 <TabItem Header="Calendar" Width="310" IsSelected="True">
                     <Grid x:Name="calendarView" Background="White">
@@ -98,11 +98,11 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="110" />
                         </Grid.RowDefinitions>
-                        <Button x:Name="Calendar1" HorizontalAlignment="Left" Margin="10,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
-                        <Button x:Name="Calendar2" HorizontalAlignment="Left" Margin="131,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
-                        <Button x:Name="Calendar3" HorizontalAlignment="Left" Margin="252,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
-                        <Button x:Name="Calendar4" HorizontalAlignment="Left" Margin="373,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
-                        <Button x:Name="Calendar5" HorizontalAlignment="Left" Margin="494,10,0,0" Content="No class" Background="#F2EBC7"  VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click" RenderTransformOrigin="-0.872,0.516"/>
+                        <Button x:Name="Calendar1" HorizontalAlignment="Left" Margin="10,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="20" Width="70" Click="Calendar_Click" Style="{DynamicResource YellowButtonStyle}"/>
+                        <Button x:Name="Calendar2" HorizontalAlignment="Left" Margin="131,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="20" Width="70" Click="Calendar_Click" Style="{DynamicResource YellowButtonStyle}"/>
+                        <Button x:Name="Calendar3" HorizontalAlignment="Left" Margin="252,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="20" Width="70" Click="Calendar_Click" Style="{DynamicResource YellowButtonStyle}"/>
+                        <Button x:Name="Calendar4" HorizontalAlignment="Left" Margin="373,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="20" Width="70" Click="Calendar_Click" Style="{DynamicResource YellowButtonStyle}"/>
+                        <Button x:Name="Calendar5" HorizontalAlignment="Left" Margin="494,10,0,0" Content="No class" Background="#F2EBC7"  VerticalAlignment="Top" Height="20" Width="70" Click="Calendar_Click" RenderTransformOrigin="-0.872,0.516" Style="{DynamicResource YellowButtonStyle}"/>
                         <DataGrid Grid.Row="0"  x:Name="ScheduleTable" Height="365" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Margin="10,46,10,10" VerticalAlignment="Stretch" FrozenColumnCount="8" AutoGenerateColumns="False" SelectionUnit="Cell" CanUserResizeRows="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" HeadersVisibility="Column">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Time}" Header="Time" Width="60" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>

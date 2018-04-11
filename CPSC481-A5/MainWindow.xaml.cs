@@ -71,6 +71,14 @@ namespace CPSC481_A5
             this.Term_Label.Content = "Winter 2018";
 
             triggerNoSearchOverlay();
+
+            this.Calendar1.Visibility = Visibility.Hidden;
+            this.Calendar2.Visibility = Visibility.Hidden;
+            this.Calendar3.Visibility = Visibility.Hidden;
+            this.Calendar4.Visibility = Visibility.Hidden;
+            this.Calendar5.Visibility = Visibility.Hidden;
+
+
         }
 
         public void initFilterCombos()
@@ -494,8 +502,18 @@ namespace CPSC481_A5
 
             for(int i=0; i < StudentCourses.Count; i++)
             {
+                buttons[i].Visibility = Visibility.Visible;
                 buttons[i].Content = StudentCourses[i].CourseAbbrev;
             }
+            
+            for(int i =0; i < buttons.Count; i++)
+            {
+                if (buttons[i].Content.Equals("No class"))
+                {
+                    buttons[i].Visibility = Visibility.Hidden;
+                }
+            }
+
             ScheduleTable.RowHeight = (double)364 / 11;
             ScheduleTable.DataContext = schedule.dataTable.DefaultView;
 
