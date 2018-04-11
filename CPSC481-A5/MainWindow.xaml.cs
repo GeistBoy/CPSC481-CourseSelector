@@ -522,6 +522,15 @@ namespace CPSC481_A5
         public void removeCourse(Course course)
         {
             StudentCourses.Remove(course);
+            foreach (Tutorial t in StudentTutorials)
+            {
+                if (t.ClassAbbrev.Equals(course.CourseAbbrev) )
+                {
+                    
+                    StudentTutorials.Remove(t);
+                    break;
+                }
+            }
             schedule.update(StudentCourses, StudentTutorials);
             updateCalendar();
         }

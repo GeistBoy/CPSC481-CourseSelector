@@ -10,7 +10,7 @@
 
     </Window.Resources>
     <Grid>
-        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636" d:IsHidden="True">
+        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0" />
                 <RowDefinition Height="74"/>
@@ -24,7 +24,7 @@
                 <TextBlock TextWrapping="Wrap" Text="Course Number:" Height="29.303" Canvas.Left="10" Canvas.Top="121.207" Width="94.255" TextAlignment="Right"/>
                 <ComboBox x:Name="ComparisonCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="199.333" Canvas.Left="112.248" Canvas.Top="120.207"/>
                 <TextBox x:Name="CourseNumber" Height="23" Canvas.Left="316.581" TextWrapping="Wrap" Canvas.Top="119.167" Width="50"/>
-                <Button x:Name="SearchButton" Content="Search" Canvas.Left="495" Canvas.Top="33.741" Width="75" Style="{DynamicResource YellowButtonStyle}" Height="24.259" Click="SearchButton_Click"/>
+                <Button x:Name="SearchButton" Content="Search" Canvas.Left="495" Canvas.Top="36.801" Width="75" Style="{DynamicResource YellowButtonStyle}" Height="24.199" Click="SearchButton_Click" VerticalAlignment="Center"/>
                 <TextBlock x:Name="MoreFilterTextBlock" Canvas.Left="575" TextWrapping="Wrap" Text="More..." Canvas.Top="49.751" Width="58.001" Height="18.97" Foreground="#FF348899" Cursor="Hand" MouseDown="MoreFilterTextBlock_MouseDown"/>
                 <TextBlock TextWrapping="Wrap" Text="Additional Search Criteria ▼  " FlowDirection="RightToLeft" Height="20.303" Canvas.Left="1" Canvas.Top="72.944" Width="153.503"/>
                 <TextBlock TextWrapping="Wrap" Text="Start Time(s):" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="10" Canvas.Top="179.813" Width="94.255" TextAlignment="Right"/>
@@ -66,8 +66,8 @@
                     <ComboBox x:Name="FridayStartCBO" Margin="327.752,0,0,53.519" Height="23" VerticalAlignment="Bottom" SelectionChanged="FridayStartCBO_SelectionChanged" Width="75"/>
                     <ComboBox x:Name="FridayEndCBO" Margin="327.752,48.96,0,25.144" SelectionChanged="FridayEndCBO_SelectionChanged" Width="75"/>
                 </Grid>
-                <TextBlock TextWrapping="Wrap" Text="From" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="23.998" Canvas.Top="201.116" Width="94.255" TextAlignment="Right"/>
-                <Button x:Name="ClearButton" Content="  Clear" Canvas.Left="536" Canvas.Top="221.02" Width="78" Style="{DynamicResource YellowButtonStyle}" Height="21.98" Click="ClearButton_Click"/>
+                <TextBlock TextWrapping="Wrap" Text="From" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="23.998" Canvas.Top="201.116" Width="94.255" TextAlignment="Right" />
+                <Button x:Name="ClearButton" Content="Clear" Canvas.Left="536" Canvas.Top="221.02" Width="78" Style="{DynamicResource YellowButtonStyle}" VerticalContentAlignment="Center" VerticalAlignment="Center" Height="21.98" Click="ClearButton_Click" Margin="0"/>
                 <Rectangle x:Name="HideFilter" Fill="White" Height="607.167" RadiusY="1" RadiusX="1" Stroke="#FFD3CCAC" Canvas.Top="81.721" Width="636" StrokeThickness="0" d:IsHidden="True"/>
                 <CheckBox x:Name="AvailableCoursesCheck" Content="Available Courses Only" Height="16.5" Canvas.Left="237.248" Canvas.Top="95.207" Width="145.333" Click="AvailableCoursesCheck_Clicked"/>
 
