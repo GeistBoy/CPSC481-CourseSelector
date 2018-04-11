@@ -9,13 +9,13 @@
     <Canvas>
         <Button x:Name="SubmitButton" Content="Submit" HorizontalAlignment="Left" Height="21.734" VerticalAlignment="Top" Width="79.779" Style="{DynamicResource YellowButtonStyle}" Canvas.Left="471.069" Canvas.Top="408.542" Click="SubmitButton_Click"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="21.734" VerticalAlignment="Top" Width="78.947" Style="{DynamicResource YellowButtonStyle}"  Canvas.Left="371.624" Canvas.Top="408.542" Click="CancelButton_Click"/>
-        <TextBlock x:Name="TitleTextBlock" Height="23.268" Canvas.Left="27.579" TextWrapping="Wrap" Text="Title" Canvas.Top="24.524" Width="100.554"/>
-        <TextBlock x:Name="SummaryTextBlock" Height="26.593" Canvas.Left="27.579" TextWrapping="Wrap" Text="Comments" Canvas.Top="111.781" Width="100.554"/>
-        <TextBox x:Name="TitleTextBox" Height="41.538" Canvas.Left="27.579" TextWrapping="Wrap" Canvas.Top="52.792" Width="531.707"/>
-        <TextBox x:Name="CommentTextBox" Height="85.611" Canvas.Left="27.579" TextWrapping="Wrap" Canvas.Top="143.374" Width="531.707" SpellCheck.IsEnabled="True"/>
-        <TextBlock x:Name="TitleTextBlock_Copy" Height="23.268" Canvas.Left="27.579" TextWrapping="Wrap" Text="How did you find the course? " Canvas.Top="314.247" Width="444.448"/>
+        <TextBlock x:Name="TitleTextBlock" Height="23.268" Canvas.Left="27.579" TextWrapping="Wrap" Text="Title" Canvas.Top="47.792" Width="100.554"/>
+        <TextBlock x:Name="SummaryTextBlock" Height="26.593" Canvas.Left="27.579" TextWrapping="Wrap" Text="Comments" Canvas.Top="145.22" Width="100.554"/>
+        <TextBox x:Name="TitleTextBox" Height="41.538" Canvas.Left="27.579" TextWrapping="Wrap" Canvas.Top="76.06" Width="235.707"/>
+        <TextBox x:Name="CommentTextBox" Height="85.611" Canvas.Left="27.579" TextWrapping="Wrap" Canvas.Top="176.813" Width="531.707" SpellCheck.IsEnabled="True"/>
+        <TextBlock x:Name="TitleTextBlock_Copy" Height="23.268" Canvas.Left="27.579" TextWrapping="Wrap" Text="How did you find the course? " Canvas.Top="343.565" Width="444.448"/>
 
-        <Grid Height="25.208" Canvas.Left="10" Canvas.Top="342.515" Width="540.848">
+        <Grid Height="25.208" Canvas.Left="18.438" Canvas.Top="378.334" Width="540.848">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -30,11 +30,13 @@
             <RadioButton x:Name="RadioButton5" Content="Excellent ☺" HorizontalAlignment="Center" Grid.Column="4"/>
 
         </Grid>
-        <TextBlock x:Name="Required1" Height="23.268" Canvas.Left="64.145" TextWrapping="Wrap" Text="*Required" Canvas.Top="24.524" Width="100.554" Foreground="#FFFB0000"/>
-        <TextBlock x:Name="Required2" Height="23.268" Canvas.Left="99.879" TextWrapping="Wrap" Text="*Required" Canvas.Top="111.781" Width="100.554" Foreground="#FFFB0000"/>
-        <TextBlock x:Name="Required3" Height="23.268" Canvas.Left="200.556" TextWrapping="Wrap" Text="*Required" Canvas.Top="314.247" Width="100.554" Foreground="#FFFB0000"/>
-        <TextBlock x:Name="TagTextBox1" Height="26.593" Canvas.Left="27.579" TextWrapping="Wrap" Text="Tag" Canvas.Top="246.215" Width="100.554"/>
-        <TextBox x:Name="TagTextBox" Height="29.23" Canvas.Left="27.579" TextWrapping="Wrap" Canvas.Top="269.483" Width="531.707" SpellCheck.IsEnabled="True"/>
+        <TextBlock x:Name="Required1" Height="23.268" Canvas.Left="67.145" TextWrapping="Wrap" Text="*Required" Canvas.Top="47.792" Width="100.554" Foreground="#FFFB0000"/>
+        <TextBlock x:Name="Required2" Height="23.268" Canvas.Left="102.879" TextWrapping="Wrap" Text="*Required" Canvas.Top="145.22" Width="100.554" Foreground="#FFFB0000"/>
+        <TextBlock x:Name="Required3" Height="23.268" Canvas.Left="200.556" TextWrapping="Wrap" Text="*Required" Canvas.Top="343.565" Width="100.554" Foreground="#FFFB0000"/>
+        <TextBlock x:Name="TagTextBox1" Height="26.593" Canvas.Left="27.579" TextWrapping="Wrap" Text="Tag" Canvas.Top="267.424" Width="100.554"/>
+        <TextBox x:Name="TagTextBox" Height="29.23" Canvas.Left="27.579" TextWrapping="Wrap" Canvas.Top="299.017" Width="531.707" SpellCheck.IsEnabled="True"/>
+        <TextBlock x:Name="TitleTextBlock_Copy1" Height="23.268" Canvas.Left="316.579" TextWrapping="Wrap" Text="Class Taken" Canvas.Top="47.792" Width="100.554"/>
+        <ComboBox Canvas.Left="316.579" Canvas.Top="76.06" Width="120"/>
 
 
     </Canvas>
