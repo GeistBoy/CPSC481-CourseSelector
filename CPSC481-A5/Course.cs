@@ -250,7 +250,7 @@ namespace CPSC481_A5
 
             if (TutorialDays.Contains(Day.Mon))
             {
-                str = "MW ";
+                str = "MWF ";
             }
             else
             {

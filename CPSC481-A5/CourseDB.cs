@@ -146,6 +146,13 @@ namespace CPSC481_A5
             {
                 pReturnControl.TutorialTimeDropDown.Items.Add(t);
             }
+            if (cCourse.Tutorials.Count == 0)
+            {
+                pReturnControl.TutorialTimeDropDown.Items.Add("No tutorials");
+            }
+            
+            pReturnControl.TutorialTimeDropDown.SelectedIndex = 0;
+
             foreach (UserReview rev in cCourse.Reviews)
             {
                 ReviewPanel reviewPanel = new ReviewPanel();
