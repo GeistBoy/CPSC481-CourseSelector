@@ -100,8 +100,13 @@ namespace CPSC481_A5
             {
                 degreeNavRows[7].Add(className);
             }
+            else
+            {
+                Console.WriteLine(className);
 
+            }
 
+            Console.WriteLine(className);
         }
 
         //Processes the class name and returns the index of the row that the class belongs too

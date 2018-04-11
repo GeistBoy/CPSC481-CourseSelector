@@ -57,9 +57,7 @@ namespace CPSC481_A5
             UpdateCreditsPassed();
 
             RandomClasses derp = new RandomClasses();
-            List<Course> list = new List<Course>();
-            list.Add(derp.hci);
-            m_pCourseDB.addCourses(list);
+            m_pCourseDB.addCourses(derp.InterestingCourses);
             m_pCourseDB.loadDefault();
             List<CourseListItemControl> pCLICList =  m_pCourseDB.getAllControls();
 
@@ -527,6 +525,10 @@ namespace CPSC481_A5
                 }
                 schedule.update(StudentCourses, StudentTutorials);
                 updateCalendar();
+                degreeProgress.addClassToDegreeNav(course.CourseAbbrev);
+
+                PopulateDegreeNavRequirements(degreeProgress);
+                SetDegreeNavIcons(degreeProgress );
             }
         }
 

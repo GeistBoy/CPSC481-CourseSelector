@@ -8,12 +8,14 @@ namespace CPSC481_A5
 {
     class RandomClasses
     {
-        public Course hci;
+        public List<Course> InterestingCourses = new List<Course>();
+
+
      
         public RandomClasses()
         {
             // init;
-            hci = new Course();
+            Course hci = new Course();
             hci.CourseAbbrev = "CPSC-481";
             hci.iCourseNumber = 481;
             hci.CourseName = "Human-Computer Interaction I";
@@ -56,6 +58,33 @@ namespace CPSC481_A5
             hci.Reviews.Add(ur1);
             hci.Reviews.Add(ur2);
 
+
+            Course seng = new Course();
+            seng.CourseAbbrev = "SENG-300";
+            seng.iCourseNumber = 481;
+            seng.CourseName = "Software Engineering I";
+            seng.Description = "Introduction to the development and evolution of software. Covers key conceptual foundations as well as key methods and techniques used in the different phases of the software lifecycle. Emphasis on both technical and soft skills needed for high quality software and software-based products developed in teams.";
+            seng.ProfessorName = "Anonymous";
+            seng.Tags.Add("Easy");
+            seng.Tags.Add("Reports");
+            seng.Tags.Add("Time Intensive");
+            seng.ScheduleDay.Add(Day.Tues);
+            seng.ScheduleDay.Add(Day.Thur);
+            seng.SceduleTime = 14;
+            seng.Rating = 4;
+            seng.Location = "TFDL 402"; // TODO
+            seng.CourseStatus = Status.Open; // TODO
+
+
+            Tutorial t3 = new Tutorial(hci.CourseAbbrev);
+            t3.TutorialAdvisor = "Mare Jane";
+            t3.TutorialDays.Add(Day.Mon);
+            t3.TutorialDays.Add(Day.Wed);
+            t3.TutorialDays.Add(Day.Fri);
+            t3.TutorialTime = 8;
+
+            seng.Tutorials.Add(t3);
+            InterestingCourses.Add(seng);
 
 
 
