@@ -15,6 +15,7 @@ namespace CPSC481_A5
             // init;
             hci = new Course();
             hci.CourseAbbrev = "CPSC-481";
+            hci.iCourseNumber = 481;
             hci.CourseName = "Human-Computer Interaction I";
             hci.Description = "Fundamental theory and practice of the design, implementation, and evaluation of human-computer interfaces. Topics include: principles of design; methods for evaluating interfaces with or without user involvement; techniques for prototyping and implementing graphical user interfaces.";
             hci.ProfessorName = "Anonymous";

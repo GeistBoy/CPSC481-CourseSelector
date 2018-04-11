@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CPSC481_A5
 {
     public enum Day { Mon = 0, Tues, Wed, Thur, Fri };
-    public enum Status {Open, Full, Prereq, TimeConflict, MAX_STATUS};
+    public enum Status {Open, Full, Missing, Conflict, MAX_STATUS};
     
     public class Course : IEquatable<Course>
     {
@@ -15,9 +15,12 @@ namespace CPSC481_A5
         { "Open", "Class is Full", "You do not meet the prerequisite for this course", "There is a time conflict" };
         public String ProfessorName = "Prof name: none";
         public float Rating = 0;
+        public const int VALID_COURSE_NUMBER_MAX = 699;
+        public const int VALID_COURSE_NUMBER_MIN = 101;
 
         // Course Information
         public String CourseName;
+        public int iCourseNumber;
         public String CourseAbbrev;
         public String Description;
         public List<Tutorial> Tutorials = new List<Tutorial>();
@@ -50,23 +53,20 @@ namespace CPSC481_A5
         {
             String time = "";
             int start = SceduleTime;
-            if (start <= 12)
-            {
+            if (start < 12)
                 time += start + ":00AM - ";
-            }
+            else if (12 == start)
+                time += start + ":00PM - ";
             else
-            {
                 time += start - 12 + ":00PM - ";
-            }
+
             int end = SceduleTime+1;
-            if (end <= 12)
-            {
+            if (end < 12)
                 time += end + ":00AM";
-            }
+            else if (end == 12)
+                time += end + ":00PM";
             else
-            {
                 time += end-12 + ":00PM";
-            }
 
             return time;
         }
@@ -74,6 +74,11 @@ namespace CPSC481_A5
         public String StatusToString()
         {
             return STATUS_TEXT[(int)CourseStatus];
+        }
+
+        public String getStatusAbbrev()
+        {
+            return CourseStatus.ToString();
         }
 
         public String CourseTagsToString()

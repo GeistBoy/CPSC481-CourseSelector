@@ -33,6 +33,8 @@ namespace CPSC481_A5
             Star = new RatingCell();
             pAssociatedCourse = pCourseToAssociate;
             this.RatingStarContainer.Children.Add(Star);
+
+            ToolTipService.SetBetweenShowDelay(StatusPanel, 0);
         }
 
 
@@ -88,5 +90,11 @@ namespace CPSC481_A5
                 this.Height = FullDescriptionHeight;
             }
         }
+
+        private void StatusIcon_MouseMove(object sender, MouseEventArgs e)
+        {
+           this.StatusPanel.ToolTip = pAssociatedCourse.StatusToString();
+        }
+
     }
 }

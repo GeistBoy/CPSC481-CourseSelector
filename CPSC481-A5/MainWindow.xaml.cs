@@ -72,6 +72,8 @@ namespace CPSC481_A5
 
             m_pCourseDB.m_pSubjectCombo = this.SubjectCombo;
 
+            m_pCourseDB.m_pComparisonCombo = this.ComparisonCombo;
+
             m_pCourseDB.clearFilters();
         }
         
@@ -189,6 +191,9 @@ namespace CPSC481_A5
             toggleFilter();
         }
 
+        /// <summary>
+        /// Functionality to toggle Filter Overlay
+        /// </summary>
         private void toggleFilter()
         {
             if (bShort)
@@ -222,15 +227,28 @@ namespace CPSC481_A5
             Process.Start("https://success.ucalgary.ca/home.htm");
         }
 
-        // Clears Filters
+        // Clears Filters and associated checkboxes.
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             m_pCourseDB.clearFilters();
+
+            WCheck.IsChecked = false;
+            MCheck.IsChecked = false;
+            TCheck.IsChecked = false;
+            RCheck.IsChecked = false;
+            FCheck.IsChecked = false;
+            AvailableCoursesCheck.IsChecked = false;
+
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             this.SearchResultStackPanel.Children.Clear();
+
+            // Convert CourseNumber Text, any issues? default to 0
+            if( this.CourseNumber.Text != "")
+                m_pCourseDB.m_iCourseNum = Convert.ToInt32(this.CourseNumber.Text);
+            
             List<Course> pFilteredCourses = m_pCourseDB.searchCourses(this.Keyword_Text.Text);
 
             if (!bShort)
@@ -250,63 +268,70 @@ namespace CPSC481_A5
         /**
             Massive Section of ComboBox Events
         */
-        /// <summary>
-        /// Monday Start
-        /// </summary>
+        /**
+          Monday
+        */
         private void MondayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(0, 0);
-        }
-
+        {m_pCourseDB.modTimes(0, 0);}
         private void MondayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(0, 1);
-        }
+        { m_pCourseDB.modTimes(0, 1); }
 
+        /**
+          Tuesday
+        */
         private void TuesdayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(1, 0);
-        }
+        {m_pCourseDB.modTimes(1, 0);}
 
         private void TuesdayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(1, 1);
-        }
+        { m_pCourseDB.modTimes(1, 1);}
 
+        /**
+          Wednesday
+        */
         private void WednesdayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(2, 0);
-        }
-
+        {m_pCourseDB.modTimes(2, 0);}
         private void WednesdayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(2, 1);
-        }
+        {m_pCourseDB.modTimes(2, 1);}
 
+        /**
+          Thursday
+        */
         private void ThursdayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(3, 0);
-        }
-
+        {m_pCourseDB.modTimes(3, 0);}
         private void ThursdayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(3, 1);
-        }
+        {m_pCourseDB.modTimes(3, 1);}
 
+        /**
+          Friday
+        */
         private void FridayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(4, 0);
-        }
-
+        {m_pCourseDB.modTimes(4, 0);}
         private void FridayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            m_pCourseDB.modTimes(4, 1);
-        }
+        {m_pCourseDB.modTimes(4, 1);}
 
+        /// <summary>
+        /// Function to enable Search on Enter
+        /// </summary>
         private void Keyword_Text_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
                 SearchButton_Click(sender, e);
         }
+
+        /**
+         * Check Box Event Section
+         */
+        private void AvailableCoursesCheck_Clicked(object sender, RoutedEventArgs e)
+        {m_pCourseDB.m_bAvailableOnly = (bool)this.AvailableCoursesCheck.IsChecked;}
+        private void FCheck_Click(object sender, RoutedEventArgs e)
+        {m_pCourseDB.m_bDayBooleans[(int)Day.Fri] = (bool)this.FCheck.IsChecked;}
+        private void MCheck_Click(object sender, RoutedEventArgs e)
+        {m_pCourseDB.m_bDayBooleans[(int)Day.Mon] = (bool)this.MCheck.IsChecked;}
+        private void TCheck_Click(object sender, RoutedEventArgs e)
+        {m_pCourseDB.m_bDayBooleans[(int)Day.Tues] = (bool)this.TCheck.IsChecked;}
+        private void WCheck_Click(object sender, RoutedEventArgs e)
+        {m_pCourseDB.m_bDayBooleans[(int)Day.Wed] = (bool)this.WCheck.IsChecked;}
+        private void RCheck_Click(object sender, RoutedEventArgs e)
+        {m_pCourseDB.m_bDayBooleans[(int)Day.Thur] = (bool)this.RCheck.IsChecked;}
     }
 }

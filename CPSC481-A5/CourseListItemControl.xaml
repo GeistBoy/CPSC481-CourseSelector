@@ -7,6 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="538" d:DesignWidth="616">
     <Grid x:Name="CourseGrid" Background="White" Width="616" Height="538">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="539*"/>
+            <ColumnDefinition Width="68*"/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -16,9 +21,9 @@
 
 
         </Grid.RowDefinitions>
-        <Label x:Name="CourseNameLabel" Content="Course Name" Grid.Row="0" VerticalAlignment="Top" Background="#FF598C97" Grid.ColumnSpan="2"/>
+        <Label x:Name="CourseNameLabel" Content="Course Name" Grid.Row="0" VerticalAlignment="Top" Background="#FF598C97" Grid.ColumnSpan="3"/>
 
-        <Grid x:Name="ShortDetail" Grid.Row="1" Grid.ColumnSpan="2" Width="616" Height="76" VerticalAlignment="Top">
+        <Grid x:Name="ShortDetail" Grid.Row="1" Grid.ColumnSpan="3" Width="616" Height="76" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -45,10 +50,10 @@
             <TextBlock x:Name="CourseTime" Text="Hello" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" IsEnabled="False" />
             <TextBlock x:Name="CourseRoom" Text="Room" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
             <TextBlock x:Name="ProfNameLabel" Text="Name" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
-            <TextBlock x:Name="Status" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"><InlineUIContainer>
-                    <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="Status"  Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Height="16.96" Margin="12.14,7.75,7.75,13.29"><InlineUIContainer>
+                    <StackPanel x:Name="StatusPanel" Orientation="Horizontal" ToolTipService.ShowDuration="2000" ToolTipService.InitialShowDelay="0" MouseEnter="StatusIcon_MouseMove">
                         <Image x:Name="StatusIcon" Height="10" Width="10" Source="red_dot.png"/>
-                        <TextBlock x:Name="StatusLabel" TextWrapping="Wrap" Margin="0,-1,0,0" Padding="5,0,10,0"><Run Text="Status"/></TextBlock>
+                        <TextBlock x:Name="StatusLabel" TextWrapping="Wrap" Margin="0,-1,0,0"  Padding="5,0,10,0" ><Run Text="Status"/></TextBlock>
                     </StackPanel>
                 </InlineUIContainer></TextBlock>
             <Button x:Name="AddButton1" Content="Add" Grid.Column="6" Margin="0,9.357,0,0" Style="{DynamicResource YellowButtonStyle}" HorizontalAlignment="Left" Width="68" RenderTransformOrigin="0.485,-0.417" VerticalAlignment="Top"/>
@@ -57,7 +62,7 @@
 
 
         </Grid>
-        <Grid Grid.Row="2" Margin="0,10,0,0">
+        <Grid Grid.Row="2" Margin="0,10,0,0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="4*" />
@@ -81,11 +86,11 @@
             <TextBlock x:Name="CommentAndReviewTextBox"  ToolTip="Expand" Grid.Column="1" Grid.Row="3"  TextWrapping="WrapWithOverflow" Text="Reviews &amp; Comments" HorizontalAlignment="Left" FlowDirection="RightToLeft" Foreground="#FF348899" Padding="0,0,100,0" UseLayoutRounding="True" Margin="0" Cursor="Hand" MouseDown="CommentAndReviewTextBox_MouseDown" />
 
         </Grid>
-        <Button x:Name="AddButton2" Content="Add" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Top" Width="75" Style="{DynamicResource YellowButtonStyle}"  Margin="0,0,10,0"/>
+        <Button x:Name="AddButton2" Content="Add" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Top" Width="68" Style="{DynamicResource YellowButtonStyle}" Grid.Column="1"/>
 
 
 
-        <ScrollViewer Grid.Row="4"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="604" HorizontalAlignment="Left" Margin="12,42,0,10">
+        <ScrollViewer Grid.Row="4"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="604" HorizontalAlignment="Left" Margin="12,42,0,10" Grid.ColumnSpan="3">
             <StackPanel x:Name="CommentsStackPanel" Grid.Row="4" ScrollViewer.CanContentScroll="True" Width="584">
             </StackPanel>
         </ScrollViewer>

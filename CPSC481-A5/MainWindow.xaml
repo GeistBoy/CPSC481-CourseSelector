@@ -23,12 +23,8 @@
             <Canvas x:Name="FilterCanvas" Grid.Row ="0" Grid.RowSpan="3" >
                 <TextBlock TextWrapping="Wrap" Background="#FFCAE6EC" Foreground="Black" FontSize="14" Text="Search for Classes" Padding="10,0,0,0" Height="23.721" Width="636"/>
                 <TextBlock TextWrapping="Wrap" Text="Course Number:" Height="29.303" Canvas.Left="10" Canvas.Top="121.207" Width="94.255" TextAlignment="Right"/>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="112.248" Canvas.Top="120.207">
-                    <ComboBoxItem Content="is exactly"/>
-                    <ComboBoxItem Content="is greater than"/>
-                    <ComboBoxItem Content="is less than"/>
-                </ComboBox>
-                <TextBox Height="23" Canvas.Left="237.248" TextWrapping="Wrap" Canvas.Top="119.167" Width="50"/>
+                <ComboBox x:Name="ComparisonCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="199.333" Canvas.Left="112.248" Canvas.Top="120.207"/>
+                <TextBox x:Name="CourseNumber" Height="23" Canvas.Left="316.581" TextWrapping="Wrap" Canvas.Top="119.167" Width="50"/>
                 <Button x:Name="SearchButton" Content="Search" Canvas.Left="495" Canvas.Top="33.741" Width="75" Style="{DynamicResource YellowButtonStyle}" Height="24.259" Click="SearchButton_Click"/>
                 <TextBlock x:Name="MoreFilterTextBlock" Canvas.Left="575" TextWrapping="Wrap" Text="More..." Canvas.Top="49.751" Width="58.001" Height="18.97" Foreground="#FF348899" Cursor="Hand" MouseDown="MoreFilterTextBlock_MouseDown"/>
                 <TextBlock TextWrapping="Wrap" Text="Additional Search Criteria ▼  " FlowDirection="RightToLeft" Height="20.303" Canvas.Left="1" Canvas.Top="72.944" Width="153.503"/>
@@ -41,41 +37,45 @@
                 <TextBox x:Name="Keyword_Text" Height="25.259" Canvas.Left="60.248" TextWrapping="Wrap" Canvas.Top="37.741" Width="429.752" VerticalContentAlignment="Center" KeyUp="Keyword_Text_KeyUp"/>
                 <TextBlock TextWrapping="Wrap" Text="Subject:" Height="29.303" Canvas.Left="10" Canvas.Top="95.207" Width="94.255" TextAlignment="Right"/>
                 <Grid x:Name="DaysGrid" Height="27.812" Canvas.Left="112.248" Canvas.Top="145.084" Width="429">
-                    <CheckBox x:Name="MCheck" Content="Monday"    HorizontalAlignment="Left" Width="74" VerticalContentAlignment="Center" Margin="2,0,0,0"/>
-                    <CheckBox x:Name="TCheck" Content="Tuesday"   HorizontalAlignment="Left" Width="74" Margin="81,0,0,0" VerticalContentAlignment="Center"/>
-                    <CheckBox x:Name="WCheck" Content="Wednesday" HorizontalAlignment="Left" Width="91" Margin="155,0,0,0" VerticalContentAlignment="Center"/>
-                    <CheckBox x:Name="RCheck" Content="Thursday"  HorizontalAlignment="Left" Width="74" Margin="248,0,0,0" VerticalContentAlignment="Center"/>
-                    <CheckBox x:Name="FCheck" Content="Friday"    HorizontalAlignment="Left" Width="74" Margin="326,0,0,0" VerticalContentAlignment="Center"/>
+                    <CheckBox x:Name="MCheck" Content="Monday"    Click="MCheck_Click" HorizontalAlignment="Left" Width="74" VerticalContentAlignment="Center" Margin="2,0,0,0"/>
+                    <CheckBox x:Name="TCheck" Content="Tuesday"   Click="TCheck_Click" HorizontalAlignment="Left" Width="74" Margin="81,0,0,0" VerticalContentAlignment="Center"/>
+                    <CheckBox x:Name="WCheck" Content="Wednesday" Click="WCheck_Click" HorizontalAlignment="Left" Width="91" Margin="155,0,0,0" VerticalContentAlignment="Center"/>
+                    <CheckBox x:Name="RCheck" Content="Thursday"  Click="RCheck_Click" HorizontalAlignment="Left" Width="74" Margin="248,0,0,0" VerticalContentAlignment="Center"/>
+                    <CheckBox x:Name="FCheck" Content="Friday"    Click="FCheck_Click" HorizontalAlignment="Left" Width="74" Margin="326,0,0,0" VerticalContentAlignment="Center"/>
                 </Grid>
-                <Grid x:Name="StartTimeGrid" Height="97.104" Canvas.Left="112.248" Canvas.Top="177.896" Width="402.752">
+                <Grid x:Name="StartTimeGrid" Height="97.104" Canvas.Left="112.248" Canvas.Top="177.896" Width="410.752">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="Monday" VerticalAlignment="Top" TextAlignment="Center" Margin="14,0,0,0" Height="15.96"/>
-                    <ComboBox x:Name="MondayStartCBO" Margin="15,0,327.752,53.144" Height="23" VerticalAlignment="Bottom" SelectionChanged="MondayStartCBO_SelectionChanged"/>
-                    <ComboBox x:Name="MondayEndCBO" HorizontalAlignment="Left" Height="23" Margin="15,48.96,0,0" VerticalAlignment="Top" Width="60" SelectionChanged="MondayEndCBO_SelectionChanged"/>
-                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="to" VerticalAlignment="Top" TextAlignment="Right" Margin="-50,48.96,0,0" Height="15.96"/>
-                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="Tuesday" VerticalAlignment="Top" TextAlignment="Center" Margin="93.445,0,0,0" Height="15.96"/>
-                    <ComboBox x:Name="TuesdayStartCBO" Margin="94.445,0,248.307,53.144" Height="23" VerticalAlignment="Bottom" SelectionChanged="TuesdayStartCBO_SelectionChanged"/>
-                    <ComboBox x:Name="TuesdayEndCBO" HorizontalAlignment="Left" Height="23" Margin="94.445,48.96,0,0" VerticalAlignment="Top" Width="60" SelectionChanged="TuesdayEndCBO_SelectionChanged"/>
-                    <TextBlock HorizontalAlignment="Left" Width="72" TextWrapping="Wrap" Text="Wednesday" VerticalAlignment="Top" TextAlignment="Center" Margin="167.634,0,0,0" Height="15.96"/>
-                    <ComboBox x:Name="WednesdayStartCBO" Margin="173.992,0,168.76,53.144" Height="23" VerticalAlignment="Bottom" SelectionChanged="WednesdayStartCBO_SelectionChanged"/>
-                    <ComboBox x:Name="WednesdayEndCBO" HorizontalAlignment="Left" Height="23" Margin="173.992,48.96,0,0" VerticalAlignment="Top" Width="60" SelectionChanged="WednesdayEndCBO_SelectionChanged"/>
-                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="Thursday" VerticalAlignment="Top" TextAlignment="Center" Height="15.96" Margin="251.988,0,0,0"/>
-                    <ComboBox x:Name="ThursdayStartCBO" Margin="252.988,0,89.764,53.144" Height="23" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" SelectionChanged="ThursdayStartCBO_SelectionChanged"/>
-                    <ComboBox x:Name="ThursdayEndCBO" HorizontalAlignment="Left" Height="23" Margin="252.988,48.96,0,0" VerticalAlignment="Top" Width="60" SelectionChanged="ThursdayEndCBO_SelectionChanged"/>
-                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Height="31.92" Margin="328.797,0,0,0"><Run Text="Friday"/><LineBreak/><Run/></TextBlock>
-                    <ComboBox x:Name="FridayStartCBO" Margin="329.797,0,12.955,53.144" Height="23" VerticalAlignment="Bottom" SelectionChanged="FridayStartCBO_SelectionChanged"/>
-                    <ComboBox x:Name="FridayEndCBO" Margin="329.797,48.96,12.955,25.144" SelectionChanged="FridayEndCBO_SelectionChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="Monday" VerticalAlignment="Top" TextAlignment="Center" Margin="16.668,0,0,0" Height="15.96"/>
+                    <ComboBox x:Name="MondayStartCBO" Margin="10,0,325.752,53.519" Height="23" VerticalAlignment="Bottom" SelectionChanged="MondayStartCBO_SelectionChanged" Width="75"/>
+                    <ComboBox x:Name="MondayEndCBO" HorizontalAlignment="Left" Height="23" Margin="10,48.96,0,0" VerticalAlignment="Top" Width="75" SelectionChanged="MondayEndCBO_SelectionChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="to" VerticalAlignment="Top" TextAlignment="Right" Margin="-54.002,48.96,0,0" Height="15.96"/>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="Tuesday" VerticalAlignment="Top" TextAlignment="Center" Margin="95.446,0,0,0" Height="15.96"/>
+                    <ComboBox x:Name="TuesdayStartCBO" Margin="90,0,245.752,53.519" Height="23" VerticalAlignment="Bottom" SelectionChanged="TuesdayStartCBO_SelectionChanged" Width="75"/>
+                    <ComboBox x:Name="TuesdayEndCBO" HorizontalAlignment="Left" Height="23" Margin="90,48.96,0,0" VerticalAlignment="Top" Width="75" SelectionChanged="TuesdayEndCBO_SelectionChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Width="72" TextWrapping="Wrap" Text="Wednesday" VerticalAlignment="Top" TextAlignment="Center" Margin="170.302,0,0,0" Height="15.96"/>
+                    <ComboBox x:Name="WednesdayStartCBO" Margin="170,0,165.752,53.519" Height="23" VerticalAlignment="Bottom" SelectionChanged="WednesdayStartCBO_SelectionChanged" Width="75"/>
+                    <ComboBox x:Name="WednesdayEndCBO" HorizontalAlignment="Left" Height="23" Margin="170,48.585,0,0" VerticalAlignment="Top" Width="75" SelectionChanged="WednesdayEndCBO_SelectionChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" Text="Thursday" VerticalAlignment="Top" TextAlignment="Center" Height="15.96" Margin="257.321,0.375,0,0"/>
+                    <ComboBox x:Name="ThursdayStartCBO" Margin="250,21.335,85.752,53.144" RenderTransformOrigin="0.5,0.5" SelectionChanged="ThursdayStartCBO_SelectionChanged" Width="75"/>
+                    <ComboBox x:Name="ThursdayEndCBO" HorizontalAlignment="Left" Height="23" Margin="250,48.96,0,0" VerticalAlignment="Top" Width="75" SelectionChanged="ThursdayEndCBO_SelectionChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Width="60" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Height="31.92" Margin="340.752,0,0,0"><Run Text="Friday"/><LineBreak/><Run/></TextBlock>
+                    <ComboBox x:Name="FridayStartCBO" Margin="327.752,0,0,53.519" Height="23" VerticalAlignment="Bottom" SelectionChanged="FridayStartCBO_SelectionChanged" Width="75"/>
+                    <ComboBox x:Name="FridayEndCBO" Margin="327.752,48.96,0,25.144" SelectionChanged="FridayEndCBO_SelectionChanged" Width="75"/>
                 </Grid>
-                <TextBlock TextWrapping="Wrap" Text="From" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="28" Canvas.Top="201.116" Width="94.255" TextAlignment="Right"/>
+                <TextBlock TextWrapping="Wrap" Text="From" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="23.998" Canvas.Top="201.116" Width="94.255" TextAlignment="Right"/>
                 <Button x:Name="ClearButton" Content="  Clear" Canvas.Left="536" Canvas.Top="221.02" Width="78" Style="{DynamicResource YellowButtonStyle}" Height="21.98" Click="ClearButton_Click"/>
                 <Rectangle x:Name="HideFilter" Fill="White" Height="607.167" RadiusY="1" RadiusX="1" Stroke="#FFD3CCAC" Canvas.Top="81.721" Width="636" StrokeThickness="0" d:IsHidden="True"/>
+                <CheckBox x:Name="AvailableCoursesCheck" Content="Available Courses Only" Height="16.5" Canvas.Left="237.248" Canvas.Top="95.207" Width="145.333" Click="AvailableCoursesCheck_Clicked"/>
 
             </Canvas>
 
 
-            <ScrollViewer Grid.Row="2"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="636" HorizontalAlignment="Left" Margin="0,2,0,0" Grid.RowSpan="2">
+            <ScrollViewer Grid.Row="2"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="636" HorizontalAlignment="Left" Margin="0,2,0,0" Grid.RowSpan="2" d:IsLocked="True">
                 <StackPanel x:Name="SearchResultStackPanel" Grid.Row="1" ScrollViewer.CanContentScroll="True" Width="616.093"/>
             </ScrollViewer>
             <Canvas x:Name="NoSearchCanvas" Visibility="Hidden" Grid.RowSpan="2" Grid.Row="2">

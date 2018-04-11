@@ -11,7 +11,9 @@ namespace CPSC481_A5
     /// </summary>
     public class CourseDB
     {
-
+        /// <summary>
+        /// Singleton Implementation.
+        /// </summary>
         private static CourseDB m_pInstance = null;
         public static CourseDB Instance
         {
@@ -31,17 +33,25 @@ namespace CPSC481_A5
 
         public enum eCourseCompare
         {
-            LESS_THAN = -1,
+
+            LESS_THAN = 0,
+            LESS_THAN_EQUAL,
             EQUAL,
-            GREATER_THAN
+            GREATER_THAN_EQUAL,
+            GREATER_THAN,
+            MAX_COMPARES
         }
+        public readonly string[] COMPARE_VALUES = new string[(int)eCourseCompare.MAX_COMPARES]
+        { "Less Than (<)", "Less than or equal to (<=)", "Equal to (==)", "Greater than or equal to (>=)", "Greater than (>)" };
+        
 
         // List of Search Filters can go here
         public ComboBox m_pSubjectCombo;
+        public ComboBox m_pComparisonCombo;
         public ComboBox[,] m_pTimeCombos;
         public bool[] m_bDayBooleans;
         public int m_iCourseNum;
-        public eCourseCompare m_eComparator;
+        public bool m_bAvailableOnly = false;
 
         /// <summary>
         /// List of Locations and their ENUMS
@@ -63,6 +73,9 @@ namespace CPSC481_A5
         public readonly string[] LOCATION_VALUES = new string[(int)eLocations.MAX_LOCS] 
         { "ICT", "ST", "MS", "SA", "SB", "EEEL", "CHA", "CHB", "CHC", "CHD" };
 
+        /// <summary>
+        /// Course Names Enum
+        /// </summary>
         enum eCourseNames
         {
             CPSC= 0,
@@ -77,10 +90,16 @@ namespace CPSC481_A5
             GEOG,
             MAX_COURSES
         };
+        /// <summary>
+        /// Associated list of String Values for each Course Name
+        /// </summary>
         public readonly string[] COURSE_VALUES = new string[(int)eCourseNames.MAX_COURSES]
         { "CPSC", "MATH", "ENGL", "MUSI", "KNES", "FREN", "DRAM", "ARTS", "CHEM", "GEOG" };
 
-        public readonly string[] availableTimes = new string[9] { "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "16:00", "17:00" };
+        /// <summary>
+        /// String of available times for combo box population.
+        /// </summary>
+        public readonly string[] availableTimes = new string[10] { "8:00AM", "9:00AM", "10:00AM", "11:00AM", "12:00PM", "1:00PM", "2:00PM", "3:00PM", "4:00PM", "5:00PM" };
 
         /// <summary>
         /// Default Constructor - Loads a Default list of courses
@@ -91,6 +110,11 @@ namespace CPSC481_A5
             m_pTimeCombos = new ComboBox[5, 2];
         }
 
+        /// <summary>
+        /// Given a Course, generate a CourseListItemControl object for it.
+        /// </summary>
+        /// <param name="cCourse">Course to generate Control from</param>
+        /// <returns>The Generated Control.</returns>
         private CourseListItemControl generateCLIC(Course cCourse )
         {
             // Generate new Control and populate.
@@ -111,7 +135,7 @@ namespace CPSC481_A5
                 Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../red_dot.png");
                 pReturnControl.StatusIcon.Source = new BitmapImage(uri);
             }
-            pReturnControl.StatusLabel.Text = cCourse.StatusToString();
+            pReturnControl.StatusLabel.Text = cCourse.getStatusAbbrev();
             pReturnControl.CourseDescriptionLabel.Text = cCourse.Description;
             pReturnControl.TagLabel.Text = cCourse.CourseTagsToString();
             pReturnControl.Height = CourseListItemControl.ShortDescriptionHeight;
@@ -153,6 +177,7 @@ namespace CPSC481_A5
             foreach (Course cCourse in cCourses)
                 addCourse(cCourse);
         }
+
         /// <summary>
         /// Loads a bunch of default, random courses.
         /// </summary>
@@ -163,15 +188,15 @@ namespace CPSC481_A5
                 // init;
                 Course rand = new Course();
                 int iCourseIndex = m_pRand.Next(1, (int)eCourseNames.MAX_COURSES) - 1;
-                int iCourseNumber = m_pRand.Next(100, 699);
-                rand.CourseAbbrev = COURSE_VALUES[iCourseIndex] + "-" + iCourseNumber.ToString();
+                rand.iCourseNumber = m_pRand.Next(Course.VALID_COURSE_NUMBER_MIN, Course.VALID_COURSE_NUMBER_MAX);
+                rand.CourseAbbrev = COURSE_VALUES[iCourseIndex] + "-" + rand.iCourseNumber.ToString();
                 rand.CourseName = "Random Course " + i.ToString();
                 rand.Description = "This Course was generated at Random for the purposes of testing and populating a database.";
                 rand.ProfessorName = "Rando Calrissian";
                 rand.Tags.Add("Easy");
                 rand.Tags.Add("Random");
                 rand.Tags.Add("Pseudo");
-                switch( m_pRand.Next(1,2) )
+                switch( m_pRand.Next(1,3) )
                 {
                     case 1:
                         rand.ScheduleDay.Add(Day.Tues);
@@ -189,12 +214,12 @@ namespace CPSC481_A5
                 int iLocationIndex = m_pRand.Next(1, (int)eLocations.MAX_LOCS) - 1;
                 int iLocationNumber = m_pRand.Next(101, 399);
                 rand.Location = LOCATION_VALUES[iLocationIndex ] + " " + iLocationNumber.ToString(); // TODO
-                rand.CourseStatus = Status.Open; // TODO
+                rand.CourseStatus = (Status)m_pRand.Next(0, (int)Status.MAX_STATUS); // TODO
 
                 // Tutorial 1
                 Tutorial t1 = new Tutorial();
                 t1.TutorialAdvisor = "Ms. Randy";
-                switch (m_pRand.Next(1, 2))
+                switch (m_pRand.Next(1, 3))
                 {
                     case 1:
                         t1.TutorialDays.Add(Day.Tues);
@@ -214,7 +239,7 @@ namespace CPSC481_A5
                 // Tutorial 2
                 Tutorial t2 = new Tutorial();
                 t2.TutorialAdvisor = "Ms. Randy";
-                switch (m_pRand.Next(1, 2))
+                switch (m_pRand.Next(1, 3))
                 {
                     case 1:
                         t2.TutorialDays.Add(Day.Tues);
@@ -259,6 +284,10 @@ namespace CPSC481_A5
         {
             // Return Value
             List<Course> pReturnVal = new List<Course>();
+            if( null != m_pSelected)
+                (from kvp in m_pCourseList where kvp.Key == m_pSelected select kvp.Value).FirstOrDefault().applyTextBlock_MouseDown();
+
+            m_pSelected = null;
             
             // Check each Course in the Database
             foreach( KeyValuePair<Course, CourseListItemControl> cKVP in m_pCourseList)
@@ -271,19 +300,28 @@ namespace CPSC481_A5
             return pReturnVal;
         }
 
+        /// <summary>
+        /// Clears the Filters and resets the combo boxes.
+        /// </summary>
         public void clearFilters()
         {
             // Init Subject ComboBox
             m_pSubjectCombo.ItemsSource = COURSE_VALUES;
             m_pSubjectCombo.SelectedIndex = -1;
+            m_pComparisonCombo.ItemsSource = COMPARE_VALUES;
+            m_pComparisonCombo.SelectedIndex = -1;
+            m_bAvailableOnly = false;
 
             // Init Time Combo Boxes
-            
+            string[][] pTrueTimes = new string[2][];
+            pTrueTimes[0] = availableTimes.Take(availableTimes.Count() - 1).ToArray();
+            pTrueTimes[1] = availableTimes.Skip(1).ToArray();
+
             for (int iDay = 0; iDay < 5; ++iDay)
             {
                 for (int i = 0; i < 2; ++i)
                 {
-                    m_pTimeCombos[iDay, i].ItemsSource = availableTimes;
+                    m_pTimeCombos[iDay, i].ItemsSource = pTrueTimes[i];
                     m_pTimeCombos[iDay, i].SelectedIndex = -1;
                 }
             }
@@ -291,8 +329,7 @@ namespace CPSC481_A5
             // Initialize Checks
             m_bDayBooleans = new bool[5] { false, false, false, false, false };
 
-            m_iCourseNum = -1;
-            m_eComparator = eCourseCompare.EQUAL;
+            m_iCourseNum = 0;
         }
 
         /// <summary>
@@ -321,6 +358,10 @@ namespace CPSC481_A5
             return pReturnList;
         }
 
+        /// <summary>
+        /// Returns a list of all the CourseListItemControls in the Database.
+        /// </summary>
+        /// <returns>All of the CourseListItemControls for every Course in Database.</returns>
         public List<CourseListItemControl> getAllControls()
         {
             List<CourseListItemControl> pReturn = new List<CourseListItemControl>();
@@ -355,7 +396,16 @@ namespace CPSC481_A5
             }
         }
 
+        /// <summary>
+        /// Fetch the currently selected course as reference to modify calendar
+        /// </summary>
+        /// <returns>Currently Selected Course from the Search area.</returns>
         public Course getSelected() { return m_pSelected; }
+
+        /// <summary>
+        /// Fetch the CourseListItemControl object for the currently selected course.
+        /// </summary>
+        /// <returns>The CourseListItemControl object for the currently selected course.</returns>
         public CourseListItemControl getSelectedControl()
         {
             if (null == m_pSelected)
@@ -374,30 +424,86 @@ namespace CPSC481_A5
         {
             bool bReturnValue = true;
 
+            if (m_bAvailableOnly)
+                bReturnValue &= c.CourseStatus == Status.Open;
+
             // Check Course Type
             if( m_pSubjectCombo.SelectedIndex > 0 )
                 bReturnValue &= c.CourseAbbrev.Contains(m_pSubjectCombo.SelectedItem.ToString());
 
+            // Check for Valid Days
             bool bConsiderDay = false;
             foreach (bool bDayValid in m_bDayBooleans)
                 bConsiderDay |= bDayValid;
 
+            // Only apply check if days are specified.
             if (bConsiderDay)
             {
+                bConsiderDay = false;
                 foreach (Day dDay in c.ScheduleDay)
-                    bReturnValue &= m_bDayBooleans[(int)dDay];
+                    bConsiderDay |= m_bDayBooleans[(int)dDay];
+
+                bReturnValue &= bConsiderDay;
             }
 
-            for( int i = 0; i < 5; ++i )
+            // Check Time Frames
+            bConsiderDay = isTimeFiltered();
+
+            if (bConsiderDay)
             {
-                if (m_pTimeCombos[i, 0].SelectedIndex >= 0)
-                    bReturnValue &= (c.SceduleTime - 8) > m_pTimeCombos[i, 0].SelectedIndex;
+                bConsiderDay = false;
+                foreach( Day eDay in c.ScheduleDay)
+                {
+                    if (m_pTimeCombos[(int)eDay, 0].SelectedIndex >= 0)
+                        bConsiderDay |= (c.SceduleTime - 8) >= m_pTimeCombos[(int)eDay, 0].SelectedIndex;
 
-                if( m_pTimeCombos[i, 1].SelectedIndex >= 0 )
-                    bReturnValue &= (c.SceduleTime - 8) < m_pTimeCombos[i, 1].SelectedIndex;
+                    if (m_pTimeCombos[(int)eDay, 1].SelectedIndex >= 0)
+                        bConsiderDay |= (c.SceduleTime - 8) <= m_pTimeCombos[(int)eDay, 1].SelectedIndex;
+                }
+
+                // Apply Timeframe check.
+                bReturnValue &= bConsiderDay;
+            }
+            
+            // Check Course Number
+            if (m_pComparisonCombo.SelectedIndex != -1)
+            {
+                switch( (eCourseCompare)m_pComparisonCombo.SelectedIndex )
+                {
+                    case eCourseCompare.GREATER_THAN_EQUAL:
+                        bReturnValue &= c.iCourseNumber >= m_iCourseNum;
+                        break;
+                    case eCourseCompare.GREATER_THAN:
+                        bReturnValue &= c.iCourseNumber > m_iCourseNum;
+                        break;
+                    case eCourseCompare.EQUAL:
+                        bReturnValue &= c.iCourseNumber == m_iCourseNum;
+                        break;
+                    case eCourseCompare.LESS_THAN_EQUAL:
+                        bReturnValue &= c.iCourseNumber <= m_iCourseNum;
+                        break;
+                    case eCourseCompare.LESS_THAN:
+                        bReturnValue &= c.iCourseNumber < m_iCourseNum;
+                        break;
+                }
             }
 
-            // TODO: Implement Checks
+            // Return Check
+            return bReturnValue;
+        }
+
+        /// <summary>
+        /// Determine if filtering by times is required.
+        /// </summary>
+        /// <returns></returns>
+        private bool isTimeFiltered()
+        {
+            bool bReturnValue = false;
+
+            for (int i = 0; i < 5; ++i)
+                for (int j = 0; j < 2; ++j)
+                    bReturnValue |= (m_pTimeCombos[i, j].SelectedIndex != -1);
+
             return bReturnValue;
         }
 
