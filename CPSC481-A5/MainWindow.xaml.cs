@@ -26,6 +26,9 @@ namespace CPSC481_A5
         DegreeNav degreeProgress;
         CourseDB m_pCourseDB = CourseDB.Instance;
 
+
+        List<Course> StudentCourses = new List<Course>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -42,6 +45,9 @@ namespace CPSC481_A5
             //Sets the icons in degree navigator (checkmarks and X's)
             SetDegreeNavIcons(degreeProgress);
 
+            //Updates the credits in the top right of the main window based on degree nav 
+            UpdateCreditsPassed();
+
             RandomClasses derp = new RandomClasses();
             List<Course> list = new List<Course>();
             list.Add(derp.hci);
@@ -53,6 +59,15 @@ namespace CPSC481_A5
                 this.SearchResultStackPanel.Children.Add(pObj);
 
             this.Term_Label.Content = "Winter 2018";
+
+            // Populate Calendar
+            StudentCourses.Add(derp.hci);
+            String calendarContent = "";
+            foreach(Course c in StudentCourses)
+            {
+                calendarContent = c.CourseAbbrev + " ";
+            }
+            this.Calendar.Text = calendarContent;
 
             triggerNoSearchOverlay();
         }
@@ -92,9 +107,8 @@ namespace CPSC481_A5
             Object[] row10 = { "STAT 213", ClassListToString(progress.degreeNavRows[9]) };
             Object[] row11 = { "MATH 211/249/271", ClassListToString(progress.degreeNavRows[10]) };
             Object[] row12 = { "PHIL 279", ClassListToString(progress.degreeNavRows[11]) };
-            Object[] row13 = { "PHIL 314", ClassListToString(progress.degreeNavRows[12]) };
-            Object[] row14 = { "2 courses from Faculty of Arts", ClassListToString(progress.degreeNavRows[13]) };
-            Object[] row15 = { "2 courses selected freely", ClassListToString(progress.degreeNavRows[14]) };
+            Object[] row13 = { "2 courses from Faculty of Arts", ClassListToString(progress.degreeNavRows[12]) };
+            Object[] row14 = { "2 courses selected freely", ClassListToString(progress.degreeNavRows[13]) };
 
 
             degreeReq.Columns.AddRange(columns);
@@ -112,7 +126,6 @@ namespace CPSC481_A5
             degreeReq.Rows.Add(row12);
             degreeReq.Rows.Add(row13);
             degreeReq.Rows.Add(row14);
-            degreeReq.Rows.Add(row15);
 
             ReqTable.MinRowHeight = 35;
             ReqTable.DataContext = degreeReq.DefaultView;
@@ -154,8 +167,8 @@ namespace CPSC481_A5
         //Input current degree nav progress to update icons (checkmark or X)
         private void SetDegreeNavIcons(DegreeNav progress)
         {
-            Image[] images = new Image[15] {Row1Img, Row2Img, Row3Img, Row4Img, Row5Img,
-                Row6Img,Row7Img,Row8Img,Row9Img,Row10Img,Row11Img,Row12Img,Row13Img,Row14Img,Row15Img};
+            Image[] images = new Image[14] {Row1Img, Row2Img, Row3Img, Row4Img, Row5Img,
+                Row6Img,Row7Img,Row8Img,Row9Img,Row10Img,Row11Img,Row12Img,Row13Img,Row14Img};
             for (int i = 0; i < progress.degreeNavRows.Length; i++)
             {
                 var imageName = progress.CheckRow(progress.degreeNavRows[i].Count, i) ? "checkmark.png" : "x-mark.png";
@@ -307,6 +320,73 @@ namespace CPSC481_A5
         {
             if (e.Key == Key.Enter)
                 SearchButton_Click(sender, e);
+        }
+
+        bool toggleSelectedClass = false;
+        private void Calendar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+            if (StudentCourses.Count()> 0 && toggleSelectedClass ==false)
+            {
+                this.SelectedClassStackPanel.Children.Clear();
+                CourseListItemControl CourseControl = new CourseListItemControl(null);
+                Course c = StudentCourses[0];
+                CourseControl.CourseNameLabel.Content = c.CourseAbbrev + "\t" + c.CourseName;
+                CourseControl.CourseDayLabel.Text = c.SceduleDayToString();
+                CourseControl.CourseTime.Text = c.SceduleTimeToString();
+                CourseControl.CourseRoom.Text = c.Location;
+                CourseControl.ProfNameLabel.Text = c.ProfessorName + " User";
+                if (c.StatusToString().Equals("Open"))
+                {
+                    Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../green_dot.png");
+                    CourseControl.StatusIcon.Source = new BitmapImage(uri);
+                }
+                else
+                {
+                    Uri uri = new Uri(System.AppDomain.CurrentDomain.BaseDirectory + "../../red_dot.png");
+                    CourseControl.StatusIcon.Source = new BitmapImage(uri);
+                } 
+                CourseControl.StatusLabel.Text = c.StatusToString();
+
+                CourseControl.RemoveButton.Visibility = Visibility.Visible;
+                CourseControl.TutorialSelectedLabel.Visibility = Visibility.Visible;
+
+                if (c.Tutorials.Count > 0)
+                {
+                    CourseControl.TutorialSelectedLabel.Text = c.Tutorials[0].ToString();
+                }
+
+                CourseControl.MoreTextBlock.Visibility= Visibility.Hidden;
+                CourseControl.AddButton1.Visibility = Visibility.Hidden;
+                CourseControl.Status.Visibility = Visibility.Hidden;
+                CourseControl.StatusLabel1.Visibility = Visibility.Hidden;
+                CourseControl.TutorialTimeDropDown.Visibility = Visibility.Hidden;
+                
+                this.SelectedClassStackPanel.Children.Add(CourseControl);
+
+            
+                toggleSelectedClass = true;
+
+            }
+            else
+            {
+                toggleSelectedClass = false;
+                this.SelectedClassStackPanel.Children.Clear();
+            }
+
+        }
+
+        //Updates the credits in the top right based on the degree nav
+        private void UpdateCreditsPassed()
+        {
+            double creditsTaken = 0;
+            foreach (List<string> rowOfDegreeNav in degreeProgress.degreeNavRows)
+            {
+                double classesInRow = rowOfDegreeNav.Count;
+                creditsTaken += classesInRow * 3;
+            }
+            this.CreditsTaken.Text = "Credits Taken: " + creditsTaken;
+            this.CreditsLeft.Text = "Credits Left: " + (75 - creditsTaken);
         }
     }
 }
