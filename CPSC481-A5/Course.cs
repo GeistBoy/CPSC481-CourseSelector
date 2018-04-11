@@ -124,7 +124,7 @@ namespace CPSC481_A5
         /// <returns>Concatonated String of Relevant Search Data.</returns>
         public String toSearchString()
         {
-            String sReturnVal = this.CourseName + this.CourseAbbrev + this.Description + this.ProfessorName;
+            String sReturnVal = this.CourseName + this.CourseAbbrev + this.Description + this.ProfessorName + this.Location;
 
             foreach (string tag in this.Tags)
                 sReturnVal += tag;
