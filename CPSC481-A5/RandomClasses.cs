@@ -31,14 +31,14 @@ namespace CPSC481_A5
             hci.CourseStatus = Status.Open; // TODO
 
 
-            Tutorial t1 = new Tutorial();
+            Tutorial t1 = new Tutorial(hci.CourseAbbrev);
             t1.TutorialAdvisor = "James Papi";
             t1.TutorialDays.Add(Day.Mon);
             t1.TutorialDays.Add(Day.Wed);
             t1.TutorialDays.Add(Day.Fri);
             t1.TutorialTime = 8;
 
-            Tutorial t2 = new Tutorial();
+            Tutorial t2 = new Tutorial(hci.CourseAbbrev);
             t1.TutorialAdvisor = "James Papi";
             t1.TutorialDays.Add(Day.Mon);
             t1.TutorialDays.Add(Day.Wed);

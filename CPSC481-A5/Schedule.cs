@@ -28,7 +28,7 @@ namespace CPSC481_A5
         }
 
         // check time conflict
-        public bool isConflict(Course course)
+        public bool isConflict(Course course, Tutorial tut)
         {
             bool isConflict = false;
 
@@ -39,10 +39,7 @@ namespace CPSC481_A5
                     break;
                 }
             }
-
-            foreach(Tutorial tut in course.Tutorials)
-            {
-                foreach(Day day in tut.TutorialDays)
+            foreach(Day day in tut.TutorialDays)
                 {
                     if (dataTable.Rows[tut.TutorialTime - 8][(int)day+1].ToString() != "")
                     {
@@ -50,13 +47,13 @@ namespace CPSC481_A5
                         isConflict = true;
                         break;
                     }
-                }
             }
+            
             return isConflict;
         }
 
         // update dataTable
-        public void update(List<Course> courses)
+        public void update(List<Course> courses, List<Tutorial> tutorials)
         {
             dataTable.Clear();
             int time = 8;
@@ -71,18 +68,18 @@ namespace CPSC481_A5
                     {
                         foreach (Day day in c.ScheduleDay)
                         {
-                            list[(int)day+1] = c.CourseAbbrev;
+                            list[(int)day+1] = c.CourseAbbrev + "\nLEC";
                         }
                     }
-                    // check tutorials
-                    foreach (Tutorial tut in c.Tutorials)
+                   
+                }
+                foreach (Tutorial t in tutorials)
+                {
+                    if (t.TutorialTime == i + 8)
                     {
-                        if (tut.TutorialTime == i + 8)
+                        foreach (Day day in t.TutorialDays)
                         {
-                            foreach (Day day in tut.TutorialDays)
-                            {
-                                list[(int)day + 1] = c.CourseAbbrev + "\n" + "TUT";
-                            }
+                            list[(int)day + 1] = t.ClassAbbrev+ "\nTUT";
                         }
                     }
                 }

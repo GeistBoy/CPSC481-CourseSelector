@@ -224,6 +224,12 @@ namespace CPSC481_A5
         public String TutorialAdvisor = "Mr.Who";
         public int TutorialTime = 8;
         public List<Day> TutorialDays = new List<Day>();
+        public String ClassAbbrev = "CLASS";
+
+        public Tutorial(String CourseName)
+        {
+            ClassAbbrev = CourseName;
+        }
 
         public override string ToString()
         {

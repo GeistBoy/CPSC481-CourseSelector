@@ -29,6 +29,7 @@ namespace CPSC481_A5
         CourseDB m_pCourseDB = CourseDB.Instance;
 
         List<Course> StudentCourses = new List<Course>();
+        List<Tutorial> StudentTutorials = new List<Tutorial>();
 
         public MainWindow()
         {
@@ -496,18 +497,23 @@ namespace CPSC481_A5
         }
 
         //adding course
-        public void addCourse(Course course)
+        public void addCourse(Course course, Tutorial tutorial)
         {
+            
             if (StudentCourses.Contains(course))
             {
                 MessageBox.Show(course.CourseAbbrev + " is already in your time table, please enroll another course");
-            }else if(schedule.isConflict(course)){
+            }else if(schedule.isConflict(course, tutorial )){
                 MessageBox.Show(course.CourseAbbrev + " has time conflict with current schedule");
             }else if(StudentCourses.Count == 5){
                 MessageBox.Show("You have reach the maximum amount of courses");
             }else {
                 StudentCourses.Add(course);
-                schedule.update(StudentCourses);
+                if (tutorial != null)
+                {
+                    StudentTutorials.Add(tutorial);
+                }
+                schedule.update(StudentCourses, StudentTutorials);
                 updateCalendar();
             }
         }
@@ -516,7 +522,7 @@ namespace CPSC481_A5
         public void removeCourse(Course course)
         {
             StudentCourses.Remove(course);
-            schedule.update(StudentCourses);
+            schedule.update(StudentCourses, StudentTutorials);
             updateCalendar();
         }
 

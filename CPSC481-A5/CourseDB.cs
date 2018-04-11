@@ -224,7 +224,7 @@ namespace CPSC481_A5
                 rand.CourseStatus = (Status)m_pRand.Next(0, (int)Status.MAX_STATUS); // TODO
 
                 // Tutorial 1
-                Tutorial t1 = new Tutorial();
+                Tutorial t1 = new Tutorial(rand.CourseAbbrev);
                 t1.TutorialAdvisor = "Ms. Randy";
                 switch (m_pRand.Next(1, 3))
                 {
@@ -244,7 +244,7 @@ namespace CPSC481_A5
                     t1.TutorialTime = m_pRand.Next(8, 17);
 
                 // Tutorial 2
-                Tutorial t2 = new Tutorial();
+                Tutorial t2 = new Tutorial(rand.CourseAbbrev);
                 t2.TutorialAdvisor = "Ms. Randy";
                 switch (m_pRand.Next(1, 3))
                 {
