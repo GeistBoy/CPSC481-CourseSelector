@@ -8,10 +8,13 @@
         Title="Schedule Builder" Height="720" Width="1280
         ">
     <Window.Resources>
-
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+        
     </Window.Resources>
     <Grid>
-        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636" d:IsHidden="True">
+        <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0" />
                 <RowDefinition Height="74"/>
@@ -90,29 +93,28 @@
                 <RowDefinition Height="130" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
-            <Button x:Name="ReviewButton" Grid.Row="0" Content="Review a class" HorizontalAlignment="Left" VerticalAlignment="Top" Width="112" Click="ReviewButton_Click" Style="{DynamicResource YellowButtonStyle}" Margin="46.123,104.04,0,0"/>
+            <Button x:Name="ReviewButton" Grid.Row="0" Content="Review a class" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Click="ReviewButton_Click" Style="{DynamicResource YellowButtonStyle}" Margin="10,104,0,0"/>
             <TabControl Grid.Row="1" HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-
-                
-
-                <TabItem Header="Calendar" Width="310">
-                    <Grid Background="#FFE5E5E5">
+                <TabItem Header="Calendar" Width="310" IsSelected="True">
+                    <Grid x:Name="calendarView" Background="White">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="110" />
                         </Grid.RowDefinitions>
-                        <TextBlock x:Name="Calendar" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="299.96" Width="555.29" MouseDown="Calendar_MouseDown"/>
-                        <DataGrid Grid.Row="0" x:Name="ScheduleTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Margin="10,45.5,10,59.5" VerticalAlignment="Stretch" FrozenColumnCount="8" AutoGenerateColumns="False" SelectionUnit="Cell" CanUserResizeRows="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" HeadersVisibility="Column">
+                        <Button x:Name="Calendar1" HorizontalAlignment="Left" Margin="10,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
+                        <Button x:Name="Calendar2" HorizontalAlignment="Left" Margin="131,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
+                        <Button x:Name="Calendar3" HorizontalAlignment="Left" Margin="252,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
+                        <Button x:Name="Calendar4" HorizontalAlignment="Left" Margin="373,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
+                        <Button x:Name="Calendar5" HorizontalAlignment="Left" Margin="494,10,0,0" Content="No class" Background="#F2EBC7"  VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click" RenderTransformOrigin="-0.872,0.516"/>
+                        <DataGrid Grid.Row="0"  x:Name="ScheduleTable" Height="365" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Margin="10,46,10,10" VerticalAlignment="Stretch" FrozenColumnCount="8" AutoGenerateColumns="False" SelectionUnit="Cell" CanUserResizeRows="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" HeadersVisibility="Column">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Time}" Header="Time" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
-                                <DataGridTextColumn Binding="{Binding Monday}" Header="Monday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
+                                <DataGridTextColumn Binding="{Binding Time}" Header="Time" Width="60" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
+                                <DataGridTextColumn Binding="{Binding Monday}" Header="Monday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False">
+                                </DataGridTextColumn>
                                 <DataGridTextColumn Binding="{Binding Tuesday}" Header="Tuesday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
                                 <DataGridTextColumn Binding="{Binding Wednesday}" Header="Wednesday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
                                 <DataGridTextColumn Binding="{Binding Thursday}" Header="Thursday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
                                 <DataGridTextColumn Binding="{Binding Friday}" Header="Friday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
-                                <!--<DataGridTextColumn Binding="{Binding Saturday}" Header="Saturday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
-                        <DataGridTextColumn Binding="{Binding Sunday}" Header="Sunday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>-->
                             </DataGrid.Columns>
                         </DataGrid>
                         <StackPanel x:Name="SelectedClassStackPanel" Grid.Row="1" Margin="0,0,5,0"/>
@@ -170,7 +172,7 @@
 
             </TabControl>
             <Button x:Name="ContactAdvisorButton" Content="Contact Advisor" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" Width="127.5" Style="{DynamicResource YellowButtonStyle}" Margin="493.5,104.04,0,0" Click="ContactAdvisorButton_Click"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Miley Denver" VerticalAlignment="Top" Height="27.96" Width="197.79" FontSize="16" FontWeight="Bold" d:IsHidden="True"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Miley Denver" VerticalAlignment="Top" Height="27.96" Width="197.79" FontSize="16" FontWeight="Bold"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,37.96,0,0" TextWrapping="Wrap" Text="Computer Science" VerticalAlignment="Top" Height="27.96" Width="197.79"/>
             <TextBlock x:Name="CreditsRequired" HorizontalAlignment="Left" Margin="467.333,16.667,0,0" TextWrapping="Wrap" Text="Credits Required: 75" VerticalAlignment="Top" Height="21.293" Width="137.123"/>
             <TextBlock x:Name="CreditsTaken" HorizontalAlignment="Left" Margin="467.333,37.96,0,0" TextWrapping="Wrap" Text="Taken: 15.0" VerticalAlignment="Top" Height="21.293" Width="111.123"/>

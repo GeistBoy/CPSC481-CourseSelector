@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Drawing;
 using System.Data;
 using System.Diagnostics;
+using System.Windows.Controls.Primitives;
 
 namespace CPSC481_A5
 {
@@ -24,8 +25,8 @@ namespace CPSC481_A5
     public partial class MainWindow : Window
     {
         DegreeNav degreeProgress;
+        Schedule schedule;
         CourseDB m_pCourseDB = CourseDB.Instance;
-
 
         List<Course> StudentCourses = new List<Course>();
 
@@ -39,11 +40,17 @@ namespace CPSC481_A5
             //degreeProgress is used to check if a requirement is completed in degree navigator
             degreeProgress = new DegreeNav();
 
+            //schedule is responsed for schedule data
+            schedule = new Schedule();
+
             //Initializes the degree navigator with default completed classes
             PopulateDegreeNavRequirements(degreeProgress);
 
             //Sets the icons in degree navigator (checkmarks and X's)
             SetDegreeNavIcons(degreeProgress);
+
+            // initialize schedule
+            updateCalendar();
 
             //Updates the credits in the top right of the main window based on degree nav 
             UpdateCreditsPassed();
@@ -55,19 +62,14 @@ namespace CPSC481_A5
             m_pCourseDB.loadDefault();
             List<CourseListItemControl> pCLICList =  m_pCourseDB.getAllControls();
 
-            foreach( CourseListItemControl pObj in pCLICList )
+            foreach( CourseListItemControl pObj in pCLICList)
+            {
                 this.SearchResultStackPanel.Children.Add(pObj);
+                pObj.window = this;
+            }
+                
 
             this.Term_Label.Content = "Winter 2018";
-
-            // Populate Calendar
-            StudentCourses.Add(derp.hci);
-            String calendarContent = "";
-            foreach(Course c in StudentCourses)
-            {
-                calendarContent = c.CourseAbbrev + " ";
-            }
-            this.Calendar.Text = calendarContent;
 
             triggerNoSearchOverlay();
         }
@@ -177,7 +179,6 @@ namespace CPSC481_A5
                 images[i].Source = new BitmapImage(uri);
             }
         }
-
 
         private void ReviewButton_Click(object sender, RoutedEventArgs e)
         {
@@ -323,14 +324,30 @@ namespace CPSC481_A5
         }
 
         bool toggleSelectedClass = false;
-        private void Calendar_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Calendar_Click(object sender, RoutedEventArgs e)
         {
             
             if (StudentCourses.Count()> 0 && toggleSelectedClass ==false)
             {
                 this.SelectedClassStackPanel.Children.Clear();
                 CourseListItemControl CourseControl = new CourseListItemControl(null);
-                Course c = StudentCourses[0];
+                Course c = new Course();
+                for(int i=0; i < StudentCourses.Count; i++)
+                {
+                    if(StudentCourses[i].CourseAbbrev.Equals((sender as Button).Content))
+                    {
+                        c = StudentCourses[i];
+                        switch (i)
+                        {
+                            case 0:CourseControl.RemoveButton.Click += RemoveButton_Click0; break;
+                            case 1: CourseControl.RemoveButton.Click += RemoveButton_Click1; break;
+                            case 2: CourseControl.RemoveButton.Click += RemoveButton_Click2; break;
+                            case 3: CourseControl.RemoveButton.Click += RemoveButton_Click3; break;
+                            case 4: CourseControl.RemoveButton.Click += RemoveButton_Click4; break;
+                        }
+                        break;
+                    }
+                }
                 CourseControl.CourseNameLabel.Content = c.CourseAbbrev + "\t" + c.CourseName;
                 CourseControl.CourseDayLabel.Text = c.SceduleDayToString();
                 CourseControl.CourseTime.Text = c.SceduleTimeToString();
@@ -363,10 +380,9 @@ namespace CPSC481_A5
                 CourseControl.TutorialTimeDropDown.Visibility = Visibility.Hidden;
                 
                 this.SelectedClassStackPanel.Children.Add(CourseControl);
-
-            
                 toggleSelectedClass = true;
 
+                
             }
             else
             {
@@ -374,6 +390,38 @@ namespace CPSC481_A5
                 this.SelectedClassStackPanel.Children.Clear();
             }
 
+        }
+
+        // brutal way to remove
+        private void RemoveButton_Click0(object sender, RoutedEventArgs e)
+        {
+            this.SelectedClassStackPanel.Children.RemoveAt(this.SelectedClassStackPanel.Children.Count-1);
+            if (StudentCourses[0] != null)
+                removeCourse(StudentCourses[0]);
+        }
+        private void RemoveButton_Click1(object sender, RoutedEventArgs e)
+        {
+            this.SelectedClassStackPanel.Children.RemoveAt(this.SelectedClassStackPanel.Children.Count - 1);
+            if (StudentCourses[1] != null)
+                removeCourse(StudentCourses[1]);
+        }
+        private void RemoveButton_Click2(object sender, RoutedEventArgs e)
+        {
+            this.SelectedClassStackPanel.Children.RemoveAt(this.SelectedClassStackPanel.Children.Count - 1);
+            if (StudentCourses[2] != null)
+                removeCourse(StudentCourses[2]);
+        }
+        private void RemoveButton_Click3(object sender, RoutedEventArgs e)
+        {
+            this.SelectedClassStackPanel.Children.RemoveAt(this.SelectedClassStackPanel.Children.Count - 1);
+            if (StudentCourses[3] != null)
+                removeCourse(StudentCourses[3]);
+        }
+        private void RemoveButton_Click4(object sender, RoutedEventArgs e)
+        {
+            this.SelectedClassStackPanel.Children.RemoveAt(this.SelectedClassStackPanel.Children.Count - 1);
+            if (StudentCourses[4] != null)
+                removeCourse(StudentCourses[4]);
         }
 
         //Updates the credits in the top right based on the degree nav
@@ -388,5 +436,64 @@ namespace CPSC481_A5
             this.CreditsTaken.Text = "Credits Taken: " + creditsTaken;
             this.CreditsLeft.Text = "Credits Left: " + (75 - creditsTaken);
         }
+
+        //============================================================================
+        // functions for calendar
+
+        // Initialize calendar
+        private void initCalendar()
+        {
+            ScheduleTable.MinRowHeight = (double)364 / 11;
+            ScheduleTable.DataContext = schedule.dataTable.DefaultView;
+        }
+
+        // set calendar
+        private void updateCalendar()
+        {
+            // Populate Calendar
+            List<Button> buttons = new List<Button>();
+            buttons.Add(this.Calendar1);
+            buttons.Add(this.Calendar2);
+            buttons.Add(this.Calendar3);
+            buttons.Add(this.Calendar4);
+            buttons.Add(this.Calendar5);
+
+            foreach (Button button in buttons)
+                button.Content = "No class";
+
+            for(int i=0; i < StudentCourses.Count; i++)
+            {
+                buttons[i].Content = StudentCourses[i].CourseAbbrev;
+            }
+            ScheduleTable.RowHeight = (double)364 / 11;
+            ScheduleTable.DataContext = schedule.dataTable.DefaultView;
+
+        }
+
+        //adding course
+        public void addCourse(Course course)
+        {
+            if (StudentCourses.Contains(course))
+            {
+                MessageBox.Show(course.CourseAbbrev + " is already in your time table, please enroll another course");
+            }else if(schedule.isConflict(course)){
+                MessageBox.Show(course.CourseAbbrev + " has time conflict with current schedule");
+            }else if(StudentCourses.Count == 5){
+                MessageBox.Show("You have reach the maximum amount of courses");
+            }else {
+                StudentCourses.Add(course);
+                schedule.update(StudentCourses);
+                updateCalendar();
+            }
+        }
+
+        //remove course
+        public void removeCourse(Course course)
+        {
+            StudentCourses.Remove(course);
+            schedule.update(StudentCourses);
+            updateCalendar();
+        }
+
     }
 }

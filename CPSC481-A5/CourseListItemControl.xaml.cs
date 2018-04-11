@@ -25,6 +25,7 @@ namespace CPSC481_A5
         public const int FullReview = 537;
         private Course pAssociatedCourse;
         private CourseDB m_pCourseDB = CourseDB.Instance;
+        public MainWindow window;
 
         public RatingCell Star;
         public CourseListItemControl(Course pCourseToAssociate)
@@ -91,6 +92,11 @@ namespace CPSC481_A5
             {
                 this.Height = FullDescriptionHeight;
             }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            window.addCourse(pAssociatedCourse);
         }
     }
 }
