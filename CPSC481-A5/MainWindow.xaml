@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CPSC481_A5"
         mc:Ignorable="d"
-        Title="Schedule Builder" Height="720" Width="1280
-        ">
+        Title="Schedule Builder" Height="720" Width="1280">
     <Window.Resources>
 
     </Window.Resources>
@@ -93,26 +92,26 @@
 
             <Button x:Name="ReviewButton" Grid.Row="0" Content="Review a class" HorizontalAlignment="Left" VerticalAlignment="Top" Width="112" Click="ReviewButton_Click" Style="{DynamicResource YellowButtonStyle}" Margin="46.123,104.04,0,0"/>
             <TabControl Grid.Row="1" HorizontalAlignment="Stretch" Name="tabControl1" VerticalAlignment="Stretch"  VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-
-                
-
-                <TabItem Header="Calendar" Width="310">
-                    <Grid Background="#FFE5E5E5">
+                <TabItem Header="Calendar" Width="310" IsSelected="True">
+                    <Grid x:Name="calendarView" Background="White">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="110" />
                         </Grid.RowDefinitions>
-                        <TextBlock x:Name="Calendar" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="299.96" Width="555.29" MouseDown="Calendar_MouseDown"/>
-                        <DataGrid Grid.Row="0" x:Name="ScheduleTable" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Margin="10,45.5,10,59.5" VerticalAlignment="Stretch" FrozenColumnCount="8" AutoGenerateColumns="False" SelectionUnit="Cell" CanUserResizeRows="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" HeadersVisibility="Column">
+                        <Button x:Name="Calendar1" HorizontalAlignment="Left" Margin="10,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
+                        <Button x:Name="Calendar2" HorizontalAlignment="Left" Margin="131,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
+                        <Button x:Name="Calendar3" HorizontalAlignment="Left" Margin="252,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
+                        <Button x:Name="Calendar4" HorizontalAlignment="Left" Margin="373,10,0,0" Content="No class" Background="#F2EBC7" VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click"/>
+                        <Button x:Name="Calendar5" HorizontalAlignment="Left" Margin="494,10,0,0" Content="No class" Background="#F2EBC7"  VerticalAlignment="Top" Height="31" Width="70" Click="Calendar_Click" RenderTransformOrigin="-0.872,0.516"/>
+                        <DataGrid Grid.Row="0"  x:Name="ScheduleTable" Height="365" ItemsSource="{Binding}" IsReadOnly="True" HorizontalAlignment="Stretch" Margin="10,46,10,10" VerticalAlignment="Stretch" FrozenColumnCount="8" AutoGenerateColumns="False" SelectionUnit="Cell" CanUserResizeRows="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" HeadersVisibility="Column">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Time}" Header="Time" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
-                                <DataGridTextColumn Binding="{Binding Monday}" Header="Monday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
+                                <DataGridTextColumn Binding="{Binding Time}" Header="Time" Width="60" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
+                                <DataGridTextColumn Binding="{Binding Monday}" Header="Monday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False">
+                                </DataGridTextColumn>
                                 <DataGridTextColumn Binding="{Binding Tuesday}" Header="Tuesday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
                                 <DataGridTextColumn Binding="{Binding Wednesday}" Header="Wednesday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
                                 <DataGridTextColumn Binding="{Binding Thursday}" Header="Thursday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
                                 <DataGridTextColumn Binding="{Binding Friday}" Header="Friday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
-                                <!--<DataGridTextColumn Binding="{Binding Saturday}" Header="Saturday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
-                        <DataGridTextColumn Binding="{Binding Sunday}" Header="Sunday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>-->
                             </DataGrid.Columns>
                         </DataGrid>
                         <StackPanel x:Name="SelectedClassStackPanel" Grid.Row="1" Margin="0,0,5,0"/>

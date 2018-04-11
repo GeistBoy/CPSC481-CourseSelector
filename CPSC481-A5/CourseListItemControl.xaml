@@ -7,11 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="538" d:DesignWidth="616">
     <Grid x:Name="CourseGrid" Background="White" Width="616" Height="538">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="539*"/>
-            <ColumnDefinition Width="68*"/>
-            <ColumnDefinition Width="9*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -21,10 +16,9 @@
 
 
         </Grid.RowDefinitions>
-
         <Label x:Name="CourseNameLabel" Content="Course Name" Grid.Row="0" VerticalAlignment="Top" Background="#FF7AB9C7" Grid.ColumnSpan="2"/>
 
-        <Grid x:Name="ShortDetail" Grid.Row="1" Grid.ColumnSpan="3" Width="616" Height="76" VerticalAlignment="Top">
+        <Grid x:Name="ShortDetail" Grid.Row="1" Grid.ColumnSpan="2" Width="616" Height="76" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -51,20 +45,20 @@
             <TextBlock x:Name="CourseTime" Text="Hello" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" IsEnabled="False" />
             <TextBlock x:Name="CourseRoom" Text="Room" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
             <TextBlock x:Name="ProfNameLabel" Text="Name" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
-            <TextBlock x:Name="Status"  Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" Height="16.96" Margin="12.14,7.75,7.75,13.29"><InlineUIContainer>
-                    <StackPanel x:Name="StatusPanel" Orientation="Horizontal" ToolTipService.ShowDuration="2000" ToolTipService.InitialShowDelay="0" MouseEnter="StatusIcon_MouseMove">
+            <TextBlock x:Name="Status" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"><InlineUIContainer>
+                    <StackPanel x:Name="StatusPanel" ToolTipService.BetweenShowDelay="0" ToolTipService.InitialShowDelay="0" ToolTipService.ShowDuration="2000" MouseEnter="StatusIcon_MouseMove" Orientation="Horizontal">
                         <Image x:Name="StatusIcon" Height="10" Width="10" Source="red_dot.png"/>
-                        <TextBlock x:Name="StatusLabel" TextWrapping="Wrap" Margin="0,-1,0,0"  Padding="5,0,10,0" ><Run Text="Status"/></TextBlock>
+                        <TextBlock x:Name="StatusLabel" TextWrapping="Wrap" Margin="0,-1,0,0" Padding="5,0,10,0"><Run Text="Status"/></TextBlock>
                     </StackPanel>
                 </InlineUIContainer></TextBlock>
-            <Button x:Name="AddButton1" Content="Add" Grid.Column="6" Margin="0,9.357,0,0" Style="{DynamicResource YellowButtonStyle}" HorizontalAlignment="Left" Width="68" RenderTransformOrigin="0.485,-0.417" VerticalAlignment="Top"/>
+            <Button x:Name="AddButton1" Content="Add" Click="AddButton_Click" Grid.Column="6" Margin="0,9.357,0,0" Style="{DynamicResource YellowButtonStyle}" HorizontalAlignment="Left" Width="68" RenderTransformOrigin="0.485,-0.417" VerticalAlignment="Top"/>
             <ComboBox x:Name="TutorialTimeDropDown" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="154"/>
             <TextBlock x:Name="MoreTextBlock" Grid.Column="6" HorizontalAlignment="Left" Margin="33.543,13.53,0,-7.45" Grid.Row="1" TextWrapping="Wrap" Text="More..." VerticalAlignment="Top" Cursor="Hand" Foreground="#FF348899" MouseDown="TextBlock_MouseDown"/>
             <Button x:Name="RemoveButton" Content="Remove Class" Grid.Column="5" Margin="17.445,31.98,0,0" Style="{DynamicResource YellowButtonStyle}" HorizontalAlignment="Left" Width="126.555" RenderTransformOrigin="0.485,-0.417" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
 
 
         </Grid>
-        <Grid Grid.Row="2" Margin="0,10,0,0" Grid.ColumnSpan="3">
+        <Grid Grid.Row="2" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="4*" />
@@ -89,11 +83,11 @@
             <TextBlock x:Name="TutorialSelectedLabel" Grid.Column="1"  TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="139.29"  HorizontalAlignment="Center" Margin="210.488,-44.667,143.022,0"/>
 
         </Grid>
-        <Button x:Name="AddButton2" Content="Add" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Top" Width="68" Style="{DynamicResource YellowButtonStyle}" Grid.Column="1"/>
+        <Button x:Name="AddButton2" Click="AddButton_Click" Content="Add" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Top" Width="75" Style="{DynamicResource YellowButtonStyle}"  Margin="0,0,10,0"/>
 
 
 
-        <ScrollViewer Grid.Row="4"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="604" HorizontalAlignment="Left" Margin="12,42,0,10" Grid.ColumnSpan="3">
+        <ScrollViewer Grid.Row="4"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Width="604" HorizontalAlignment="Left" Margin="12,42,0,10">
             <StackPanel x:Name="CommentsStackPanel" Grid.Row="4" ScrollViewer.CanContentScroll="True" Width="584">
             </StackPanel>
         </ScrollViewer>
