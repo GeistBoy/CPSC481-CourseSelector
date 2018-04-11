@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace CPSC481_A5
@@ -28,9 +29,24 @@ namespace CPSC481_A5
         private const int NUM_RANDOM_COURSES = 5;
         private Random m_pRand;
 
-        // List of Search Filters can go here
+        public enum eCourseCompare
+        {
+            LESS_THAN = -1,
+            EQUAL,
+            GREATER_THAN
+        }
 
-        enum eLocations
+        // List of Search Filters can go here
+        public ComboBox m_pSubjectCombo;
+        public ComboBox[,] m_pTimeCombos;
+        public bool[] m_bDayBooleans;
+        public int m_iCourseNum;
+        public eCourseCompare m_eComparator;
+
+        /// <summary>
+        /// List of Locations and their ENUMS
+        /// </summary>
+        public enum eLocations
         {
             ICT = 0,
             ST,
@@ -72,6 +88,7 @@ namespace CPSC481_A5
         private CourseDB( )
         {
             m_pRand = new Random();
+            m_pTimeCombos = new ComboBox[5, 2];
         }
 
         private CourseListItemControl generateCLIC(Course cCourse )
@@ -254,6 +271,30 @@ namespace CPSC481_A5
             return pReturnVal;
         }
 
+        public void clearFilters()
+        {
+            // Init Subject ComboBox
+            m_pSubjectCombo.ItemsSource = COURSE_VALUES;
+            m_pSubjectCombo.SelectedIndex = -1;
+
+            // Init Time Combo Boxes
+            
+            for (int iDay = 0; iDay < 5; ++iDay)
+            {
+                for (int i = 0; i < 2; ++i)
+                {
+                    m_pTimeCombos[iDay, i].ItemsSource = availableTimes;
+                    m_pTimeCombos[iDay, i].SelectedIndex = -1;
+                }
+            }
+
+            // Initialize Checks
+            m_bDayBooleans = new bool[5] { false, false, false, false, false };
+
+            m_iCourseNum = -1;
+            m_eComparator = eCourseCompare.EQUAL;
+        }
+
         /// <summary>
         /// Returns list of associated CourseListItemControls from the given list of Courses
         /// </summary>
@@ -296,15 +337,21 @@ namespace CPSC481_A5
         /// <param name="sSelected">Course to search for. Will not find if it's not in the database.</param>
         public void selectCourse( Course sSelected )
         {
-            var kvpValue = (from kvp in m_pCourseList where kvp.Key == sSelected select kvp.Key).FirstOrDefault();
-
-            if (null != kvpValue)
+            // Deselect
+            if (sSelected == m_pSelected)
+                m_pSelected = null;
+            else // Select new course
             {
-                if (null != m_pSelected) // Close the previously selected Course object.
-                    (from kvp in m_pCourseList where kvp.Key == m_pSelected select kvp.Value).FirstOrDefault().applyTextBlock_MouseDown();
+                var kvpValue = (from kvp in m_pCourseList where kvp.Key == sSelected select kvp.Key).FirstOrDefault();
 
-                // Select new object and apply Selection animation.
-                m_pSelected = kvpValue;
+                if (null != kvpValue)
+                {
+                    if (null != m_pSelected) // Close the previously selected Course object.
+                        (from kvp in m_pCourseList where kvp.Key == m_pSelected select kvp.Value).FirstOrDefault().applyTextBlock_MouseDown();
+
+                    // Select new object and apply Selection animation.
+                    m_pSelected = kvpValue;
+                }
             }
         }
 
@@ -325,8 +372,78 @@ namespace CPSC481_A5
         /// <returns>True if passes filter check; false otherwise.</returns>
         private Boolean checkFilters(Course c )
         {
+            bool bReturnValue = true;
+
+            // Check Course Type
+            if( m_pSubjectCombo.SelectedIndex > 0 )
+                bReturnValue &= c.CourseAbbrev.Contains(m_pSubjectCombo.SelectedItem.ToString());
+
+            bool bConsiderDay = false;
+            foreach (bool bDayValid in m_bDayBooleans)
+                bConsiderDay |= bDayValid;
+
+            if (bConsiderDay)
+            {
+                foreach (Day dDay in c.ScheduleDay)
+                    bReturnValue &= m_bDayBooleans[(int)dDay];
+            }
+
+            for( int i = 0; i < 5; ++i )
+            {
+                if (m_pTimeCombos[i, 0].SelectedIndex >= 0)
+                    bReturnValue &= (c.SceduleTime - 8) > m_pTimeCombos[i, 0].SelectedIndex;
+
+                if( m_pTimeCombos[i, 1].SelectedIndex >= 0 )
+                    bReturnValue &= (c.SceduleTime - 8) < m_pTimeCombos[i, 1].SelectedIndex;
+            }
+
             // TODO: Implement Checks
-            return true;
+            return bReturnValue;
+        }
+
+        /// <summary>
+        /// Modifies conflicting values to avoid inverse time checks.
+        /// </summary>
+        /// <param name="iDay">Index of the Day</param>
+        /// <param name="iIndex">Index of Start or End</param>
+        public void modTimes(int iDay, int iIndex )
+        {
+            if( iDay >= 0 && iDay < 5 &&
+                iIndex >= 0 && iIndex < 2 )
+            {
+                // Avoid Resets
+                if (m_pTimeCombos[iDay, iIndex].SelectedIndex < 0)
+                    return;
+
+                // Counter Index
+                int iOpposingIndex = (iIndex + 1) % 2;
+
+                if( iOpposingIndex == 0 ) // End Time was Modified
+                {
+                    List<string> pModdedTimes = new List<string>();
+
+                    // Get Reduced List
+                    for (int i = 0; i < availableTimes.Length; ++i)
+                    {
+                        if (availableTimes[i] == m_pTimeCombos[iDay, iIndex].SelectedValue.ToString())
+                            break;
+
+                        pModdedTimes.Add(availableTimes[i]);
+                    }
+
+                    m_pTimeCombos[iDay, iOpposingIndex].ItemsSource = pModdedTimes;
+                }
+                else    // Start Time was Modified
+                {
+                    List<string> pModdedTimes = new List<string>();
+
+                    // Get Reduced List
+                    for (int i = m_pTimeCombos[iDay, iIndex].SelectedIndex+1; i < availableTimes.Length; ++i)
+                        pModdedTimes.Add(availableTimes[i]);
+
+                    m_pTimeCombos[iDay, iOpposingIndex].ItemsSource = pModdedTimes;
+                }
+            }
         }
     }
 }

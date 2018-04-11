@@ -25,22 +25,19 @@ namespace CPSC481_A5
     {
         DegreeNav degreeProgress;
         CourseDB m_pCourseDB = CourseDB.Instance;
-        double m_pGridLength;
 
         public MainWindow()
         {
             InitializeComponent();
-            this.FilterCanvas.Height = 74;
+
+            initFilterCombos();
             this.SubjectCombo.ItemsSource = CourseDB.Instance.COURSE_VALUES;
-            this.MondayStartCBO.ItemsSource = CourseDB.Instance.availableTimes;
 
             //degreeProgress is used to check if a requirement is completed in degree navigator
             degreeProgress = new DegreeNav();
 
             //Initializes the degree navigator with default completed classes
             PopulateDegreeNavRequirements(degreeProgress);
-
-            m_pGridLength = this.LeftGrid.RowDefinitions[0].Height.Value;
 
             //Sets the icons in degree navigator (checkmarks and X's)
             SetDegreeNavIcons(degreeProgress);
@@ -56,6 +53,26 @@ namespace CPSC481_A5
                 this.SearchResultStackPanel.Children.Add(pObj);
 
             this.Term_Label.Content = "Winter 2018";
+
+            triggerNoSearchOverlay();
+        }
+
+        public void initFilterCombos()
+        {
+            m_pCourseDB.m_pTimeCombos[0, 0] = this.MondayStartCBO;
+            m_pCourseDB.m_pTimeCombos[0, 1] = this.MondayEndCBO;
+            m_pCourseDB.m_pTimeCombos[1, 0] = this.TuesdayStartCBO;
+            m_pCourseDB.m_pTimeCombos[1, 1] = this.TuesdayEndCBO;
+            m_pCourseDB.m_pTimeCombos[2, 0] = this.WednesdayStartCBO;
+            m_pCourseDB.m_pTimeCombos[2, 1] = this.WednesdayEndCBO;
+            m_pCourseDB.m_pTimeCombos[3, 0] = this.ThursdayStartCBO;
+            m_pCourseDB.m_pTimeCombos[3, 1] = this.ThursdayEndCBO;
+            m_pCourseDB.m_pTimeCombos[4, 0] = this.FridayStartCBO;
+            m_pCourseDB.m_pTimeCombos[4, 1] = this.FridayEndCBO;
+
+            m_pCourseDB.m_pSubjectCombo = this.SubjectCombo;
+
+            m_pCourseDB.clearFilters();
         }
         
         //Adds taken classes to degree navigator
@@ -163,37 +180,133 @@ namespace CPSC481_A5
         }
 
         public const int ShortFilter = 74;
-        public const int FullFilter = 330;
+        public const int FullFilter = 202;
+
+        private bool bShort = true;
 
         private void MoreFilterTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            const double searchHeightOffset = 25;
-            const double moreHeightOffset = 25;
+            toggleFilter();
+        }
 
-
-            if (this.FilterCanvas.Height == ShortFilter)
+        private void toggleFilter()
+        {
+            if (bShort)
             {
-                this.FilterCanvas.Height = FullFilter;
-               // this.SearchButton.SetValue(Canvas.TopProperty, FullFilter-searchHeightOffset);
+                bShort = false;
                 this.MoreFilterTextBlock.Text = "Less..";
-               // this.MoreFilterTextBlock.SetValue(Canvas.TopProperty, FullFilter - moreHeightOffset);
                 this.LeftGrid.RowDefinitions[0].Height = new GridLength(FullFilter);
+                this.FilterShadow.Visibility = Visibility.Visible;
+                this.HideFilter.Visibility = Visibility.Hidden;
             }
-            else if (this.FilterCanvas.Height == FullFilter)
+            else
             {
-                this.FilterCanvas.Height = ShortFilter;
-              //  this.SearchButton.SetValue(Canvas.TopProperty, ShortFilter - searchHeightOffset);
+                bShort = true;
                 this.MoreFilterTextBlock.Text = "More..";
-               // this.MoreFilterTextBlock.SetValue(Canvas.TopProperty, ShortFilter-moreHeightOffset);
-                this.LeftGrid.RowDefinitions[0].Height = new GridLength(m_pGridLength);
-
+                this.LeftGrid.RowDefinitions[0].Height = new GridLength(0);
+                this.FilterShadow.Visibility = Visibility.Hidden;
+                this.HideFilter.Visibility = Visibility.Visible;
             }
+        }
 
+        private void triggerNoSearchOverlay()
+        {
+            if (this.SearchResultStackPanel.Children.Count == 0)
+                this.NoSearchCanvas.Visibility = Visibility.Visible;
+            else
+                this.NoSearchCanvas.Visibility = Visibility.Hidden;
         }
 
         private void ContactAdvisorButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://success.ucalgary.ca/home.htm");
+        }
+
+        // Clears Filters
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            m_pCourseDB.clearFilters();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.SearchResultStackPanel.Children.Clear();
+            List<Course> pFilteredCourses = m_pCourseDB.searchCourses(this.Keyword_Text.Text);
+
+            if (!bShort)
+                toggleFilter();
+
+            if(pFilteredCourses.Count() > 0)
+            {
+                List<CourseListItemControl> pCntrls = m_pCourseDB.getControls(pFilteredCourses);
+
+                foreach (CourseListItemControl pItem in pCntrls)
+                    this.SearchResultStackPanel.Children.Add(pItem);
+            }
+
+            triggerNoSearchOverlay();
+        }
+
+        /**
+            Massive Section of ComboBox Events
+        */
+        /// <summary>
+        /// Monday Start
+        /// </summary>
+        private void MondayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(0, 0);
+        }
+
+        private void MondayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(0, 1);
+        }
+
+        private void TuesdayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(1, 0);
+        }
+
+        private void TuesdayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(1, 1);
+        }
+
+        private void WednesdayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(2, 0);
+        }
+
+        private void WednesdayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(2, 1);
+        }
+
+        private void ThursdayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(3, 0);
+        }
+
+        private void ThursdayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(3, 1);
+        }
+
+        private void FridayStartCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(4, 0);
+        }
+
+        private void FridayEndCBO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m_pCourseDB.modTimes(4, 1);
+        }
+
+        private void Keyword_Text_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                SearchButton_Click(sender, e);
         }
     }
 }

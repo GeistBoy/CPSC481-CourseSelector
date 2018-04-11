@@ -9,7 +9,7 @@ namespace CPSC481_A5
     class RandomClasses
     {
         public Course hci;
-        public Course c2; 
+     
         public RandomClasses()
         {
             // init;

@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace CPSC481_A5
 {
-    public enum Day { Sat = 1, Mon, Tues, Wed, Thur, Fri, Sun };
-    public enum Status {Open, Full, Prereq, TimeConflict};
+    public enum Day { Mon = 0, Tues, Wed, Thur, Fri };
+    public enum Status {Open, Full, Prereq, TimeConflict, MAX_STATUS};
+    
     public class Course : IEquatable<Course>
     {
-
+        public readonly string[] STATUS_TEXT = new string[(int)Status.MAX_STATUS]
+        { "Open", "Class is Full", "You do not meet the prerequisite for this course", "There is a time conflict" };
         public String ProfessorName = "Prof name: none";
         public float Rating = 0;
 
@@ -71,8 +73,7 @@ namespace CPSC481_A5
 
         public String StatusToString()
         {
-            String status = CourseStatus.ToString();
-            return status;
+            return STATUS_TEXT[(int)CourseStatus];
         }
 
         public String CourseTagsToString()
