@@ -84,9 +84,37 @@ namespace CPSC481_A5
             t3.TutorialTime = 8;
 
             seng.Tutorials.Add(t3);
+           
+
+
+
+            Course intro = new Course();
+            intro.CourseAbbrev = "CPSC-233";
+            intro.iCourseNumber = 481;
+            intro.CourseName = "Intro to Computer Science";
+            intro.Description = "Continuation of Introduction to Computer Science for Computer Science Majors I. Emphasis on object-oriented analysis and design of small-scale computational systems and implementation using an object oriented language. Issues of design, modularization, and programming style will be emphasized.";
+            intro.ProfessorName = "Newert Mel";
+            intro.Tags.Add("Fun");
+            intro.Tags.Add("Relax");
+            intro.ScheduleDay.Add(Day.Tues);
+            intro.ScheduleDay.Add(Day.Thur);
+            intro.SceduleTime = 12;
+            intro.Rating = 2;
+            intro.Location = "ST 102"; // TODO
+            intro.CourseStatus = Status.Open; // TODO
+
+
+            Tutorial t4 = new Tutorial(intro.CourseAbbrev);
+            t4.TutorialAdvisor = "George Zan";
+            t4.TutorialDays.Add(Day.Thur);
+            t4.TutorialDays.Add(Day.Tues);
+            t4.TutorialTime = 11;
+            intro.Tutorials.Add(t4);
+
+
+            InterestingCourses.Add(intro);
             InterestingCourses.Add(seng);
             InterestingCourses.Add(hci);
-
 
 
 

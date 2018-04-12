@@ -99,7 +99,7 @@ namespace CPSC481_A5
             if (rating != -1 && !String.IsNullOrEmpty(title) && !String.IsNullOrEmpty(comment))
             {
                 this.Close();
-                RaiseCustomEvent(this, new CustomEventArgs(title, comment, rating));
+                RaiseCustomEvent(this, new CustomEventArgs(title, comment, rating, ClassTakenDropDown.Text, TagTextBox.Text));
 
             }
         }
@@ -108,13 +108,18 @@ namespace CPSC481_A5
     public class CustomEventArgs : EventArgs
     {
         public UserReview userReview;
-
-        public CustomEventArgs(String title, String summary, int rating)
+        public String classAbbrev;
+        public String tag;
+        public CustomEventArgs(String title, String summary, int rating, String cAbberv, String stag)
         {
             userReview = new UserReview();
             userReview.SetRating(rating);
             userReview.Summary = summary;
             userReview.Title = title;
+
+            classAbbrev = cAbberv;
+            this.tag = stag;
+
         }
 
         public UserReview GetReview()

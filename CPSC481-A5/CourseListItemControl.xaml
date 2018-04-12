@@ -79,7 +79,7 @@
             <TextBlock x:Name="TagLabel" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left"  TextWrapping="WrapWithOverflow" Text="Tags" VerticalAlignment="Top" Padding="0,0,15,0"/>
             <TextBlock Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"  TextWrapping="WrapWithOverflow" Text="Reviews" VerticalAlignment="Top" Padding="0,0,15,0"/>
             <StackPanel x:Name="RatingStarContainer" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-            <TextBlock x:Name="CommentAndReviewTextBox"  ToolTip="Expand" Grid.Column="1" Grid.Row="3"  TextWrapping="WrapWithOverflow" Text="Reviews &amp; Comments" HorizontalAlignment="Left" FlowDirection="RightToLeft" Foreground="#FF348899" Padding="0,0,100,0" UseLayoutRounding="True" Margin="0" Cursor="Hand" MouseDown="CommentAndReviewTextBox_MouseDown" />
+            <TextBlock x:Name="CommentAndReviewTextBox"  ToolTip="Expand" Grid.Column="1" Grid.Row="3"  TextWrapping="WrapWithOverflow" Text="Reviews &amp; Comments" HorizontalAlignment="Left" FlowDirection="RightToLeft" Foreground="#FF348899" Padding="0,0,100,0" UseLayoutRounding="True" Margin="0" Cursor="Hand" MouseDown="CommentAndReviewTextBox_MouseDown" d:IsHidden="True" />
             <TextBlock x:Name="TutorialSelectedLabel" Grid.Column="1"  TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="139.29"  HorizontalAlignment="Center" Margin="210.488,-44.667,143.022,0"/>
 
         </Grid>

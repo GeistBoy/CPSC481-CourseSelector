@@ -29,8 +29,6 @@
                 <TextBlock TextWrapping="Wrap" Text="Start Time(s):" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="10" Canvas.Top="179.813" Width="94.255" TextAlignment="Right"/>
                 <TextBlock TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Height="29.303" Canvas.Left="1" Canvas.Top="150.51" Width="103.255" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Days:" TextAlignment="Right"/>
                 <ComboBox x:Name="SubjectCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Canvas.Left="112.248" Canvas.Top="93.247"/>
-                <Label x:Name="Term_Title" Content="Current Term: " Height="20" Canvas.Left="10" Canvas.Top="19.721" Width="60" FontSize="8" Foreground="#7F000000"/>
-                <Label x:Name="Term_Label" Content="" Height="20" Canvas.Left="75" Canvas.Top="19.721" Width="223.372" FontSize="8" Background="#00000000" Foreground="#7F000000"/>
                 <Label Content="Search:" Height="25.279" Canvas.Left="10" Canvas.Top="35.721" Width="60"/>
                 <TextBox x:Name="Keyword_Text" Height="25.259" Canvas.Left="60.248" TextWrapping="Wrap" Canvas.Top="37.741" Width="429.752" VerticalContentAlignment="Center" KeyUp="Keyword_Text_KeyUp"/>
                 <TextBlock TextWrapping="Wrap" Text="Subject:" Height="29.303" Canvas.Left="10" Canvas.Top="95.207" Width="94.255" TextAlignment="Right"/>

@@ -68,8 +68,6 @@ namespace CPSC481_A5
             }
                 
 
-            this.Term_Label.Content = "Winter 2018";
-
             triggerNoSearchOverlay();
 
             this.Calendar1.Visibility = Visibility.Hidden;
@@ -199,7 +197,22 @@ namespace CPSC481_A5
 
         void newWindow_RaiseCustomEvent(object sender, CustomEventArgs e)
         {
-            this.ReviewButton.Content = e.GetReview().Title;
+            String classAbbr = e.classAbbrev;
+            CourseDB courseDB = CourseDB.Instance;
+            Course c = courseDB.fetchCourseByName(classAbbr);
+            c.Reviews.Add(e.userReview);
+            c.Tags.Add(e.tag);
+            CourseListItemControl clic = courseDB.getControl(c);
+            
+            ReviewPanel reviewPanel = new ReviewPanel();
+            reviewPanel.RatingNumber.Text = e.userReview.GetRating() + "";
+            reviewPanel.ReviewSummary.Text = e.userReview.Summary;
+            reviewPanel.Title.Text = e.userReview.Title;
+            clic.CommentsStackPanel.Children.Add(reviewPanel);
+
+            clic.Star.RatingValue =c.GetRating();
+            clic.TagLabel.Text = c.CourseTagsToString();
+
         }
 
         public const int ShortFilter = 74;

@@ -123,7 +123,7 @@ namespace CPSC481_A5
             pReturnControl.CourseDayLabel.Text = cCourse.SceduleDayToString();
             pReturnControl.CourseTime.Text = cCourse.SceduleTimeToString();
             pReturnControl.CourseRoom.Text = cCourse.Location;
-            pReturnControl.ProfNameLabel.Text = cCourse.ProfessorName + " User";
+            pReturnControl.ProfNameLabel.Text = cCourse.ProfessorName;
 
             if (cCourse.StatusToString().Equals("Open"))
             {
@@ -307,6 +307,21 @@ namespace CPSC481_A5
             return pReturnVal;
         }
 
+        public Course fetchCourseByName(string sCourseName)
+        {
+            Course pReturnValue = null;
+
+            foreach (KeyValuePair<Course, CourseListItemControl> cKVP in m_pCourseList)
+            {
+                if (cKVP.Key.CourseAbbrev.Equals(sCourseName))
+                {
+                    pReturnValue = cKVP.Key;
+                    break;
+                }
+            }
+
+            return pReturnValue;
+        }
         /// <summary>
         /// Clears the Filters and resets the combo boxes.
         /// </summary>
@@ -363,6 +378,19 @@ namespace CPSC481_A5
                 Console.WriteLine("Could not find all associated Controls, an Error may have occurred.");
 
             return pReturnList;
+        }
+
+        public CourseListItemControl getControl( Course cCourse )
+        {
+            List<Course> Hackey = new List<Course>();
+            Hackey.Add(cCourse);
+            List<CourseListItemControl> pCntrlList = null;
+            pCntrlList = getControls(Hackey);
+
+            if (null != pCntrlList)
+                return pCntrlList.First();
+
+            return null;
         }
 
         /// <summary>
