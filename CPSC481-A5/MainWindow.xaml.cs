@@ -219,6 +219,13 @@ namespace CPSC481_A5
 
             ReviewClass.Remove(classAbbr);
 
+            if (ReviewClass.Count == 0)
+            {
+                this.ReviewButton.IsEnabled = false;
+                this.ReviewButton.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF747474"));
+
+            }
+
         }
 
         public const int ShortFilter = 74;
