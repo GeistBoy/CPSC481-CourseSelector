@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="Schedule Builder" Height="720" Width="1280">
     <Window.Resources>
-
     </Window.Resources>
     <Grid>
         <Grid x:Name="LeftGrid" HorizontalAlignment="Left" Height="689" Margin="0,0,0,0" VerticalAlignment="Top" Width="636">
@@ -107,11 +106,75 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Time}" Header="Time" Width="60" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
                                 <DataGridTextColumn Binding="{Binding Monday}" Header="Monday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Background" Value="#FF7AB9C7"/>
+                                            <Setter Property="Foreground" Value="Black"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="1">
+                                                    <Setter Property="Background" Value="White"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Binding="{Binding Tuesday}" Header="Tuesday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
-                                <DataGridTextColumn Binding="{Binding Wednesday}" Header="Wednesday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
-                                <DataGridTextColumn Binding="{Binding Thursday}" Header="Thursday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
-                                <DataGridTextColumn Binding="{Binding Friday}" Header="Friday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False"/>
+                                <DataGridTextColumn Binding="{Binding Tuesday}" Header="Tuesday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Background" Value="#FF7AB9C7"/>
+                                            <Setter Property="Foreground" Value="Black"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="1">
+                                                    <Setter Property="Background" Value="White"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Wednesday}" Header="Wednesday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Background" Value="#FF7AB9C7"/>
+                                            <Setter Property="Foreground" Value="Black"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="1">
+                                                    <Setter Property="Background" Value="White"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Thursday}" Header="Thursday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Background" Value="#FF7AB9C7"/>
+                                            <Setter Property="Foreground" Value="Black"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="1">
+                                                    <Setter Property="Background" Value="White"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Friday}" Header="Friday" Width="*" CanUserResize="False" CanUserSort="False" CanUserReorder="False">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Background" Value="#FF7AB9C7"/>
+                                            <Setter Property="Foreground" Value="Black"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="1">
+                                                    <Setter Property="Background" Value="White"/>
+                                                    <Setter Property="Foreground" Value="White"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <StackPanel x:Name="SelectedClassStackPanel" Grid.Row="1" Margin="0,0,5,0"/>

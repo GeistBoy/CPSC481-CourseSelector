@@ -22,7 +22,9 @@ namespace CPSC481_A5
             for (int i = 0; i < 10; i++)
             {
                 string timeString = time + ":00";
-                dataTable.Rows.Add(timeString);
+                // "1" indicate empty
+                Object[] list = { timeString, "1", "1", "1", "1", "1" };
+                dataTable.Rows.Add(list);
                 time++;
             }
         }
@@ -34,14 +36,14 @@ namespace CPSC481_A5
 
             foreach (Day day in course.ScheduleDay)
             {
-                if (dataTable.Rows[course.SceduleTime - 8][(int)day+1].ToString() != "") {
+                if (dataTable.Rows[course.SceduleTime - 8][(int)day+1].ToString() != "1") {
                     isConflict = true;
                     break;
                 }
             }
             foreach(Day day in tut.TutorialDays)
                 {
-                    if (dataTable.Rows[tut.TutorialTime - 8][(int)day+1].ToString() != "")
+                    if (dataTable.Rows[tut.TutorialTime - 8][(int)day+1].ToString() != "1")
                     {
                         string a = dataTable.Rows[tut.TutorialTime - 8][(int)day].ToString();
                         isConflict = true;
@@ -60,7 +62,7 @@ namespace CPSC481_A5
             for (int i = 0; i < 10; i++)
             {
                 string timeString = time + ":00";
-                Object[] list = { timeString, "", "", "", "", "" };
+                Object[] list = { timeString, "1", "1", "1", "1", "1" };
                 foreach (Course c in courses)
                 {
                     // check courses

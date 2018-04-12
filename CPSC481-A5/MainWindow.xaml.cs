@@ -360,10 +360,7 @@ namespace CPSC481_A5
         private void Calendar_Click(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
-            if (button.Content.Equals("No class"))
-            {
-                return;
-            }
+            if (button.Content.Equals("No class")) return;
 
             if (StudentCourses.Count()> 0 && toggleSelectedClass ==false)
             {
