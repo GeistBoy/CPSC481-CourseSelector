@@ -112,12 +112,33 @@ namespace CPSC481_A5
             intro.Tutorials.Add(t4);
 
 
+           
+
+            Course c355 = new Course();
+            c355.CourseAbbrev = "CPSC-355";
+            c355.iCourseNumber = 481;
+            c355.CourseName = "Computing Machinery I";
+            c355.Description = "An introduction to computing machinery establishing the connection between programs expressed in a compiled language, an assembly language, and machine code, and how such code is executed. Includes the detailed study of a modern CPU architecture, its assembly language and internal data representation, and the relationship between high-level program constructs and machine operations.";
+            c355.ProfessorName = "Newert Mel";
+            c355.Tags.Add("Excellent");
+            c355.Tags.Add("Not Bad");
+            c355.ScheduleDay.Add(Day.Tues);
+            c355.ScheduleDay.Add(Day.Thur);
+            c355.SceduleTime = 10;
+            c355.Rating = 3;
+            c355.Location = "SB 144"; // TODO
+            c355.CourseStatus = Status.Open; // TODO
+
+            UserReview ur3 = new UserReview();
+            ur3.Title = "Be prepared to Work HARD!";
+            ur3.SetRating(1);
+            c355.Reviews.Add(ur3);
+
+
             InterestingCourses.Add(intro);
             InterestingCourses.Add(seng);
             InterestingCourses.Add(hci);
-
-
-
+            InterestingCourses.Add(c355);
 
         }
     }

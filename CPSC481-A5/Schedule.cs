@@ -41,16 +41,19 @@ namespace CPSC481_A5
                     break;
                 }
             }
-            foreach(Day day in tut.TutorialDays)
+            if(tut != null)
+            {
+                foreach (Day day in tut.TutorialDays)
                 {
-                    if (dataTable.Rows[tut.TutorialTime - 8][(int)day+1].ToString() != "1")
+                    if (dataTable.Rows[tut.TutorialTime - 8][(int)day + 1].ToString() != "1")
                     {
                         string a = dataTable.Rows[tut.TutorialTime - 8][(int)day].ToString();
                         isConflict = true;
                         break;
                     }
+                }
             }
-            
+                      
             return isConflict;
         }
 

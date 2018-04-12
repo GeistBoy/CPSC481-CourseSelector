@@ -21,13 +21,21 @@ namespace CPSC481_A5
     public partial class ReviewWindow : Window
     {
         public event EventHandler<CustomEventArgs> RaiseCustomEvent;
-
-        public ReviewWindow()
+        public List<String> classesTaken = new List<String>();
+        public ReviewWindow(List<String> classNotReviewed)
         {
             InitializeComponent();
+
+            classesTaken.Add("CPSC-233");
+            classesTaken.Add("CPSC-355");
+
             this.Required1.Visibility = Visibility.Hidden;
             this.Required2.Visibility = Visibility.Hidden;
             this.Required3.Visibility = Visibility.Hidden;
+            foreach (String c in classNotReviewed)
+            {
+                ClassTakenDropDown.Items.Add(c);
+            }
 
 
         }

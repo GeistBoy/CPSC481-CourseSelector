@@ -101,8 +101,16 @@ namespace CPSC481_A5
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Tutorial tut = (Tutorial) this.TutorialTimeDropDown.SelectedValue;       
-            window.addCourse(pAssociatedCourse, tut);
+            if(this.TutorialTimeDropDown.SelectedValue == "No tutorials")
+            {
+                window.addCourse(pAssociatedCourse, null);
+            }
+            else
+            {
+                Tutorial tut = (Tutorial)this.TutorialTimeDropDown.SelectedValue;
+                window.addCourse(pAssociatedCourse, tut);
+            }
+            
         }
 
     }

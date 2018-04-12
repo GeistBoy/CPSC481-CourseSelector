@@ -37,8 +37,6 @@
         <TextBox x:Name="TagTextBox" Height="29.23" Canvas.Left="27.579" TextWrapping="Wrap" Canvas.Top="299.017" Width="531.707" SpellCheck.IsEnabled="True"/>
         <TextBlock x:Name="TitleTextBlock_Copy1" Height="23.268" Canvas.Left="316.579" TextWrapping="Wrap" Text="Class Taken" Canvas.Top="47.792" Width="100.554"/>
         <ComboBox x:Name="ClassTakenDropDown" Canvas.Left="316.579" Canvas.Top="76.06" Width="120">
-            <ComboBoxItem Content="CPSC-233"/>
-            <ComboBoxItem Content="CPSC-355"/>
         </ComboBox>
 
 

@@ -31,6 +31,8 @@ namespace CPSC481_A5
         List<Course> StudentCourses = new List<Course>();
         List<Tutorial> StudentTutorials = new List<Tutorial>();
 
+        List<String> ReviewClass = new List<String>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -76,6 +78,8 @@ namespace CPSC481_A5
             this.Calendar4.Visibility = Visibility.Hidden;
             this.Calendar5.Visibility = Visibility.Hidden;
 
+            ReviewClass.Add("CPSC-233");
+            ReviewClass.Add("CPSC-355");
 
         }
 
@@ -189,7 +193,7 @@ namespace CPSC481_A5
 
         private void ReviewButton_Click(object sender, RoutedEventArgs e)
         {
-            ReviewWindow reviewWindow = new ReviewWindow();
+            ReviewWindow reviewWindow = new ReviewWindow(ReviewClass);
             reviewWindow.RaiseCustomEvent += new EventHandler<CustomEventArgs>(newWindow_RaiseCustomEvent);
             reviewWindow.Show();
 
@@ -212,6 +216,8 @@ namespace CPSC481_A5
 
             clic.Star.RatingValue =c.GetRating();
             clic.TagLabel.Text = c.CourseTagsToString();
+
+            ReviewClass.Remove(classAbbr);
 
         }
 
